@@ -52,7 +52,8 @@ AI가 사용자가 업로드한 사진을 유화처럼 만들어주는 프로그
 <a href="https://quixotic-wok-871.notion.site/d4d124149f7940289450b758ad83f173?v=cb365cd4d58a4fb28b01ced140e13be7">노션 바로가기</a>
 <br><br><br>
 
-## ⚙ DB 설계 ERD
+## ⚙ DB 설계 ERD  
+![image](https://user-images.githubusercontent.com/104349901/176165543-46870c8d-e283-48c7-9ff0-bc31117d1e08.png)
 <br><br><br>
 
 ## 📢 발표 영상
