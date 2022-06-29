@@ -1,7 +1,7 @@
 body {
     min-height: 100vh;
 
-    background: -webkit-gradient(linear, left bottom, right top, from(#ddd5d5), to(#fff));
+    background: -webkit-gradient(linear, left bottom, right top, from(#ddd5d5), to(#ffffff));
     background: -webkit-linear-gradient(bottom left, #ddd5d5 0%, rgb(110, 110, 110) 100%);
     background: -moz-linear-gradient(bottom left, #ddd5d5 0%, #fff 100%);
     background: -o-linear-gradient(bottom left, #ddd5d5 0%, #fff 100%);
@@ -11,7 +11,7 @@ body {
 .input-form {
     max-width: 400px;
 
-    margin-top: 240px;
+    margin-top: 170px;
     padding: 32px;
 
     background: #fff;
