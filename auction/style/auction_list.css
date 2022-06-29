@@ -1,8 +1,4 @@
-.main-container {
-    background-color: red;
-}
-
-.genre-container {
+.category-container {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -12,20 +8,60 @@
 .auction-container {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    width: 50%;
+    align-items: center;
+    width: 65%;
     margin: auto;
     flex-wrap: wrap;
 }
 
-img {
-    width: 100%;
-}
-
+/* 경매들 default diaplay:none 설정하고 hover기능 부여해주기 */
 .auction {
-    flex: 1 4 150px;
+    flex: 1 4 220px;
     margin: 20px;
     display: None;
+    position: relative;
+    width: 50%;
+}
+
+.image {
+    display: block;
+    width: 200px;
+    height: 100%;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 200px;
+    height: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: gainsboro;
+}
+
+.auction:hover .overlay {
+    opacity: 0.85;
+}
+
+.text {
+    color: black;
+    font-size: 15px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.auction-type {
+    display: flex;
+    justify-content: center;
+    margin: 7.5px;
 }
 
 .btn-container {
@@ -34,10 +70,29 @@ img {
     justify-content: center;
 }
 
+.category-btn {
+    border: solid 0.1px;
+    padding-inline: 30px;
+    background-color: white;
+
+}
+
+.load-more-btn {
+    border: solid 0.1px;
+    padding: 15px;
+    background-color: white;
+}
+
 button {
     margin: 10px;
 }
 
+img {
+    width: 100%;
+    height: auto;
+}
+
+/* 처음 페이지 로딩할때는 각 경매타입마다 4개만 보여주기 */
 #closing-auction:nth-child(1) {
     display: block
 }
@@ -54,12 +109,34 @@ button {
     display: block
 }
 
-.auction-type {
-    display: flex;
-    justify-content: center;
+#hot-auction:nth-child(1) {
+    display: block
 }
 
-.auction:hover {
-    display: none;
-    background-color: yellow;
+#hot-auction:nth-child(2) {
+    display: block
+}
+
+#hot-auction:nth-child(3) {
+    display: block
+}
+
+#hot-auction:nth-child(4) {
+    display: block
+}
+
+#nobid-auction:nth-child(1) {
+    display: block
+}
+
+#nobid-auction:nth-child(2) {
+    display: block
+}
+
+#nobid-auction:nth-child(3) {
+    display: block
+}
+
+#nobid-auction:nth-child(4) {
+    display: block
 }

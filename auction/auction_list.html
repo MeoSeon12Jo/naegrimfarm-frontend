@@ -9,153 +9,12 @@
     <meta property="og:image" content="../static/image/favicon.png"/> -->
     <title>Auction List</title>
     <!-- CSS -->
-    <style>
-        .category-container {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            margin-left: 10px;
-        }
-
-        .auction-container {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            width: 65%;
-            margin: auto;
-            flex-wrap: wrap;
-        }
-
-        /* 경매들 default diaplay:none 설정하고 hover기능 부여해주기 */
-        .auction {
-            flex: 1 4 220px;
-            margin: 20px;
-            display: None;
-            position: relative;
-            width: 50%;
-        }
-
-        .image {
-            display: block;
-            width: 200px;
-            height: 100%;
-        }
-
-        .overlay {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            width: 200px;
-            height: 100%;
-            opacity: 0;
-            transition: .5s ease;
-            background-color: gainsboro;
-        }
-
-        .auction:hover .overlay {
-            opacity: 0.85;
-        }
-
-        .text {
-            color: black;
-            font-size: 15px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            -webkit-transform: translate(-50%, -50%);
-            -ms-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-            text-align: center;
-        }
-
-        .auction-type {
-            display: flex;
-            justify-content: center;
-            margin: 7.5px;
-        }
-
-        .btn-container {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-        }
-
-        .category-btn {
-            border: solid 0.1px;
-            padding-inline: 30px;
-            background-color: white;
-
-        }
-
-        .load-more-btn {
-            border: solid 0.1px;
-            padding: 15px;
-            background-color: white;
-        }
-
-        button {
-            margin: 10px;
-        }
-
-        img {
-            width: 100%;
-            height: auto;
-        }
-
-        /* 처음 페이지 로딩할때는 각 경매타입마다 4개만 보여주기 */
-        #closing-auction:nth-child(1) {
-            display: block
-        }
-
-        #closing-auction:nth-child(2) {
-            display: block
-        }
-
-        #closing-auction:nth-child(3) {
-            display: block
-        }
-
-        #closing-auction:nth-child(4) {
-            display: block
-        }
-
-        #hot-auction:nth-child(1) {
-            display: block
-        }
-
-        #hot-auction:nth-child(2) {
-            display: block
-        }
-
-        #hot-auction:nth-child(3) {
-            display: block
-        }
-
-        #hot-auction:nth-child(4) {
-            display: block
-        }
-
-        #nobid-auction:nth-child(1) {
-            display: block
-        }
-
-        #nobid-auction:nth-child(2) {
-            display: block
-        }
-
-        #nobid-auction:nth-child(3) {
-            display: block
-        }
-
-        #nobid-auction:nth-child(4) {
-            display: block
-        }
-    </style>
+    <!-- CSS -->
+    <link href="../index/style/mainpage.css" rel="stylesheet">
+    <link href="../auction/style/auction_list.css" rel="stylesheet">
 
     <!-- jQuery -->
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
     <!-- Icon (Font Awesome) -->
     <!-- <script src="https://kit.fontawesome.com/989420847f.js" crossorigin="anonymous"></script> -->
@@ -168,6 +27,25 @@
 </head>
 
 <body>
+    <header class="header">
+        <!-- 로고 -->
+        <button class="logo"><span class="logo-txt">NAEGRIM<b>FARM</b></span></button>
+        <!-- 네비개이션 -->
+        <div class="navi">
+            <button class="auctions">
+                <span>AUCTIONS</span>
+            </button>
+            <button class="exhibitions">
+                <span>EXHIBITIONS</span>
+            </button>
+            <button class="my-page">
+                <span>MY PAGE</span>
+            </button>
+            <button class="logout">
+                <span>LOGOUT</span>
+            </button>
+        </div>
+    </header>
     <div class="main-container">
         <!-- 장르들 -->
         <div class="category-container">
@@ -494,60 +372,8 @@
         </div>
 
     </div>
-    <script>
-        var closingAuctions = document.querySelectorAll('#closing-auction');
-        var loadMoreClosingBtn = document.querySelector('#load-more-closing');
-        var closingAuctionsCount = 4;
-        loadMoreClosingBtn.addEventListener('click',
-            function () {
-                for (var i = closingAuctionsCount; i < closingAuctionsCount + 4; i++) {
-                    if (closingAuctions[i]) {
-                        closingAuctions[i].style.display = 'block';
-                    }
-                }
-                closingAuctionsCount += 4;
-                if (closingAuctionsCount >= closingAuctions.length) {
-                    event.target.style.display = 'none';
-                }
-            }
-        )
-
-        var hotAuctions = document.querySelectorAll('#hot-auction');
-        var loadMoreHotBtn = document.querySelector('#load-more-hot');
-        var hotAuctionsCount = 4;
-        loadMoreHotBtn.addEventListener('click',
-            function () {
-                for (var i = hotAuctionsCount; i < hotAuctionsCount + 4; i++) {
-                    if (hotAuctions[i]) {
-                        hotAuctions[i].style.display = 'block';
-                    }
-                }
-                hotAuctionsCount += 4;
-                if (hotAuctionsCount >= hotAuctions.length) {
-                    event.target.style.display = 'none';
-                }
-            }
-        )
-
-        var noBidAuctions = document.querySelectorAll('#nobid-auction');
-        var loadMoreNoBidBtn = document.querySelector('#load-more-nobid');
-        var noBidAuctionsCount = 4;
-        loadMoreNoBidBtn.addEventListener('click',
-            function () {
-                for (var i = noBidAuctionsCount; i < noBidAuctionsCount + 4; i++) {
-                    if (noBidAuctions[i]) {
-                        noBidAuctions[i].style.display = 'block';
-                    }
-                }
-                noBidAuctionsCount += 4;
-                if (noBidAuctionsCount >= noBidAuctions.length) {
-                    event.target.style.display = 'none';
-                }
-            }
-        )
-
-
-    </script>
+  
+    <script src="../auction/js/auction_list.js"></script>
 
 
     <!-- Bootstrap -->
