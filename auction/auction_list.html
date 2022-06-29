@@ -20,15 +20,15 @@
         .auction-container {
             display: flex;
             flex-direction: row;
-            justify-content: center;
-            width: 50%;
+            align-items: center;
+            width: 65%;
             margin: auto;
             flex-wrap: wrap;
         }
 
         /* 경매들 default diaplay:none 설정하고 hover기능 부여해주기 */
         .auction {
-            flex: 1 4 150px;
+            flex: 1 4 220px;
             margin: 20px;
             display: None;
             position: relative;
@@ -37,8 +37,8 @@
 
         .image {
             display: block;
-            width: 100%;
-            height: auto;
+            width: 200px;
+            height: 100%;
         }
 
         .overlay {
@@ -47,11 +47,11 @@
             bottom: 0;
             left: 0;
             right: 0;
+            width: 200px;
             height: 100%;
-            width: 100%;
             opacity: 0;
             transition: .5s ease;
-            background-color: grey;
+            background-color: gainsboro;
         }
 
         .auction:hover .overlay {
@@ -258,7 +258,7 @@
             </div>
             <div class="auction" id="closing-auction">
                 <a href="#">
-                <img src="https://img.cdn-pictorem.com/uploads/puzzle/1/puzzle1_212840.jpg" alt="Avatar" class="image">
+                <img src="https://www.jotform.com/blog/wp-content/uploads/2010/03/photo-1524664399170-77e7118fdb6d.jpeg" alt="Avatar" class="image">
                 <div class="overlay">
                     <div class="text">
                         Title: Flower
@@ -272,7 +272,7 @@
             </div>
             <div class="auction" id="closing-auction">
                 <a href="#">
-                <img src="https://img.cdn-pictorem.com/uploads/puzzle/1/puzzle1_212840.jpg" alt="Avatar" class="image">
+                <img src="https://i.pinimg.com/originals/f0/cf/f2/f0cff2e543af439ecdd3fcd51522b1f7.jpg" alt="Avatar" class="image">
                 <div class="overlay">
                     <div class="text">
                         Title: Flower
