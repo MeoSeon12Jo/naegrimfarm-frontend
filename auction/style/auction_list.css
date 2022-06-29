@@ -1,0 +1,65 @@
+.main-container {
+    background-color: red;
+}
+
+.genre-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-left: 10px;
+}
+
+.auction-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 50%;
+    margin: auto;
+    flex-wrap: wrap;
+}
+
+img {
+    width: 100%;
+}
+
+.auction {
+    flex: 1 4 150px;
+    margin: 20px;
+    display: None;
+}
+
+.btn-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+button {
+    margin: 10px;
+}
+
+#closing-auction:nth-child(1) {
+    display: block
+}
+
+#closing-auction:nth-child(2) {
+    display: block
+}
+
+#closing-auction:nth-child(3) {
+    display: block
+}
+
+#closing-auction:nth-child(4) {
+    display: block
+}
+
+.auction-type {
+    display: flex;
+    justify-content: center;
+}
+
+.auction:hover {
+    display: none;
+    background-color: yellow;
+}
