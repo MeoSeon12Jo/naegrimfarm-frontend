@@ -80,7 +80,7 @@ async function login() {
     if (response.status == 200){
         console.log(response_json)
         alert(response_json["msg"])
-        
+        window.location.replace(`${frontend_base_url}/index/mainpage.html`);
     }else if (response.status == 400){
         alert("이메일 또는 비밀번호가 일치하지 않습니다.")
         console.log(response_json)
