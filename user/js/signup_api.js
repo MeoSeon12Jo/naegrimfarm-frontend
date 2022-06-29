@@ -35,17 +35,42 @@ $.ajaxSetup({
     }
 });
 
+//닉네임 형식 함수
+function check_id(asValue) {
+    const regid = /^(?=.*[a-zA-Z])[-a-zA-Z0-9_.]{2,10}$/;
+    return regid.test(asValue);
+}
+
 async function signup() {
     const email = document.getElementById('inputEmail').value;
     const password = document.getElementById('inputPassword').value;
     const password2 = document.getElementById('inputPassword2').value;
     const nickname = document.getElementById('inputNickname').value;
 
+    //정규표현식 비밀번호 8자리 대소문자, 특수문자포함
+    const regExp = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+
+    //닉네임 형식 체크
+    if (!check_id(nickname)) {
+        alert("닉네임은 2~10자사이 영문, 숫자, 특수문자(._-)만 사용가능합니다.")
+        $('#inputNickname').focus()
+        $('#inputNickname').val('')
+        return;
+    }
+    //비밀번호 형식 체크
+    if (!password.match(regExp)) {
+        alert('비밀번호는 최소8자리 대소문자,특수문자 포함 입력해주세요.')
+        $('#inputPassword').focus()
+        $('#inputPassword').val('')
+        $('#inputPassword2').val('')
+        return;
+    }
     if (password == password2) {
         const response = await fetch(`${backend_base_url}/user/`, {
             method: 'POST',
             mode: 'cors',
             headers: {
+                Accept:"application/json",
                 'Content-Type': 'application/json',
                 'X-CSRFToken': csrftoken,
             },
@@ -62,11 +87,10 @@ async function signup() {
             alert("회원가입 성공")
             window.location.replace(`${frontend_base_url}/user/login.html`);
         }else {
-            alert("정보를 모두 입력해주세요.")
+            //유효하지 않은 이메일 도메인 사용시
+            alert(response_json["error"])
         }
     }else{
-        alert("비밀번호를 확인해주세요.")
+        alert("재입력한 비밀번호가 일치하지 않습니다.")
     }
 }
-
-// 
