@@ -12,19 +12,20 @@ async function galleryView(){
         const galleries = document.getElementsByClassName("gallery_list")
 
         for (let i = 0; i < users.length; i++){
-            var new_gallery = document.createElement("div")
+            var new_gallery = document.createElement("a")
             new_gallery.setAttribute("class", "gallery")
+            new_gallery.setAttribute("href", String(users[i].nickname))
             galleries[0].append(new_gallery)
 
-            var new_gallery_content = document.createElement("div")
+            const new_gallery_content = document.createElement("div")
             new_gallery_content.setAttribute("class", "content")
             new_gallery.append(new_gallery_content)
             
-            var new_text = document.createElement("div")
+            const new_text = document.createElement("div")
             new_text.setAttribute("class", "text")
             new_gallery_content.append(new_text)
             
-            var new_image = document.createElement("img")
+            const new_image = document.createElement("img")
             new_image.setAttribute("class", "image")
             new_image.setAttribute("src", "https://m.7art7.com/web/product/big/202012/4dc33b6141e960cb7f820ea58172f5d5.jpg")
             new_gallery_content.append(new_image)
