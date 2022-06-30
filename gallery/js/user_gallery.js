@@ -36,7 +36,7 @@ function userGalleryView(){
         
         const new_image = document.createElement("img")
         new_image.setAttribute("class", "image")
-        new_image.setAttribute("src", "https://m.7art7.com/web/product/big/202012/4dc33b6141e960cb7f820ea58172f5d5.jpg")
+        new_image.setAttribute("src", "https://m.7art7.com/web/product/big/202012/a6352d03c87af7166e62c854ebc3b092.jpg")
         new_gallery_content.append(new_image)
         
         const new_title = document.createElement("p")
