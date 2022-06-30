@@ -33,7 +33,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     max-width: 960px;
-    width: 100%
+    width: 100%;
 }
 
 /* 경매들 default diaplay:none 설정하고 hover기능 부여해주기 */
@@ -94,7 +94,6 @@ img {
     display: flex;
     justify-content: center;
     margin-top: 60px;
-    margin-bottom: 30px;
     font-size: 23px;
     color: #333;
 }
