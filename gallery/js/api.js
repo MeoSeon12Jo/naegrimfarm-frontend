@@ -12,7 +12,7 @@ async function galleryView(){
         const galleries = document.getElementsByClassName("gallery_list")
 
         for (let i = 0; i < users.length; i++){
-            var new_gallery = document.createElement("a")
+            const new_gallery = document.createElement("a")
             new_gallery.setAttribute("class", "gallery")
             new_gallery.setAttribute("href", String(users[i].nickname))
             galleries[0].append(new_gallery)
