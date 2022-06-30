@@ -1,4 +1,4 @@
-
+// Load More Button
 var closingAuctions = document.querySelectorAll('#closing-auction');
 var loadMoreClosingBtn = document.querySelector('#load-more-closing');
 var closingAuctionsCount = 4;
