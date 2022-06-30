@@ -1,5 +1,5 @@
 // Load More Button
-var closingAuctions = document.querySelectorAll('#closing-auction');
+var closingAuctions = document.querySelectorAll('.closing-auction');
 var loadMoreClosingBtn = document.querySelector('#load-more-closing');
 var closingAuctionsCount = 4;
 loadMoreClosingBtn.addEventListener('click',
@@ -16,7 +16,7 @@ loadMoreClosingBtn.addEventListener('click',
     }
 )
 
-var hotAuctions = document.querySelectorAll('#hot-auction');
+var hotAuctions = document.querySelectorAll('.hot-auction');
 var loadMoreHotBtn = document.querySelector('#load-more-hot');
 var hotAuctionsCount = 4;
 loadMoreHotBtn.addEventListener('click',
@@ -33,7 +33,7 @@ loadMoreHotBtn.addEventListener('click',
     }
 )
 
-var noBidAuctions = document.querySelectorAll('#nobid-auction');
+var noBidAuctions = document.querySelectorAll('.nobid-auction');
 var loadMoreNoBidBtn = document.querySelector('#load-more-nobid');
 var noBidAuctionsCount = 4;
 loadMoreNoBidBtn.addEventListener('click',
@@ -49,3 +49,19 @@ loadMoreNoBidBtn.addEventListener('click',
         }
     }
 )
+
+// 경매가 4개 이하일 경우 load more button 안 보여주기
+btnView()
+async function btnView(){
+    if (closingAuctions.length<=4) {
+        loadMoreClosingBtn.style.display = 'none';
+    }
+    if (hotAuctions.length<=4) {
+        console.log(hotAuctions.length)
+        loadMoreHotBtn.style.display = 'none';
+    }
+    if (noBidAuctions.length<=4) {
+        loadMoreNoBidBtn.style.display = 'none';
+    }
+    
+}
