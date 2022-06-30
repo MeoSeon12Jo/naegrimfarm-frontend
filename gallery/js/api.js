@@ -65,7 +65,7 @@ async function goUserGallery(nickname){
         sessionStorage.setItem("paintings", JSON.stringify(response_json[1]))
         window.location.href = 'user_gallery.html'
     }
-    else{
+    else {
         console.log('GET 요청이 실패하였습니다')
     }
 }
