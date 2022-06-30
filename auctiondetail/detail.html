@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>NAEGRIMFARM</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- MDB icon -->
+    <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.css" rel="stylesheet" />
+    <!-- CSS -->
+    <link href="../auctiondetail/style/detail.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+    </script>
+
+</head>
+
+<body>
+    <header class="header">
+        <!-- 로고 -->
+        <button class="logo"><span class="logo-txt">NAEGRIM<b>FARM</b></span></button>
+        <!-- 네비개이션 -->
+        <div class="navi">
+            <button class="auctions">
+                <span>AUCTIONS</span>
+            </button>
+            <button class="exhibitions">
+                <span>EXHIBITIONS</span>
+            </button>
+            <button class="my-page">
+                <span>MY PAGE</span>
+            </button>
+            <button class="logout">
+                <span>LOGOUT</span>
+            </button>
+        </div>
+    </header>
+    <div class="content-body">
+        <div class="left-side-content">
+            <div class="detail-image-place">
+                <img class="detail-image" src="https://t1.daumcdn.net/cfile/tistory/135B87364D2662FB25" alt="">
+
+            </div>
+            <hr class="division-line">
+            <div class="painting-description-body">
+                <p class="painting-description">작품설명</p>
+                <p class="painting-description-text">
+                    이곳은 작품 설명이 들어가는곳입니다.이곳은 작품 설명이 들어가는곳입니다.이곳은 작품 설명이 들어가는곳입니다.이곳은 작품 설명이 들어가는곳입니다.이곳은 작품 설명이
+                    들어가는곳입니다.이곳은 작품 설명이 들어가는곳입니다.이곳은 작품 설명이 들어가는곳입니다.
+                </p>
+            </div>
+            <div class="comment-body">
+                <p class="comment-desc">소통 공간</p>
+                <div class="comment-writing-place">
+
+                </div>
+                <div class="comment-place">
+
+                </div>
+            </div>
+            <div class="artist-different">
+                작가의 다른 경매 작품들
+            </div>
+            <div class="artist-different-painting">
+                <img class="artist-different-image" src="https://t1.daumcdn.net/cfile/tistory/135B87364D2662FB25"
+                    alt="">
+                <img class="artist-different-image" src="https://t1.daumcdn.net/cfile/tistory/135B87364D2662FB25"
+                    alt="">
+                <img class="artist-different-image" src="https://t1.daumcdn.net/cfile/tistory/135B87364D2662FB25"
+                    alt="">
+            </div>
+
+        </div>
+        <div class="right-side-content">
+            <div class="top-auction-space">
+                <div class="category-timeleft">
+                    <p class="category">인물</p>
+                    <div class="timeleft">
+                        <p>남은시간</p>
+                        <p class="timeleft-time">05일 05시간 27분</p>
+                    </div>
+                </div>
+                <div class="title-author">
+                    <p class="title-text">우산 쓴 소녀</p>
+                    <p class="author-text">프랜시스 킴</p>
+                </div>
+            </div>
+            <hr style="color: rgb(58, 58, 58);">
+            <div class="auction-price-space">
+                <div class="price-text">
+                    <div class="start-price">
+                        <p>시작가</p>
+                        <p class="point-text">POINT</p>
+                        <p class="price">30,000,000</p>
+                    </div>
+                    <div class="now-price">
+                        <p>현재가</p>
+                        <div class="now-price-innercolor">
+                            <p class="point-text">POINT</p>
+                            <p class="price">40,000,000</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr style="color: rgb(58, 58, 58);">
+            <div class="bottom-auction-space">
+                <div class="end-auction-box">
+                    <p class="end-auction">마감시간</p>
+                    <p class="end-auction-time">07/05-04:10PM</p>
+                </div>
+                <form class="bid-auction">
+                    <div class="input-bid-box">
+                        <p class="type-bid">입찰가</p>
+                        <input class="input-bid" type="number" placeholder="백만 단위로 입력" name="current_bid" min="1,000,000" step="1,000,000" required>
+                    </div>
+                    <p class="notice">입찰시 포인트는 선차감됩니다. 낙찰실패시 반환</p>
+                    <button class="bid-btn" type="submit">
+                        입찰하기
+                    </button>
+                </form>
+                
+            </div>
+
+        </div>
+    </div>
+    <footer class="text-center text-white" style="background-color: #f1f1f1; ">
+        <!-- Grid container -->
+        <div class="container pt-4">
+            <!-- Section: Social media -->
+            <section class="mb-4">
+                <!-- Facebook -->
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="https://kyumin1020.tistory.com"
+                    role="button" data-mdb-ripple-color="dark" target="_blank"><i class="fab fa-facebook-f"></i></a>
+
+                <!-- Twitter -->
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1"
+                    href="https://naeilbaeumdan-songheew.tistory.com/" role="button" data-mdb-ripple-color="dark"
+                    target="_blank"><i class="fab fa-twitter"></i></a>
+
+                <!-- Google -->
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="https://frannyk.tistory.com/"
+                    role="button" data-mdb-ripple-color="dark" target="_blank"><i class="fab fa-google"></i></a>
+
+                <!-- Instagram -->
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="https://velog.io/@wkdudhksl"
+                    role="button" data-mdb-ripple-color="dark" target="_blank"><i class="fab fa-instagram"></i></a>
+
+                <!-- Linkedin -->
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1"
+                    href="https://quixotic-wok-871.notion.site/12-df4f63382fb146e69b3b5b96231bb792" role="button"
+                    data-mdb-ripple-color="dark" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <!-- Github -->
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1"
+                    href="https://github.com/MeoSeon12Jo/naegrimfarm-frontend" role="button"
+                    data-mdb-ripple-color="dark" target="_blank"><i class="fab fa-github"></i></a>
+            </section>
+            <!-- Section: Social media -->
+        </div>
+        <!-- Grid container -->
+
+        <!-- Copyright -->
+        <div class="text-center text-dark p-3" style="background-color: rgba(122, 122, 122, 0.2);">
+            © 2022 MEOSEON12JO
+            <a class="text-dark" href="https://github.com/MeoSeon12Jo/naegrimfarm-frontend"
+                target="_blank">NAEGRIMFARM</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- MDB -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.js"></script>
+</body>
+
+</html>
