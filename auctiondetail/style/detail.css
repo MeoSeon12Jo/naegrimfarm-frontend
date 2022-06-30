@@ -38,7 +38,10 @@
     color: #000;
 }
 
-.auctions, .exhibitions, .my-page, .logout {
+.auctions,
+.exhibitions,
+.my-page,
+.logout {
     display: flex;
     flex-direction: row;
     float: right;
@@ -102,20 +105,19 @@
     scroll-snap-align: start;
 }
 
-.scroll-container::-webkit-scrollbar{
-    display:none;
+.scroll-container::-webkit-scrollbar {
+    display: none;
 }
 
 .scroll-area:nth-of-type(2) {
     background-color: black;
 }
+
 body {
-    /* background-color: yellow; */
     height: 2400px;
 }
 
 .content-body {
-    /* background-color: orange; */
     display: flex;
     flex-direction: row;
     position: relative;
@@ -129,7 +131,6 @@ body {
     display: flex;
     flex-direction: column;
     position: relative;
-    /* background-color: red; */
     height: 2310px;
     max-width: 800px;
     width: 100%;
@@ -148,21 +149,23 @@ body {
     width: 100%;
     height: 500px;
     margin-left: 80px;
-    
 }
 
 .division-line {
-    color: rgb(58, 58, 58); 
-    margin-right: 30px; 
+    color: rgb(58, 58, 58);
+    margin-right: 30px;
     margin-left: 30px;
     max-width: 700px;
     width: 100%;
 }
 
+/* 글자수 400자까지 (공백포함) */
 .painting-description-body {
+    max-height: 300px;
+    min-height: 200px;
     max-width: 700px;
     width: 100%;
-    margin-right: 30px; 
+    margin-right: 30px;
     margin-left: 30px;
     margin-top: 30px;
 }
@@ -172,13 +175,9 @@ body {
     font-weight: bold;
 }
 
-.painting-description-text {
-
-}
-
 .comment-body {
-    margin-top: 100px;
-    margin-right: 30px; 
+    margin-top: 30px;
+    margin-right: 30px;
     margin-left: 30px;
 }
 
@@ -187,24 +186,102 @@ body {
     font-weight: bold;
 }
 
-.comment-writing-place {
-    background-color: orange;
+.comment-place {
+    border-radius: 10px;
+    border: solid 1px rgb(221, 221, 221);
     max-width: 700px;
     width: 100%;
-    height: 170px;
+    height: 715px;
+    margin-top: 20px;
+    padding: 15px;
 }
 
-.comment-place {
-    background-color: rgb(255, 107, 107);
+.bg-white {
+    background-color: rgb(243, 243, 243)!important;
+    border-radius: 10px!important;
+    margin-top: 10px;
+}
+
+.one-comment {
+    height: 560px;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+}
+
+/*스크롤바 숨기는 기능*/
+.one-comment::-webkit-scrollbar {
+    display: none;
+}
+
+.bg-light {
+    border-radius: 10px!important;
+    margin-top: 10px;
+}
+
+.comment-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 600px;
+}
+
+.comment-writing-place {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgb(238, 238, 238);
+    position: relative;
+    border-radius: 10px;
+    margin-top: 20px;
     max-width: 700px;
     width: 100%;
-    height: 700px;
-    margin-top: 20px;
+    height: 200px;
+}
+
+.date {
+    font-size: 11px
+}
+
+.comment-text {
+    font-size: 13px
+}
+
+.fs-12 {
+    font-size: 12px
+}
+
+.shadow-none {
+    box-shadow: none
+}
+
+.name {
+    color: #56a8ff;
+    font-size: 17px;
+}
+
+.btn-primary {
+    background-color: #56a8ff;
+}
+
+.btn-link {
+    background-color: rgb(224, 224, 224);
+}
+
+.cursor:hover {
+    color: #56a8ff
+}
+
+.cursor {
+    cursor: pointer
+}
+
+.textarea {
+    resize: none
 }
 
 .artist-different {
     margin-top: 40px;
-    margin-right: 30px; 
+    margin-right: 30px;
     margin-left: 30px;
     max-width: 700px;
     width: 100%;
@@ -218,7 +295,7 @@ body {
     max-width: 700px;
     width: 100%;
     height: 300px;
-    margin-right: 30px; 
+    margin-right: 30px;
     margin-left: 30px;
 }
 
@@ -231,7 +308,6 @@ body {
 
 /* 오른쪽 입찰창 부분 */
 .right-side-content {
-    /* background-color: hotpink; */
     position: sticky;
     height: 550px;
     max-width: 380px;
@@ -260,6 +336,7 @@ body {
     font-size: 20px;
     font-weight: bold;
 }
+
 .timeleft {
     font-size: 12px;
     margin-top: 5px;
@@ -313,7 +390,7 @@ body {
     flex-direction: row;
 }
 
-.now-price-innercolor{
+.now-price-innercolor {
     color: rgb(255, 105, 51);
     display: flex;
     flex-direction: row;
@@ -399,4 +476,3 @@ body {
     color: white;
     opacity: 0.8;
 }
-
