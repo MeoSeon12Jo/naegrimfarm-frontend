@@ -309,7 +309,7 @@ body {
 /* 오른쪽 입찰창 부분 */
 .right-side-content {
     position: sticky;
-    height: 550px;
+    height: 620px;
     max-width: 380px;
     width: 100%;
     top: 130px;
@@ -331,6 +331,29 @@ body {
     margin: 0 20px 0 10px;
 }
 
+.title-bookmark {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 355px;
+    width: 100%;
+    margin: 20px 20px 0 10px;
+}
+
+.bookmark-btn {
+    margin-right: 5px;
+    border: none;
+    background-color: transparent;
+    height: 30px;
+    transform: scale(1.4);
+}
+
+.bookmark-btn:hover {
+    cursor: pointer;
+    transform: scale(1.5);
+    transition: all 0.3s ease-in-out;
+}
+
 .category {
     margin-top: 5px;
     font-size: 20px;
@@ -350,7 +373,7 @@ body {
 .title-author {
     max-width: 355px;
     width: 100%;
-    margin: 20px 20px 0 10px;
+    margin: 10px 20px 0 10px;
 }
 
 .title-text {
