@@ -75,6 +75,17 @@ async function onLogin() {
         window.location.reload();
     }
 }
+
+function onLogout(){
+    localStorage.removeItem("farm_access_token")
+    localStorage.removeItem("farm_refresh_token")
+    localStorage.removeItem("payload")
+    // window.location.replace(`${frontend_base_url}/`);
+    window.location.reload();
+}
+
+
+
 // 페이지를 다시 로딩 하면 벌어지는 일들!
 window.onload = () => {
     const payload = JSON.parse(localStorage.getItem("payload"));
