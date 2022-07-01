@@ -5,8 +5,6 @@ async function getAllAuctionView() {
     const auctions = await auctionView();
 
     // 경매 data를 html에 append
-    console.log(auctions)
-
     var closingAuctions = auctions['closing_auctions']
     var hotAuctions = auctions['hot_auctions']
     var noBidAuctions = auctions['nobid_auctions']
@@ -31,6 +29,7 @@ async function getAllAuctionView() {
 
         var newImage = document.createElement("img")
         newImage.setAttribute("class", "image")
+        newImage.setAttribute("src", "https://preview.redd.it/6z3wrreza5a61.png?width=640&crop=smart&auto=webp&s=24019710b7e392758cb4440b6bb72b32d36e5118")
         newAnchor.append(newImage)
 
         var newOverlay = document.createElement("div")
@@ -64,6 +63,7 @@ async function getAllAuctionView() {
 
         var newImage = document.createElement("img")
         newImage.setAttribute("class", "image")
+        newImage.setAttribute("src", "https://artfiles.alphacoders.com/151/thumb-1920-151878.jpg")
         newAnchor.append(newImage)
 
         var newOverlay = document.createElement("div")
@@ -96,6 +96,7 @@ async function getAllAuctionView() {
 
         var newImage = document.createElement("img")
         newImage.setAttribute("class", "image")
+        newImage.setAttribute("src", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIyXIYSfnM9rP4xi_RLcTwAQebcmZ_eZuJtA&usqp=CAU")
         newAnchor.append(newImage)
 
         var newOverlay = document.createElement("div")
@@ -127,8 +128,6 @@ async function getCategoryAuctionView(category) {
     const auctions = await categoryView(category);
 
     // 경매 data를 html에 append
-    console.log(auctions)
-
     var closingAuctions = auctions['closing_auctions']
     var hotAuctions = auctions['hot_auctions']
     var noBidAuctions = auctions['nobid_auctions']
@@ -153,6 +152,7 @@ async function getCategoryAuctionView(category) {
 
         var newImage = document.createElement("img")
         newImage.setAttribute("class", "image")
+        newImage.setAttribute("src", "https://m.7art7.com/web/product/big/202012/a6352d03c87af7166e62c854ebc3b092.jpg")
         newAnchor.append(newImage)
 
         var newOverlay = document.createElement("div")
@@ -186,6 +186,7 @@ async function getCategoryAuctionView(category) {
 
         var newImage = document.createElement("img")
         newImage.setAttribute("class", "image")
+        newImage.setAttribute("src", "https://m.7art7.com/web/product/big/202012/a6352d03c87af7166e62c854ebc3b092.jpg")
         newAnchor.append(newImage)
 
         var newOverlay = document.createElement("div")
@@ -218,6 +219,7 @@ async function getCategoryAuctionView(category) {
 
         var newImage = document.createElement("img")
         newImage.setAttribute("class", "image")
+        newImage.setAttribute("src", "https://m.7art7.com/web/product/big/202012/a6352d03c87af7166e62c854ebc3b092.jpg")
         newAnchor.append(newImage)
 
         var newOverlay = document.createElement("div")
@@ -244,7 +246,7 @@ async function getCategoryAuctionView(category) {
 
 
 // Load More Button - 누를시 보여주는 경매 아이템을 4개씩 증가
-let closingAuctions = document.getElementsByClassName('closing-auction');
+var closingAuctions = document.getElementsByClassName('closing-auction');
 var loadMoreClosingBtn = document.querySelector('#load-more-closing');
 var closingAuctionsCount = 4;
 loadMoreClosingBtn.addEventListener('click',
@@ -261,7 +263,7 @@ loadMoreClosingBtn.addEventListener('click',
     }
 )
 
-let hotAuctions = document.getElementsByClassName('hot-auction');
+var hotAuctions = document.getElementsByClassName('hot-auction');
 var loadMoreHotBtn = document.querySelector('#load-more-hot');
 var hotAuctionsCount = 4;
 loadMoreHotBtn.addEventListener('click',
@@ -279,7 +281,7 @@ loadMoreHotBtn.addEventListener('click',
     }
 )
 
-let noBidAuctions = document.getElementsByClassName('nobid-auction');
+var noBidAuctions = document.getElementsByClassName('nobid-auction');
 var loadMoreNoBidBtn = document.querySelector('#load-more-nobid');
 var noBidAuctionsCount = 4;
 loadMoreNoBidBtn.addEventListener('click',
@@ -296,9 +298,8 @@ loadMoreNoBidBtn.addEventListener('click',
     }
 )
 
-// 경매가 4개 이하일 경우 Load More Button 안 보여주기
-// 경매가 5개 이상일 경우 Load More Button 보여주기
-
+// 경매가 4개 이상일 경우에만 Load More Button 보여주기
+// 비동기 페이지에서는 버튼을 숨겨주는 함수를 추가적으로 만들어야함
 function btnView() {
     console.log('btnView')
     console.log(closingAuctions.length)
@@ -308,23 +309,24 @@ function btnView() {
     if (closingAuctions.length > 4) {
         loadMoreClosingBtn.style.display = 'block';
     }
-    else if (closingAuctions.length <= 4) {
+    else {
         loadMoreClosingBtn.style.display = 'none';
     }
     if (hotAuctions.length > 4) {
         loadMoreHotBtn.style.display = 'block';
     }
-    else if (closingAuctions.length <= 4) {
+    else {
         loadMoreHotBtn.style.display = 'none';
     }
     if (noBidAuctions.length > 4) {
         loadMoreNoBidBtn.style.display = 'block';   
     }
-    else if (closingAuctions.length <= 4) {
+    else {
         loadMoreNoBidBtn.style.display = 'none';
     }
 }
 
+// 페이지 로딩이 완료되면 실행
 $('document').ready(getAllAuctionView());
 
 // btnView() 실행하는 시간 보여주기
