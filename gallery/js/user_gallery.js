@@ -4,8 +4,8 @@ function userGalleryView(){
     var paintings = sessionStorage.getItem("paintings")
     var user = JSON.parse(user)
     var paintings = JSON.parse(paintings)
-    sessionStorage.removeItem("user")
-    sessionStorage.removeItem("paintings")
+    // sessionStorage.removeItem("user")
+    // sessionStorage.removeItem("paintings")
 
     if (paintings.length > 8) {
         loadmorebtn = document.getElementsByClassName("loadmore")
@@ -20,7 +20,7 @@ function userGalleryView(){
     for (let i = 0; i < paintings.length; i++){
 
         title = paintings[i].title
-        artist = paintings[i].artist
+        artist = paintings[i].artist.nickname
 
         const new_gallery = document.createElement("a")
         new_gallery.setAttribute("class", "gallery")
