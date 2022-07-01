@@ -31,7 +31,7 @@ $.ajaxSetup({
     }
 });
 
-async function login() {
+async function onLogin() {
 
     const loginData = {
         email : document.getElementById("inputEmail").value,
