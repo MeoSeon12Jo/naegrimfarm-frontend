@@ -74,6 +74,7 @@ img {
     display:flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
 }
 
 .auction:hover .overlay {
@@ -82,7 +83,7 @@ img {
 
 .text {
     color: white;
-    font-size: 11px;
+    font-size: 15px;
     text-align: center;
     align-items: center;
     justify-content: center;
@@ -127,4 +128,9 @@ button {
 
 .nobid-auction:nth-child(-n+4) {
     display: block
+}
+
+.time-remaining {
+    font-size: 18px;
+    color: red;
 }
