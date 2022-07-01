@@ -1,4 +1,5 @@
 const backend_base_url = "http://127.0.0.1:8000"
+
 // 페이지를 다시 로딩 하면 벌어지는 일들!
 window.onload = () => {
     const payload = JSON.parse(localStorage.getItem("payload"));
