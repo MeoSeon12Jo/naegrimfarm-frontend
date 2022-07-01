@@ -1,7 +1,89 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 90px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    background-color: #fff;
+}
+
+.logo {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    height: 40px;
+    white-space: nowrap;
+    margin-left: 2%;
+    margin-top: 1%;
+    margin-right: 35%;
+    border-color: transparent;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 37px;
+    color: #000;
+}
+
+.navi {
+    width: 500px;
+    display: flex;
+    flex-direction: row;
+    white-space: nowrap;
+    padding-left: 15%;
+    justify-content: space-evenly;
+    text-align: right;
+    float: right;
+    color: #000;
+}
+
+.auctions, .exhibitions, .my-page, .logout {
+    display: flex;
+    flex-direction: row;
+    float: right;
+    color: #888;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 7%;
+    margin-left: 10%;
+    background-color: transparent;
+    border-color: transparent;
+    transform: scale(1);
+}
+
+.auctions:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: all 0.2s ease-in-out;
+    color: #000;
+}
+
+.exhibitions:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: all 0.2s ease-in-out;
+    color: #000;
+}
+
+.my-page:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: all 0.2s ease-in-out;
+    color: #000;
+}
+
+.logout:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: all 0.2s ease-in-out;
+    color: #000;
+}
+
 .title_container {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 90px;
     padding: 30px;
 }
 
@@ -15,6 +97,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 50px;
 }
 
 .gallery_list_container > .gallery_list {
@@ -65,8 +148,13 @@
 .loadmore {
     background-color: white;
     border: 2px solid gainsboro;
+    margin: 20px;
     padding: 15px;
     color: dimgray;
     cursor: pointer;
     display: none;
+}
+
+.btn-link {
+    background-color: rgb(224, 224, 224) !important;
 }
