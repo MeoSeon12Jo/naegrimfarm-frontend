@@ -22,21 +22,25 @@
 <body>
     <header class="header">
         <!-- 로고 -->
-        <button class="logo"><span class="logo-txt">NAEGRIM<b>FARM</b></span></button>
+        <div class="logo">
+            <a class="logo-a" href="#">
+                <span>NAEGRIM</span><b>FARM</b>
+            </a>
+        </div>
         <!-- 네비개이션 -->
         <div class="navi">
-            <button class="auctions">
-                <span>AUCTIONS</span>
-            </button>
-            <button class="exhibitions">
-                <span>EXHIBITIONS</span>
-            </button>
-            <button class="my-page">
-                <span>MY PAGE</span>
-            </button>
-            <button class="logout">
-                <span>LOGOUT</span>
-            </button>
+            <a class="auctions" href="#">
+                <div>AUCTIONS</div>
+            </a>
+            <a class="exhibitions" href="#">
+                <div>EXHIBITIONS</div>
+            </a>
+            <a class="my-page" href="#">
+                <div>MY PAGE</div>
+            </a>
+            <a class="logout" href="#">
+                <div>LOGOUT</div>
+            </a>
         </div>
     </header>
     <div class="title_container">
@@ -54,6 +58,7 @@
                 <p class="modal_text_box-artist"></p>
                 <p class="modal_text_box-winning_bid"></p>
                 <p class="modal_text_box-description"></p>
+                <button class="modal_btn" onclick="modalUnView()">❌</button>
             </div>
         </div>
     </div>

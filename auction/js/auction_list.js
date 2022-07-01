@@ -18,12 +18,22 @@ async function getAllAuctionView() {
     noBidAuctionsList.replaceChildren()
 
     for (let i = 0; i < closingAuctions.length; i++) {
+        let auctionId = closingAuctions[i].id
+
+        // Load More Btn 초기화
+        closingAuctionsCount = 4;
+        hotAuctionsCount = 4;
+        noBidAuctionsCount = 4;
+
         var newAuction = document.createElement("div")
         newAuction.setAttribute("class", "auction closing-auction")
         closingAuctionsList.append(newAuction)
 
         var newAnchor = document.createElement("a")
         newAnchor.setAttribute("href", "#")
+        newAnchor.addEventListener('click', () => {
+            location.href = `detail.html?${auctionId}`
+        })
         newAuction.append(newAnchor)
 
 
@@ -38,6 +48,9 @@ async function getAllAuctionView() {
 
         var newText = document.createElement("div")
         var newLine = document.createElement("br")
+        var newSpan = document.createElement("span")
+        newSpan.setAttribute("class", "time-remaining")
+
         newText.setAttribute("class", "text")
         newText.innerHTML += '제목: ' + closingAuctions[i]['painting']['title']
         newText.append(newLine)
@@ -45,20 +58,25 @@ async function getAllAuctionView() {
         newText.append(newLine)
         newText.innerHTML += '현 소유자: ' + closingAuctions[i]['painting']['owner']
         newText.append(newLine)
-        newText.innerHTML += 'Current Bid: ' + closingAuctions[i]['current_bid']
+        newText.innerHTML += '입찰가: ' + closingAuctions[i]['current_bid']
         newText.append(newLine)
-        newText.innerHTML += 'Time Remaining: ' + closingAuctions[i]['auction_end_date']
-        newText.append(newLine)
+        newSpan.innerHTML += '남은 시간: ' + closingAuctions[i]['auction_end_date']
+        newText.append(newSpan)
         newOverlay.append(newText)
     }
 
     for (let i = 0; i < hotAuctions.length; i++) {
+        let auctionId = hotAuctions[i].id
+
         var newAuction = document.createElement("div")
         newAuction.setAttribute("class", "auction hot-auction")
         hotAuctionsList.append(newAuction)
 
         var newAnchor = document.createElement("a")
         newAnchor.setAttribute("href", "#")
+        newAnchor.addEventListener('click', () => {
+            location.href = `detail.html?${auctionId}`
+        })
         newAuction.append(newAnchor)
 
         var newImage = document.createElement("img")
@@ -79,18 +97,23 @@ async function getAllAuctionView() {
         newText.append(newLine)
         newText.innerHTML += '현 소유자: ' + hotAuctions[i]['painting']['owner']
         newText.append(newLine)
-        newText.innerHTML += 'Current Bid: ' + hotAuctions[i]['current_bid']
+        newText.innerHTML += '입찰가: ' + hotAuctions[i]['current_bid']
         newText.append(newLine)
         newOverlay.append(newText)
     }
 
     for (let i = 0; i < noBidAuctions.length; i++) {
+        let auctionId = noBidAuctions[i].id
+
         var newAuction = document.createElement("div")
         newAuction.setAttribute("class", "auction nobid-auction")
         noBidAuctionsList.append(newAuction)
 
         var newAnchor = document.createElement("a")
         newAnchor.setAttribute("href", "#")
+        newAnchor.addEventListener('click', () => {
+            location.href = `detail.html?${auctionId}`
+        })
         newAuction.append(newAnchor)
 
 
@@ -112,7 +135,7 @@ async function getAllAuctionView() {
         newText.append(newLine)
         newText.innerHTML += '현 소유자: ' + noBidAuctions[i]['painting']['owner']
         newText.append(newLine)
-        newText.innerHTML += 'Current Bid: ' + noBidAuctions[i]['current_bid']
+        newText.innerHTML += '입찰가: ' + noBidAuctions[i]['current_bid']
         newText.append(newLine)
         newOverlay.append(newText)
     }
@@ -123,6 +146,11 @@ async function getAllAuctionView() {
 
 // 카테고리별 경매 아이템 보여주기
 async function getCategoryAuctionView(category) {
+
+    // Load More Btn 초기화
+    closingAuctionsCount = 4;
+    hotAuctionsCount = 4;
+    noBidAuctionsCount = 4;
 
     // api.js에서 카테고리별 경매 데이터 조회
     const auctions = await categoryView(category);
@@ -140,13 +168,19 @@ async function getCategoryAuctionView(category) {
     hotAuctionsList.replaceChildren()
     noBidAuctionsList.replaceChildren()
 
+
     for (let i = 0; i < closingAuctions.length; i++) {
+        let auctionId = closingAuctions[i].id
+
         var newAuction = document.createElement("div")
         newAuction.setAttribute("class", "auction closing-auction")
         closingAuctionsList.append(newAuction)
 
         var newAnchor = document.createElement("a")
         newAnchor.setAttribute("href", "#")
+        newAnchor.addEventListener('click', () => {
+            location.href = `detail.html?${auctionId}`
+        })
         newAuction.append(newAnchor)
 
 
@@ -161,6 +195,9 @@ async function getCategoryAuctionView(category) {
 
         var newText = document.createElement("div")
         var newLine = document.createElement("br")
+        var newSpan = document.createElement("span")
+        newSpan.setAttribute("class", "time-remaining")
+
         newText.setAttribute("class", "text")
         newText.innerHTML += '제목: ' + closingAuctions[i]['painting']['title']
         newText.append(newLine)
@@ -168,20 +205,25 @@ async function getCategoryAuctionView(category) {
         newText.append(newLine)
         newText.innerHTML += '현 소유자: ' + closingAuctions[i]['painting']['owner']
         newText.append(newLine)
-        newText.innerHTML += 'Current Bid: ' + closingAuctions[i]['current_bid']
+        newText.innerHTML += '입찰가: ' + closingAuctions[i]['current_bid']
         newText.append(newLine)
-        newText.innerHTML += 'Time Remaining: ' + closingAuctions[i]['auction_end_date']
-        newText.append(newLine)
+        newSpan.innerHTML += '남은 시간: ' + closingAuctions[i]['auction_end_date']
+        newText.append(newSpan)
         newOverlay.append(newText)
     }
 
     for (let i = 0; i < hotAuctions.length; i++) {
+        let auctionId = hotAuctions[i].id
+
         var newAuction = document.createElement("div")
         newAuction.setAttribute("class", "auction hot-auction")
         hotAuctionsList.append(newAuction)
 
         var newAnchor = document.createElement("a")
         newAnchor.setAttribute("href", "#")
+        newAnchor.addEventListener('click', () => {
+            location.href = `detail.html?${auctionId}`
+        })
         newAuction.append(newAnchor)
 
         var newImage = document.createElement("img")
@@ -202,18 +244,23 @@ async function getCategoryAuctionView(category) {
         newText.append(newLine)
         newText.innerHTML += '현 소유자: ' + hotAuctions[i]['painting']['owner']
         newText.append(newLine)
-        newText.innerHTML += 'Current Bid: ' + hotAuctions[i]['current_bid']
+        newText.innerHTML += '입찰가: ' + hotAuctions[i]['current_bid']
         newText.append(newLine)
         newOverlay.append(newText)
     }
 
     for (let i = 0; i < noBidAuctions.length; i++) {
+        let auctionId = noBidAuctions[i].id
+
         var newAuction = document.createElement("div")
         newAuction.setAttribute("class", "auction nobid-auction")
         noBidAuctionsList.append(newAuction)
 
         var newAnchor = document.createElement("a")
         newAnchor.setAttribute("href", "#")
+        newAnchor.addEventListener('click', () => {
+            location.href = `detail.html?${auctionId}`
+        })
         newAuction.append(newAnchor)
 
 
@@ -235,7 +282,7 @@ async function getCategoryAuctionView(category) {
         newText.append(newLine)
         newText.innerHTML += '현 소유자: ' + noBidAuctions[i]['painting']['owner']
         newText.append(newLine)
-        newText.innerHTML += 'Current Bid: ' + noBidAuctions[i]['current_bid']
+        newText.innerHTML += '입찰가: ' + noBidAuctions[i]['current_bid']
         newText.append(newLine)
         newOverlay.append(newText)
     }

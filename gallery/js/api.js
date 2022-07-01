@@ -1,10 +1,10 @@
-const backend_base_url = "http://127.0.0.1:8000"
-const frontend_base_url = "http://127.0.0.1:5500"
+const backendBaseUrl = "http://127.0.0.1:8000"
+const frontendBaseUrl = "http://127.0.0.1:5500"
 
 
 async function getGalleryListData(){
     
-    const response = await fetch(`${backend_base_url}/gallery`, {})
+    const response = await fetch(`${backendBaseUrl}/gallery`, {})
     
     if (response.status == 200){
         response_json = await response.json()
@@ -18,11 +18,11 @@ async function getGalleryListData(){
 
 async function getUserGalleryData(nickname){
     
-    const response = await fetch(`${backend_base_url}/gallery/${nickname}`, {})
+    const response = await fetch(`${backendBaseUrl}/gallery/${nickname}`, {})
     
     if (response.status == 200){
-        response_json = await response.json()
-        return response_json
+        responseJson = await response.json()
+        return responseJson
     }
     else {
         alert(response.status)
