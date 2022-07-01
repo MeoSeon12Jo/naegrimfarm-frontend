@@ -40,10 +40,45 @@ async function auctionDetailView(id){
     response_json = await response.json()
 
     if (response.status == 200) {
-        detail_info = response_json
+        let detailInfo = response_json
 
-        return detail_info
+        return detailInfo
     }else {
         alert(response["error"])
+    }
+}
+
+
+async function bidView(bid_price, id){
+    const token = localStorage.getItem("farm_access_token");
+    const bidInput = document.getElementById("current_bid");
+
+    const bidPriceData = {
+        "current_bid" : bid_price,
+    }
+    const response = await fetch(`${backend_base_url}/auction/detail/${id}/`, {
+        method: 'PUT',
+        mode: 'cors',
+        headers: {
+            Accept:"application/json",
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrftoken,
+            'Authorization': 'Bearer ' + token,
+        },
+        body:JSON.stringify(bidPriceData)
+    }
+    )
+    response_json = await response.json()
+    
+
+    if (response.status == 200) {
+        alert("입찰에 성공했습니다. 포인트는 선차감 되며 낙찰실패시 반환됩니다.")
+        currentBid = response_json["current_bid_price"]
+        bidInput.value = null;
+        return currentBid
+
+    }else {
+        alert(response_json["error"])
+        bidInput.value = null;
     }
 }
