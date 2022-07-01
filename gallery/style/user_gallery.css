@@ -18,7 +18,6 @@
     width: auto;
     height: 700px;
     padding: 10px;
-    /* background-color: white; */
     background-color: transparent;
     border-radius: 10px;
     overflow: hidden;
@@ -34,9 +33,7 @@
     display: flex;
     flex-direction: column;
     padding: 0 20px;
-    /* align-items: center; */
-    /* justify-content: center; */
-    width: 100%;
+    max-width: 510px;
     height: 100%;
 }
 
@@ -60,4 +57,13 @@
 .modal_text_box-description {
     color: white;
     margin-top: 50px;
+    height: 420px;
+}
+
+.modal_text_box > button {
+    margin: auto;
+    background-color: transparent;
+    border: 0;
+    color: transparent;
+    text-shadow: 0 0 0 gray;
 }
