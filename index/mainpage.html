@@ -46,14 +46,6 @@
         };
 
 
-
-
-
-
-
-
-
-
     </script>
 </head>
 
@@ -98,6 +90,9 @@
                 </div>
             </div>
             <div class="column-div">
+                <div class="upload-title">
+                    왼쪽의 그림을 경매에 올리시려면 아래의 FORM을 작성해주세요
+                </div>
                 <div class="category">
                     CATEGORY
                 </div>
@@ -113,25 +108,21 @@
                 <div class="description">
                     DESCRIPTION
                 </div>
-                <textarea placeholder="한 줄 소개">
+                <textarea class="description-input">
                 </textarea>
                 <div class="start-price">
                     START PRICE
                 </div>
-                <input class="input-bid" type="number" placeholder="백만 단위" name="current_bid"
-                       min="1000000" step="1000000" required="True">
-                <div class="bid-start-date">
-                    BID START DATE
-                </div>
-                <input type="date">
+                <input class="start-price-input" type="number" placeholder="최소 경매가"
+                       min="0" step="1000000" required="True">
                 <div class="bid-end-date">
                     BID END DATE
                 </div>
-                <input type="date">
+                <input class="bid-end-date-input" type="date">
+                <button class="post-article">경매 올리기</button>
             </div>
             <script>
     let files;
-
 
     $('.addition_modal_body')
         .on("dragover", dragOver)
