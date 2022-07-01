@@ -1,0 +1,63 @@
+.modal_body {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    height: 100%;
+}
+
+.modal_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: 700px;
+    padding: 10px;
+    /* background-color: white; */
+    background-color: transparent;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.modal_image_box-image {
+    max-width: 600px;
+    max-height: 700px;
+    border-radius: 10px;
+}
+
+.modal_text_box {
+    display: flex;
+    flex-direction: column;
+    padding: 0 20px;
+    /* align-items: center; */
+    /* justify-content: center; */
+    width: 100%;
+    height: 100%;
+}
+
+.modal_text_box-title {
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.modal_text_box-artist {
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(150, 150, 150);
+}
+
+.modal_text_box-winning_bid {
+    color: rgb(150, 150, 150);
+}
+
+.modal_text_box-description {
+    color: white;
+    margin-top: 50px;
+}
