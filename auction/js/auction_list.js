@@ -20,6 +20,11 @@ async function getAllAuctionView() {
     for (let i = 0; i < closingAuctions.length; i++) {
         let auctionId = closingAuctions[i].id
 
+        // Load More Btn 초기화
+        closingAuctionsCount = 4;
+        hotAuctionsCount = 4;
+        noBidAuctionsCount = 4;
+
         var newAuction = document.createElement("div")
         newAuction.setAttribute("class", "auction closing-auction")
         closingAuctionsList.append(newAuction)
@@ -142,6 +147,11 @@ async function getAllAuctionView() {
 // 카테고리별 경매 아이템 보여주기
 async function getCategoryAuctionView(category) {
 
+    // Load More Btn 초기화
+    closingAuctionsCount = 4;
+    hotAuctionsCount = 4;
+    noBidAuctionsCount = 4;
+
     // api.js에서 카테고리별 경매 데이터 조회
     const auctions = await categoryView(category);
 
@@ -157,6 +167,7 @@ async function getCategoryAuctionView(category) {
     closingAuctionsList.replaceChildren()
     hotAuctionsList.replaceChildren()
     noBidAuctionsList.replaceChildren()
+
 
     for (let i = 0; i < closingAuctions.length; i++) {
         let auctionId = closingAuctions[i].id
