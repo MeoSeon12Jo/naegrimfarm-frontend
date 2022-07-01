@@ -34,7 +34,7 @@
     flex-direction: column;
     padding: 0 20px;
     max-width: 510px;
-    height: 100%;
+    max-height: 700px;
 }
 
 .modal_text_box-title {
@@ -57,7 +57,7 @@
 .modal_text_box-description {
     color: white;
     margin-top: 50px;
-    height: 420px;
+    flex-grow: 1;
 }
 
 .modal_text_box > button {
