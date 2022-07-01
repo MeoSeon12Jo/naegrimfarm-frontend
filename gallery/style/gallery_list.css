@@ -67,4 +67,6 @@
     border: 2px solid gainsboro;
     padding: 15px;
     color: dimgray;
+    cursor: pointer;
+    display: none;
 }

@@ -14,18 +14,17 @@
 
 .category-btn {
     font-size: 18px;
-    border: solid 0.1px;
+    border: none;
     padding-inline: 30px;
-    background-color: white;
-    border-color: transparent;
-    color: #888;
+    background-color: transparent;
+    color: gainsboro;
 }
 
 .category-btn:hover {
     cursor: pointer;
     transform: scale(1.05);
-    transition: all 0.2s ease-in-out;
-    color: #000;
+    transition: all 0.7s ease-in-out;
+    color: black;
 }
 
 .auction-container {
@@ -72,6 +71,9 @@ img {
     opacity: 0;
     transition: .5s ease;
     background-color: black;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .auction:hover .overlay {
@@ -80,14 +82,11 @@ img {
 
 .text {
     color: white;
-    font-size: 15px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+    font-size: 11px;
     text-align: center;
+    align-items: center;
+    justify-content: center;
+
 }
 
 .auction-type {
@@ -95,7 +94,7 @@ img {
     justify-content: center;
     margin-top: 60px;
     font-size: 23px;
-    color: #333;
+    color: .333;
 }
 
 .btn-container {
@@ -117,50 +116,14 @@ button {
 }
 
 /* 처음 페이지 로딩할때는 각 경매타입마다 4개만 보여주기 */
-#closing-auction:nth-child(1) {
+.closing-auction:nth-child(-n+4) {
     display: block
 }
 
-#closing-auction:nth-child(2) {
+.hot-auction:nth-child(-n+4) {
     display: block
 }
 
-#closing-auction:nth-child(3) {
-    display: block
-}
-
-#closing-auction:nth-child(4) {
-    display: block
-}
-
-#hot-auction:nth-child(1) {
-    display: block
-}
-
-#hot-auction:nth-child(2) {
-    display: block
-}
-
-#hot-auction:nth-child(3) {
-    display: block
-}
-
-#hot-auction:nth-child(4) {
-    display: block
-}
-
-#nobid-auction:nth-child(1) {
-    display: block
-}
-
-#nobid-auction:nth-child(2) {
-    display: block
-}
-
-#nobid-auction:nth-child(3) {
-    display: block
-}
-
-#nobid-auction:nth-child(4) {
+.nobid-auction:nth-child(-n+4) {
     display: block
 }
