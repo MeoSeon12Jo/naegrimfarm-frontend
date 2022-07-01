@@ -1,5 +1,5 @@
-const backend_base_url = "http://127.0.0.1:8000"
-const frontend_base_url = "http://127.0.0.1:5500"
+const backEndBaseUrl = "http://127.0.0.1:8000"
+const frontEndBaseUrl = "http://127.0.0.1:5500"
 
 function getCookie(name) {
     var cookieValue = null;
@@ -22,13 +22,13 @@ function onLogout(){
     localStorage.removeItem("farm_access_token")
     localStorage.removeItem("farm_refresh_token")
     localStorage.removeItem("payload")
-    // window.location.replace(`${frontend_base_url}/`);
+    // window.location.replace(`${frontEndBaseUrl}/`);
     window.location.reload();
 }
 
 async function auctionDetailView(id){
     const token = localStorage.getItem("farm_access_token");
-    const response = await fetch(`${backend_base_url}/auction/detail/${id}`, {
+    const response = await fetch(`${backEndBaseUrl}/auction/detail/${id}`, {
         method: 'GET',
         mode: 'cors',
         headers: {
@@ -41,13 +41,12 @@ async function auctionDetailView(id){
 
     if (response.status == 200) {
         let detailInfo = response_json
-
         return detailInfo
+
     }else {
-        alert(response["error"])
+        alert(response_json["error"])
     }
 }
-
 
 async function bidView(bid_price, id){
     const token = localStorage.getItem("farm_access_token");
@@ -56,7 +55,7 @@ async function bidView(bid_price, id){
     const bidPriceData = {
         "current_bid" : bid_price,
     }
-    const response = await fetch(`${backend_base_url}/auction/detail/${id}/`, {
+    const response = await fetch(`${backEndBaseUrl}/auction/detail/${id}/`, {
         method: 'PUT',
         mode: 'cors',
         headers: {
@@ -70,7 +69,6 @@ async function bidView(bid_price, id){
     )
     response_json = await response.json()
     
-
     if (response.status == 200) {
         alert("입찰에 성공했습니다. 포인트는 선차감 되며 낙찰실패시 반환됩니다.")
         currentBid = response_json["current_bid_price"]

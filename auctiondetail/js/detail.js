@@ -1,5 +1,3 @@
-
-
 // 댓글시간 나타내기
 function time2str(date) {
     let today = new Date()
@@ -21,7 +19,6 @@ function time2str(date) {
 
 
 async function getDetail() {
-
     const auctionId = location.href.split('?')[1]
 
     //api에서 return한 json데이터
@@ -30,13 +27,16 @@ async function getDetail() {
     //백엔드에서 가져온 데이터들 변수지정
     let auctionEndTime = detailInfo['time_left']
     let auctionEndDate = detailInfo['end_date']
+    
     let category = detailInfo['painting']['category_name']
     let title = detailInfo['painting']['title']
     let artist = detailInfo['painting']['artist_name']
+    
     let startBid = detailInfo['start_bid']
     let currentBid = detailInfo['current_bid']
     let description = detailInfo['painting']['description']
     let userComments = detailInfo['comments']
+    
     //나중에 여기에 이미지 url 저장해서 가져와야함.
     let image = detailInfo['painting']['image']
     let artistPaintings = detailInfo['painting']['artist_paintings']
@@ -44,14 +44,17 @@ async function getDetail() {
     //데이터 붙어야하는 부모class
     const mainAuctionImage = document.getElementsByClassName("detail-image-place")[0]
     const differentAuctionImage = document.getElementsByClassName("artist-different-painting")[0]
-    const auctionComments = document.getElementsByClassName("one-comment")[0]
+    
     const auctionDescription = document.getElementsByClassName("painting-description-body")[0]
     const auctionCategory = document.getElementsByClassName("category-name-body")[0]
-    const auctionTimeLeft = document.getElementsByClassName("timeleft")[0]
     const auctionTitle = document.getElementsByClassName("title-body")[0]
     const auctionArtist = document.getElementsByClassName("title-author")[0]
+    const auctionComments = document.getElementsByClassName("one-comment")[0]
+    
     const auctionStartBid = document.getElementsByClassName("start-price")[0]
     const auctionCurrentBid = document.getElementsByClassName("now-price-innercolor")[0]
+    
+    const auctionTimeLeft = document.getElementsByClassName("timeleft")[0]
     const auctionEndingDate = document.getElementsByClassName("end-auction-box")[0]
 
 
@@ -165,9 +168,7 @@ async function getDetail() {
 
 }
 
-
 getDetail()
-
 
 async function handleBid(){
     const auctionId = location.href.split('?')[1]
@@ -175,6 +176,8 @@ async function handleBid(){
     
     const currentBid = await bidView(bid_price, auctionId)
 
-    const loadCurrentBid = document.getElementById("nowPrice")
-    loadCurrentBid.innerText = currentBid
+    if (currentBid.exists()) {
+        const loadCurrentBid = document.getElementById("nowPrice")
+        loadCurrentBid.innerText = currentBid
+    }
 }
