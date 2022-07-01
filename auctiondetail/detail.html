@@ -4,6 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <title>NAEGRIMFARM</title>
+    <!-- JS -->
+    <script type="text/javascript" src=../auctiondetail/js/detail_api.js></script>
+    <script type="text/javascript" src=../auctiondetail/js/detail.js></script>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -18,7 +21,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- 북마크아이콘 -->
     <script src="https://kit.fontawesome.com/989420847f.js" crossorigin="anonymous"></script>
-
 </head>
 
 <body>
@@ -36,24 +38,23 @@
             <button class="my-page">
                 <span>MY PAGE</span>
             </button>
-            <button class="logout">
+            <button class="logout" type="button" onclick="onLogout()">
                 <span>LOGOUT</span>
             </button>
         </div>
     </header>
     <div class="content-body">
         <div class="left-side-content">
-            <!-- 상세페이지 작품의 이미지 -->
             <div class="detail-image-place">
-                <img class="detail-image" src="https://t1.daumcdn.net/cfile/tistory/135B87364D2662FB25" alt="">
+                <!-- 작품의 이미지 들어가는 부분 -->
             </div>
             <hr class="division-line">
             <div class="painting-description-body">
                 <p class="painting-description">작품설명</p>
-                <p class="painting-description-text">
+                <!-- <p class="painting-description-text">
                     이곳은 작품 설명이 들어가는곳입니다. 이곳은 작품 설명이 들어가는곳입니다.이곳은 작품 설명이 들어가는곳입니다.이곳은 작품 설명이 들어가는곳입니다.이곳은 작품 설명이
                     들어가는곳입니다.이곳은 작품 설명이 들어가는곳입니다.이곳은 작품 설명이 들어가는곳입니다.
-                </p>
+                </p> -->
             </div>
             <div class="comment-body">
                 <p class="comment-desc">소통 공간</p>
@@ -61,7 +62,7 @@
                 <div class="comment-place">
                     <div class="one-comment">
                         <!-- 댓글 부분 -->
-                        <div class="bg-white p-2">
+                        <!-- <div class="bg-white p-2">
                             <div class="d-flex flex-row user-info">
                                 <div class="d-flex flex-column justify-content-start ml-2">
                                     <span class="d-block font-weight-bold name">Usernickname</span>
@@ -75,74 +76,8 @@
                                     달리는 부분입니다댓글이 달리는 부분입니다. 댓글이 달리는 부분입니다. 댓글이 달리는 부분입니다. 댓글이 달리는 부분입니다. 댓글이 달리는 부분입니다.
                                 </p>
                             </div>
-                        </div>
-                        <div class="bg-white p-2">
-                            <div class="d-flex flex-row user-info">
-                                <div class="d-flex flex-column justify-content-start ml-2">
-                                    <span class="d-block font-weight-bold name">Usernickname</span>
-                                    <span class="date text-black-50">Time here 10 분전</span>
-                                </div>
-                            </div>
-                            <div class="mt-2">
-                                <p class="comment-text">
-                                    댓글이 달리는 부분입니다. 댓글이 달리는 부분입니다. 댓글이 달리는 부분입니다. 댓글이 달리는 부분입니다. 댓글이 달리는 부분입니다.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="bg-white p-2">
-                            <div class="d-flex flex-row user-info">
-                                <div class="d-flex flex-column justify-content-start ml-2">
-                                    <span class="d-block font-weight-bold name">Usernickname</span>
-                                    <span class="date text-black-50">Time here 10 분전</span>
-                                </div>
-                            </div>
-                            <div class="mt-2">
-                                <p class="comment-text">
-                                    댓글이 달리는 부분입니다. 댓글이 달리는 부분입니다. 댓글이 달리는 부분입니다. 댓글이 달리는 부분입니다. 댓글이 달리는 부분입니다.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="bg-white p-2">
-                            <div class="d-flex flex-row user-info">
-                                <div class="d-flex flex-column justify-content-start ml-2">
-                                    <span class="d-block font-weight-bold name">Usernickname</span>
-                                    <span class="date text-black-50">Time here 10 분전</span>
-                                </div>
-                            </div>
-                            <div class="mt-2">
-                                <p class="comment-text">
-                                    댓글이 달리는 부분입니다. 댓글이 달리는 부분입니다. 댓글이 달리는 부분입니다. 댓글이 달리는 부분입니다. 댓글이 달리는 부분입니다.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="bg-white p-2">
-                            <div class="d-flex flex-row user-info">
-                                <div class="d-flex flex-column justify-content-start ml-2">
-                                    <span class="d-block font-weight-bold name">Usernickname</span>
-                                    <span class="date text-black-50">Time here 10 분전</span>
-                                </div>
-                            </div>
-                            <div class="mt-2">
-                                <p class="comment-text">
-                                    댓글이 달리는 부분입니다. 댓글이 달리는 부분입니다. 댓글이 달리는 부분입니다. 댓글이 달리는 부분입니다. 댓글이 달리는 부분입니다.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="bg-white p-2">
-                            <div class="d-flex flex-row user-info">
-                                <div class="d-flex flex-column justify-content-start ml-2">
-                                    <span class="d-block font-weight-bold name">Usernickname</span>
-                                    <span class="date text-black-50">Time here 10 분전</span>
-                                </div>
-                            </div>
-                            <div class="mt-2">
-                                <p class="comment-text">
-                                    댓글이 달리는 부분입니다. 댓글이 달리는 부분입니다. 댓글이 달리는 부분입니다. 댓글이 달리는 부분입니다. 댓글이 달리는 부분입니다.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
+                        </div> -->
+                   </div>
                     <!-- 댓글 입력 부분 -->
                     <form class="bg-light p-2">
                         <div class="d-flex flex-row align-items-start"><textarea
@@ -159,32 +94,31 @@
                 작가의 다른 경매 작품들
             </div>
             <div class="artist-different-painting">
-                <img class="artist-different-image" src="https://t1.daumcdn.net/cfile/tistory/135B87364D2662FB25"
-                    alt="">
-                <img class="artist-different-image" src="https://t1.daumcdn.net/cfile/tistory/135B87364D2662FB25"
-                    alt="">
-                <img class="artist-different-image" src="https://t1.daumcdn.net/cfile/tistory/135B87364D2662FB25"
-                    alt="">
+                <!-- 작가의 다른 작품 붙는곳 -->
             </div>
         </div>
         <!-- 오른쪽 입찰 정보창 -->
         <div class="right-side-content">
             <div class="top-auction-space">
                 <div class="category-timeleft">
-                    <p class="category">인물</p>
+                    <div class="category-name-body">
+                        <!-- 카테고리 이름 붙는곳 -->
+                    </div>
                     <div class="timeleft">
                         <p>남은시간</p>
-                        <p class="timeleft-time">05일 05시간 27분</p>
+                        <!-- <p class="timeleft-time">05일 05시간 27분</p> -->
                     </div>
                 </div>
                 <div class="title-bookmark">
-                    <p class="title-text">우산 쓴 소녀</p>
+                    <div class="title-body">
+                        <!-- 제목 붙는 곳 -->
+                    </div>
                     <button class="bookmark-btn" type="button">
                         <i class="fa fa-bookmark-o" aria-hidden="true"></i>
                     </button>
                 </div>
                 <div class="title-author">
-                    <p class="author-text">Francis</p>
+                    <!-- artist 붙는곳 -->
                 </div>
             </div>
             <hr style="color: rgb(58, 58, 58);">
@@ -193,13 +127,13 @@
                     <div class="start-price">
                         <p>시작가</p>
                         <p class="point-text">POINT</p>
-                        <p class="price">30,000,000</p>
+                        <!-- 시작포인트 붙는곳 -->
                     </div>
                     <div class="now-price">
                         <p>현재가</p>
                         <div class="now-price-innercolor">
                             <p class="point-text">POINT</p>
-                            <p class="price">40,000,000</p>
+                            <!-- 현재 포인트 붙는곳 -->
                         </div>
                     </div>
                 </div>
@@ -208,16 +142,16 @@
             <div class="bottom-auction-space">
                 <div class="end-auction-box">
                     <p class="end-auction">마감시간</p>
-                    <p class="end-auction-time">07/05-04:10PM</p>
+                    <!-- <p class="end-auction-time">07/05-04:10PM</p> -->
                 </div>
                 <form class="bid-auction">
                     <div class="input-bid-box">
                         <p class="type-bid">입찰가</p>
-                        <input class="input-bid" type="number" placeholder="백만 단위로 입력" name="current_bid"
-                            min="1,000,000" step="1,000,000" required>
+                        <input class="input-bid" type="number" placeholder="10만 단위로 입력" id="current_bid"
+                            min="100000" step="100000" required>
                     </div>
                     <p class="notice">입찰시 포인트는 선차감됩니다. 낙찰실패시 반환</p>
-                    <button class="bid-btn" type="submit">
+                    <button class="bid-btn" type="button" onclick="handleBid()">
                         입찰하기
                     </button>
                 </form>
