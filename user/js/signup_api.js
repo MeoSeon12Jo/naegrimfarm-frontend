@@ -2,7 +2,7 @@ const backend_base_url = "http://127.0.0.1:8000"
 const frontend_base_url = "http://127.0.0.1:5500"
 
 
-function get_cookie(name) {
+function getCookie(name) {
     let cookie_value = null;
 
     if (document.cookie && document.cookie !== '') {
@@ -36,12 +36,12 @@ $.ajaxSetup({
 });
 
 //닉네임 형식 함수
-function check_id(asValue) {
+function checkId(asValue) {
     const regid = /^(?=.*[a-zA-Z])[-a-zA-Z0-9_.]{2,10}$/;
     return regid.test(asValue);
 }
 
-async function signup() {
+async function onSignUp() {
     const email = document.getElementById('inputEmail').value;
     const password = document.getElementById('inputPassword').value;
     const password2 = document.getElementById('inputPassword2').value;
@@ -51,7 +51,7 @@ async function signup() {
     const regExp = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
 
     //닉네임 형식 체크
-    if (!check_id(nickname)) {
+    if (!checkId(nickname)) {
         alert("닉네임은 2~10자사이 영문, 숫자, 특수문자(._-)만 사용가능합니다.")
         $('#inputNickname').focus()
         $('#inputNickname').val('')
