@@ -119,7 +119,7 @@ async function getDetail() {
     for (let i = 0; i < userComments.length; i++) {
         const newCommentLayout = document.createElement("div")
         newCommentLayout.setAttribute("class", "bg-white p-2")
-        auctionComments.append(newCommentLayout)
+        auctionComments.prepend(newCommentLayout)
 
         const newCommentUser = document.createElement("div")
         newCommentUser.setAttribute("class", "d-flex flex-row user-info")
@@ -176,8 +176,83 @@ async function handleBid(){
     
     const currentBid = await bidView(bid_price, auctionId)
 
-    if (currentBid.exists()) {
+    if (currentBid != null) {
         const loadCurrentBid = document.getElementById("nowPrice")
         loadCurrentBid.innerText = currentBid
     }
+}
+
+
+async function handleComment(){
+
+    const auctionId = location.href.split('?')[1]
+    const content = document.getElementById("comment-content").value
+
+    if (content.Length == 0) {
+        alert("댓글을 입력해주세요.")
+    }else{
+
+        const commentInfo = await commentView(content, auctionId)
+        const loadComments = document.getElementsByClassName("one-comment")[0]
+
+        const newCommentLayout = document.createElement("div")
+        newCommentLayout.setAttribute("class", "bg-white p-2")
+        loadComments.prepend(newCommentLayout)
+
+        const newCommentUser = document.createElement("div")
+        newCommentUser.setAttribute("class", "d-flex flex-row user-info")
+        newCommentLayout.append(newCommentUser)
+
+        const newCommentUserInfo = document.createElement("div")
+        newCommentUserInfo.setAttribute("class", "d-flex flex-column justify-content-start ml-2")
+        newCommentUser.append(newCommentUserInfo)
+        
+        //유저닉네임
+        const newCommentUserName = document.createElement("span")
+        newCommentUserName.setAttribute("class", "d-block font-weight-bold name")
+        newCommentUserName.innerHTML += commentInfo['username']
+        newCommentUserInfo.append(newCommentUserName)
+        
+        //댓글단 시간
+        const newCommentTime = document.createElement("span")
+        newCommentTime.setAttribute("class", "date text-black-50")
+
+        let time_post = new Date(commentInfo['create_time'])
+        let time_before = time2str(time_post)
+
+        newCommentTime.innerHTML += time_before
+        newCommentUserInfo.append(newCommentTime)
+
+        const newCommentArea = document.createElement("div")
+        newCommentArea.setAttribute("class", "mt-2")
+        newCommentLayout.append(newCommentArea)
+
+        //댓글내용
+        const newCommentText = document.createElement("p")
+        newCommentText.setAttribute("class", "comment-text")
+        newCommentText.innerHTML += commentInfo['content']
+        newCommentArea.append(newCommentText)
+
+    }
+}
+
+
+async function handleBookMark() {
+
+    const auctionId = location.href.split('?')[1]
+
+    await bookMarkView(auctionId)
+
+    const bookMarkBtn = document.getElementById("bookmark-button")
+    const bookMarkIcon = document.getElementById("bookmark-icon")
+
+    if (bookMarkIcon.classList.contains("fa-bookmark-o")) {
+        bookMarkBtn.innerHTML = `<i class="fa fa-bookmark" id="bookmark-icon" aria-hidden="true"></i>`
+        
+    }else{
+        bookMarkBtn.innerHTML = `<i class="fa fa-bookmark-o" id="bookmark-icon" aria-hidden="true"></i>`
+        
+    }
+    
+    
 }

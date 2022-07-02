@@ -60,9 +60,9 @@
                     <!-- 댓글 입력 부분 -->
                     <form class="bg-light p-2">
                         <div class="d-flex flex-row align-items-start"><textarea
-                                class="form-control ml-1 shadow-none textarea"></textarea></div>
+                                class="form-control ml-1 shadow-none textarea" id="comment-content"></textarea></div>
                         <div class="mt-2 text-right">
-                            <button class="btn btn-primary btn-sm shadow-none" type="button">
+                            <button class="btn btn-primary btn-sm shadow-none" type="button" onclick="handleComment()">
                                 Post comment
                             </button>
                         </div>
@@ -92,8 +92,9 @@
                     <div class="title-body">
                         <!-- 제목 붙는 곳 -->
                     </div>
-                    <button class="bookmark-btn" type="button">
-                        <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                    <button class="bookmark-btn" id="bookmark-button" type="button" onclick="handleBookMark()">
+                        <i class="fa fa-bookmark-o" id="bookmark-icon" aria-hidden="true"></i>
+                        <!-- <i class="fa fa-bookmark" aria-hidden="true"></i> -->
                     </button>
                 </div>
                 <div class="title-author">

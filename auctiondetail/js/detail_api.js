@@ -71,7 +71,7 @@ async function bidView(bid_price, id){
     
     if (response.status == 200) {
         alert("입찰에 성공했습니다. 포인트는 선차감 되며 낙찰실패시 반환됩니다.")
-        currentBid = response_json["current_bid_price"]
+        currentBid = response_json["current_bid_format"]
         bidInput.value = null;
         return currentBid
 
@@ -80,3 +80,61 @@ async function bidView(bid_price, id){
         bidInput.value = null;
     }
 }
+
+async function commentView(content, id){
+    const token = localStorage.getItem("farm_access_token");
+    const commentInput = document.getElementById("comment-content");
+
+    const commentTextData = {
+        "content" : content,
+    }
+    const response = await fetch(`${backEndBaseUrl}/auction/detail/comment/${id}/`, {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+            Accept:"application/json",
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrftoken,
+            'Authorization': 'Bearer ' + token,
+        },
+        body:JSON.stringify(commentTextData)
+    }
+    )
+    response_json = await response.json()
+    
+    if (response.status == 200) {
+        alert("댓글 작성!")
+        commentInput.value = null;
+        return response_json
+
+    }else {
+        alert(response_json["error"])
+        commentInput.value = null;
+    }
+}
+
+async function bookMarkView(id){
+    const token = localStorage.getItem("farm_access_token");
+
+    const response = await fetch(`${backEndBaseUrl}/auction/detail/bookmark/${id}/`, {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+            Accept:"application/json",
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrftoken,
+            'Authorization': 'Bearer ' + token,
+        },
+    }
+    )
+    response_json = await response.json()
+    
+    if (response.status == 200) {
+        alert(response_json["msg"])
+        return
+    }else {
+        alert(response_json["msg"])
+    }
+}
+
+
