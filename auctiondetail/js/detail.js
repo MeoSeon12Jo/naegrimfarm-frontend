@@ -1,5 +1,3 @@
-
-
 // 댓글시간 나타내기
 function time2str(date) {
     let today = new Date()
@@ -21,7 +19,6 @@ function time2str(date) {
 
 
 async function getDetail() {
-
     const auctionId = location.href.split('?')[1]
 
     //api에서 return한 json데이터
@@ -30,13 +27,16 @@ async function getDetail() {
     //백엔드에서 가져온 데이터들 변수지정
     let auctionEndTime = detailInfo['time_left']
     let auctionEndDate = detailInfo['end_date']
+    
     let category = detailInfo['painting']['category_name']
     let title = detailInfo['painting']['title']
     let artist = detailInfo['painting']['artist_name']
+    
     let startBid = detailInfo['start_bid']
     let currentBid = detailInfo['current_bid']
     let description = detailInfo['painting']['description']
     let userComments = detailInfo['comments']
+    
     //나중에 여기에 이미지 url 저장해서 가져와야함.
     let image = detailInfo['painting']['image']
     let artistPaintings = detailInfo['painting']['artist_paintings']
@@ -44,14 +44,17 @@ async function getDetail() {
     //데이터 붙어야하는 부모class
     const mainAuctionImage = document.getElementsByClassName("detail-image-place")[0]
     const differentAuctionImage = document.getElementsByClassName("artist-different-painting")[0]
-    const auctionComments = document.getElementsByClassName("one-comment")[0]
+    
     const auctionDescription = document.getElementsByClassName("painting-description-body")[0]
     const auctionCategory = document.getElementsByClassName("category-name-body")[0]
-    const auctionTimeLeft = document.getElementsByClassName("timeleft")[0]
     const auctionTitle = document.getElementsByClassName("title-body")[0]
     const auctionArtist = document.getElementsByClassName("title-author")[0]
+    const auctionComments = document.getElementsByClassName("one-comment")[0]
+    
     const auctionStartBid = document.getElementsByClassName("start-price")[0]
     const auctionCurrentBid = document.getElementsByClassName("now-price-innercolor")[0]
+    
+    const auctionTimeLeft = document.getElementsByClassName("timeleft")[0]
     const auctionEndingDate = document.getElementsByClassName("end-auction-box")[0]
 
 
@@ -116,7 +119,7 @@ async function getDetail() {
     for (let i = 0; i < userComments.length; i++) {
         const newCommentLayout = document.createElement("div")
         newCommentLayout.setAttribute("class", "bg-white p-2")
-        auctionComments.append(newCommentLayout)
+        auctionComments.prepend(newCommentLayout)
 
         const newCommentUser = document.createElement("div")
         newCommentUser.setAttribute("class", "d-flex flex-row user-info")
@@ -165,9 +168,7 @@ async function getDetail() {
 
 }
 
-
 getDetail()
-
 
 async function handleBid(){
     const auctionId = location.href.split('?')[1]
@@ -175,6 +176,83 @@ async function handleBid(){
     
     const currentBid = await bidView(bid_price, auctionId)
 
-    const loadCurrentBid = document.getElementById("nowPrice")
-    loadCurrentBid.innerText = currentBid
+    if (currentBid != null) {
+        const loadCurrentBid = document.getElementById("nowPrice")
+        loadCurrentBid.innerText = currentBid
+    }
+}
+
+
+async function handleComment(){
+
+    const auctionId = location.href.split('?')[1]
+    const content = document.getElementById("comment-content").value
+
+    if (content.Length == 0) {
+        alert("댓글을 입력해주세요.")
+    }else{
+
+        const commentInfo = await commentView(content, auctionId)
+        const loadComments = document.getElementsByClassName("one-comment")[0]
+
+        const newCommentLayout = document.createElement("div")
+        newCommentLayout.setAttribute("class", "bg-white p-2")
+        loadComments.prepend(newCommentLayout)
+
+        const newCommentUser = document.createElement("div")
+        newCommentUser.setAttribute("class", "d-flex flex-row user-info")
+        newCommentLayout.append(newCommentUser)
+
+        const newCommentUserInfo = document.createElement("div")
+        newCommentUserInfo.setAttribute("class", "d-flex flex-column justify-content-start ml-2")
+        newCommentUser.append(newCommentUserInfo)
+        
+        //유저닉네임
+        const newCommentUserName = document.createElement("span")
+        newCommentUserName.setAttribute("class", "d-block font-weight-bold name")
+        newCommentUserName.innerHTML += commentInfo['username']
+        newCommentUserInfo.append(newCommentUserName)
+        
+        //댓글단 시간
+        const newCommentTime = document.createElement("span")
+        newCommentTime.setAttribute("class", "date text-black-50")
+
+        let time_post = new Date(commentInfo['create_time'])
+        let time_before = time2str(time_post)
+
+        newCommentTime.innerHTML += time_before
+        newCommentUserInfo.append(newCommentTime)
+
+        const newCommentArea = document.createElement("div")
+        newCommentArea.setAttribute("class", "mt-2")
+        newCommentLayout.append(newCommentArea)
+
+        //댓글내용
+        const newCommentText = document.createElement("p")
+        newCommentText.setAttribute("class", "comment-text")
+        newCommentText.innerHTML += commentInfo['content']
+        newCommentArea.append(newCommentText)
+
+    }
+}
+
+
+async function handleBookMark() {
+
+    const auctionId = location.href.split('?')[1]
+
+    await bookMarkView(auctionId)
+
+    const bookMarkBtn = document.getElementById("bookmark-button")
+    const bookMarkIcon = document.getElementById("bookmark-icon")
+
+    if (bookMarkIcon.classList.contains("fa-bookmark-o")) {
+        bookMarkBtn.innerHTML = `<i class="fa fa-bookmark" id="bookmark-icon" aria-hidden="true"></i>`
+        
+    }else{
+        bookMarkBtn.innerHTML = `<i class="fa fa-bookmark-o" id="bookmark-icon" aria-hidden="true"></i>`
+        
+    }
+    
+    
 }

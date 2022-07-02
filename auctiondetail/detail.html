@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <title>NAEGRIMFARM</title>
@@ -22,7 +21,6 @@
     <!-- 북마크아이콘 -->
     <script src="https://kit.fontawesome.com/989420847f.js" crossorigin="anonymous"></script>
 </head>
-
 <body>
     <header class="header">
         <!-- 로고 -->
@@ -51,10 +49,6 @@
             <hr class="division-line">
             <div class="painting-description-body">
                 <p class="painting-description">작품설명</p>
-                <!-- <p class="painting-description-text">
-                    이곳은 작품 설명이 들어가는곳입니다. 이곳은 작품 설명이 들어가는곳입니다.이곳은 작품 설명이 들어가는곳입니다.이곳은 작품 설명이 들어가는곳입니다.이곳은 작품 설명이
-                    들어가는곳입니다.이곳은 작품 설명이 들어가는곳입니다.이곳은 작품 설명이 들어가는곳입니다.
-                </p> -->
             </div>
             <div class="comment-body">
                 <p class="comment-desc">소통 공간</p>
@@ -62,28 +56,13 @@
                 <div class="comment-place">
                     <div class="one-comment">
                         <!-- 댓글 부분 -->
-                        <!-- <div class="bg-white p-2">
-                            <div class="d-flex flex-row user-info">
-                                <div class="d-flex flex-column justify-content-start ml-2">
-                                    <span class="d-block font-weight-bold name">Usernickname</span>
-                                    <span class="date text-black-50">Time here 10 분전</span>
-                                </div>
-                            </div>
-                            <div class="mt-2">
-                                <p class="comment-text">
-                                    댓글이 달리는 부분입니다. 댓글이 달리는 부분입니다. 댓글이 달리는 부분입니다. 댓글이 달리는 부분입니다댓글이 달리는 부분입니다. 댓글이 달리는
-                                    부분입니다. 댓글이 달리는 부분입니다. 댓글이 달리는 부분입니다댓글이 달리는 부분입니다. 댓글이 달리는 부분입니다. 댓글이 달리는 부분입니다. 댓글이
-                                    달리는 부분입니다댓글이 달리는 부분입니다. 댓글이 달리는 부분입니다. 댓글이 달리는 부분입니다. 댓글이 달리는 부분입니다. 댓글이 달리는 부분입니다.
-                                </p>
-                            </div>
-                        </div> -->
                    </div>
                     <!-- 댓글 입력 부분 -->
                     <form class="bg-light p-2">
                         <div class="d-flex flex-row align-items-start"><textarea
-                                class="form-control ml-1 shadow-none textarea"></textarea></div>
+                                class="form-control ml-1 shadow-none textarea" id="comment-content"></textarea></div>
                         <div class="mt-2 text-right">
-                            <button class="btn btn-primary btn-sm shadow-none" type="button">
+                            <button class="btn btn-primary btn-sm shadow-none" type="button" onclick="handleComment()">
                                 Post comment
                             </button>
                         </div>
@@ -113,8 +92,9 @@
                     <div class="title-body">
                         <!-- 제목 붙는 곳 -->
                     </div>
-                    <button class="bookmark-btn" type="button">
-                        <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                    <button class="bookmark-btn" id="bookmark-button" type="button" onclick="handleBookMark()">
+                        <i class="fa fa-bookmark-o" id="bookmark-icon" aria-hidden="true"></i>
+                        <!-- <i class="fa fa-bookmark" aria-hidden="true"></i> -->
                     </button>
                 </div>
                 <div class="title-author">
@@ -204,5 +184,4 @@
     <!-- MDB -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.js"></script>
 </body>
-
 </html>
