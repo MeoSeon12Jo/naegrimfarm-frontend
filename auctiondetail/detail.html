@@ -24,21 +24,25 @@
 <body>
     <header class="header">
         <!-- 로고 -->
-        <button class="logo"><span class="logo-txt">NAEGRIM<b>FARM</b></span></button>
-        <!-- 네비게이션 -->
+        <div class="logo">
+            <a class="logo-a" href="#">
+                <span>NAEGRIM</span><b>FARM</b>
+            </a>
+        </div>
+        <!-- 네비개이션 -->
         <div class="navi">
-            <button class="auctions">
-                <span>AUCTIONS</span>
-            </button>
-            <button class="exhibitions">
-                <span>EXHIBITIONS</span>
-            </button>
-            <button class="my-page">
-                <span>MY PAGE</span>
-            </button>
-            <button class="logout" type="button" onclick="onLogout()">
-                <span>LOGOUT</span>
-            </button>
+            <a class="auctions" href="/auction/auction_list.html">
+                <div>AUCTIONS</div>
+            </a>
+            <a class="exhibitions" href="/gallery/gallery_list.html">
+                <div>EXHIBITIONS</div>
+            </a>
+            <a class="my-page" href="#">
+                <div>MY PAGE</div>
+            </a>
+            <a class="logout" href="/user/login.html" onclick="onLogout()">
+                <div>LOGOUT</div>
+            </a>
         </div>
     </header>
     <div class="content-body">
@@ -56,6 +60,18 @@
                 <div class="comment-place">
                     <div class="one-comment">
                         <!-- 댓글 부분 -->
+                        <!-- <div class="bg-white p-2">
+                            <div class="d-flex flex-row user-info">
+                                <div class="d-flex flex-column justify-content-start ml-2">
+                                    <span class="d-block font-weight-bold name">dsa</span>
+                                    <span class="date text-black-50">dsa</span>
+                                </div>
+                                <button class="comment-delete">삭제</button>
+                            </div>
+                            <div class="mt-2">
+                                <p class="comment-text">dsa</p>
+                            </div>
+                        </div> -->
                    </div>
                     <!-- 댓글 입력 부분 -->
                     <form class="bg-light p-2">
@@ -93,8 +109,6 @@
                         <!-- 제목 붙는 곳 -->
                     </div>
                     <button class="bookmark-btn" id="bookmark-button" type="button" onclick="handleBookMark()">
-                        <i class="fa fa-bookmark-o" id="bookmark-icon" aria-hidden="true"></i>
-                        <!-- <i class="fa fa-bookmark" aria-hidden="true"></i> -->
                     </button>
                 </div>
                 <div class="title-author">
