@@ -1,5 +1,6 @@
 const backEndBaseUrl = "http://127.0.0.1:8000"
 const frontEndBaseUrl = "http://127.0.0.1:5500"
+const token = localStorage.getItem("farm_access_token");
 
 function getCookie(name) {
     var cookieValue = null;
@@ -27,7 +28,7 @@ function onLogout(){
 }
 
 async function auctionDetailView(id){
-    const token = localStorage.getItem("farm_access_token");
+
     const response = await fetch(`${backEndBaseUrl}/auction/detail/${id}`, {
         method: 'GET',
         mode: 'cors',
@@ -49,7 +50,7 @@ async function auctionDetailView(id){
 }
 
 async function bidView(bid_price, id){
-    const token = localStorage.getItem("farm_access_token");
+
     const bidInput = document.getElementById("current_bid");
 
     const bidPriceData = {
@@ -82,7 +83,7 @@ async function bidView(bid_price, id){
 }
 
 async function commentView(content, id){
-    const token = localStorage.getItem("farm_access_token");
+
     const commentInput = document.getElementById("comment-content");
 
     const commentTextData = {
@@ -103,7 +104,6 @@ async function commentView(content, id){
     response_json = await response.json()
     
     if (response.status == 200) {
-        alert("댓글 작성!")
         commentInput.value = null;
         return response_json
 
@@ -113,8 +113,30 @@ async function commentView(content, id){
     }
 }
 
+async function deleteCommentView(id){
+
+    const response = await fetch(`${backEndBaseUrl}/auction/detail/comment/${id}/`, {
+        method: 'DELETE',
+        mode: 'cors',
+        headers: {
+            Accept:"application/json",
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrftoken,
+            'Authorization': 'Bearer ' + token,
+        },
+    }
+    )
+    response_json = await response.json()
+    
+    if (response.status == 200) {
+        return response_json
+
+    }else {
+        alert(response_json["error"])
+    }
+}
+
 async function bookMarkView(id){
-    const token = localStorage.getItem("farm_access_token");
 
     const response = await fetch(`${backEndBaseUrl}/auction/detail/bookmark/${id}/`, {
         method: 'POST',
@@ -130,7 +152,6 @@ async function bookMarkView(id){
     response_json = await response.json()
     
     if (response.status == 200) {
-        alert(response_json["msg"])
         return
     }else {
         alert(response_json["msg"])
