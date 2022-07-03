@@ -1,33 +1,161 @@
-const backend_base_url = "http://127.0.0.1:8000"
-// 페이지를 다시 로딩 하면 벌어지는 일들!
-window.onload = () => {
-    const payload = JSON.parse(localStorage.getItem("payload"));
-    // 아직 access 토큰의 인가 유효시간이 남은 경우
-    if (payload.exp > (Date.now() / 1000)) {
+const backEndBaseUrl = "http://127.0.0.1:8000"
+const frontEndBaseUrl = "http://127.0.0.1:5500"
+const token = localStorage.getItem("farm_access_token");
 
-    } else {
-        // 인증 시간이 지났기 때문에 다시 refreshToken으로 다시 요청을 해야 한다.
-        const requestRefreshToken = async (url) => {
-            const response = await fetch(url, {
-                headers: {
-                    Accept: "application/json",
-                    'Content-Type': 'application/json',
-                },
-                method: "POST",
-                body: JSON.stringify({
-                    "refresh": localStorage.getItem("farm_refresh_token")
-                })
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
             }
-            );
-            return response.json();
-        };
-
-        // 다시 인증 받은 accessToken을 localStorage에 저장하자.
-        requestRefreshToken(`${backend_base_url}/user/api/token/refresh/`).then((data) => {
-            // 새롭게 발급 받은 accessToken을 localStorage에 저장
-            const accessToken = data.access;
-
-            localStorage.setItem("farm_access_token", accessToken);
-        });
+        }
     }
-};
+    return cookieValue;
+}
+var csrftoken = getCookie('csrftoken');
+
+function onLogout(){
+    localStorage.removeItem("farm_access_token")
+    localStorage.removeItem("farm_refresh_token")
+    localStorage.removeItem("payload")
+    // window.location.replace(`${frontEndBaseUrl}/`);
+    window.location.reload();
+}
+
+async function auctionDetailView(id){
+
+    const response = await fetch(`${backEndBaseUrl}/auction/detail/${id}`, {
+        method: 'GET',
+        mode: 'cors',
+        headers: {
+            'X-CSRFToken': csrftoken,
+            'Authorization': 'Bearer ' + token,
+        }
+    }
+    )
+    response_json = await response.json()
+
+    if (response.status == 200) {
+        let detailInfo = response_json
+        return detailInfo
+
+    }else {
+        alert(response_json["error"])
+    }
+}
+
+async function bidView(bid_price, id){
+
+    const bidInput = document.getElementById("current_bid");
+
+    const bidPriceData = {
+        "current_bid" : bid_price,
+    }
+    const response = await fetch(`${backEndBaseUrl}/auction/detail/${id}/`, {
+        method: 'PUT',
+        mode: 'cors',
+        headers: {
+            Accept:"application/json",
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrftoken,
+            'Authorization': 'Bearer ' + token,
+        },
+        body:JSON.stringify(bidPriceData)
+    }
+    )
+    response_json = await response.json()
+    
+    if (response.status == 200) {
+        alert("입찰에 성공했습니다. 포인트는 선차감 되며 낙찰실패시 반환됩니다.")
+        currentBid = response_json["current_bid_format"]
+        bidInput.value = null;
+        return currentBid
+
+    }else {
+        alert(response_json["error"])
+        bidInput.value = null;
+    }
+}
+
+async function commentView(content, id){
+
+    const commentInput = document.getElementById("comment-content");
+
+    const commentTextData = {
+        "content" : content,
+    }
+    const response = await fetch(`${backEndBaseUrl}/auction/detail/comment/${id}/`, {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+            Accept:"application/json",
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrftoken,
+            'Authorization': 'Bearer ' + token,
+        },
+        body:JSON.stringify(commentTextData)
+    }
+    )
+    response_json = await response.json()
+    
+    if (response.status == 200) {
+        commentInput.value = null;
+        return response_json
+
+    }else {
+        alert(response_json["error"])
+        commentInput.value = null;
+    }
+}
+
+async function deleteCommentView(id){
+
+    const response = await fetch(`${backEndBaseUrl}/auction/detail/comment/${id}/`, {
+        method: 'DELETE',
+        mode: 'cors',
+        headers: {
+            Accept:"application/json",
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrftoken,
+            'Authorization': 'Bearer ' + token,
+        },
+    }
+    )
+    response_json = await response.json()
+    
+    if (response.status == 200) {
+        return response_json
+
+    }else {
+        alert(response_json["error"])
+    }
+}
+
+async function bookMarkView(id){
+
+    const response = await fetch(`${backEndBaseUrl}/auction/detail/bookmark/${id}/`, {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+            Accept:"application/json",
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrftoken,
+            'Authorization': 'Bearer ' + token,
+        },
+    }
+    )
+    response_json = await response.json()
+    
+    if (response.status == 200) {
+        return
+    }else {
+        alert(response_json["msg"])
+    }
+}
+
+

@@ -7,6 +7,7 @@
     <title>NAEGRIMFARM</title>
 
     <link rel="stylesheet" href="style/gallery_list.css" />
+    <link rel="stylesheet" href="style/user_gallery.css" />
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -21,30 +22,45 @@
 <body>
     <header class="header">
         <!-- 로고 -->
-        <button class="logo"><span class="logo-txt">NAEGRIM<b>FARM</b></span></button>
+        <div class="logo">
+            <a class="logo-a" href="#">
+                <span>NAEGRIM</span><b>FARM</b>
+            </a>
+        </div>
         <!-- 네비개이션 -->
         <div class="navi">
-            <button class="auctions">
-                <span>AUCTIONS</span>
-            </button>
-            <button class="exhibitions">
-                <span>EXHIBITIONS</span>
-            </button>
-            <button class="my-page">
-                <span>MY PAGE</span>
-            </button>
-            <button class="logout">
-                <span>LOGOUT</span>
-            </button>
+            <a class="auctions" href="#">
+                <div>AUCTIONS</div>
+            </a>
+            <a class="exhibitions" href="#">
+                <div>EXHIBITIONS</div>
+            </a>
+            <a class="my-page" href="#">
+                <div>MY PAGE</div>
+            </a>
+            <a class="logout" href="#">
+                <div>LOGOUT</div>
+            </a>
         </div>
     </header>
     <div class="title_container">
         <p class="user_title">
     </div>
-    </div>
     <div class="gallery_list_container">
         <div class="gallery_list"></div>
         <button class="loadmore" onclick="loadData()">Load More&nbsp;&nbsp;&nbsp;→</button>
+    </div>
+    <div class="modal_body">
+        <div class="modal_container">
+            <div class="modal_image_box"><img class="modal_image_box-image"></div>
+            <div class="modal_text_box">
+                <p class="modal_text_box-title"></p>
+                <p class="modal_text_box-artist"></p>
+                <p class="modal_text_box-winning_bid"></p>
+                <p class="modal_text_box-description"></p>
+                <button class="modal_btn" onclick="modalUnView()">❌</button>
+            </div>
+        </div>
     </div>
     <footer class="text-center text-white" style="background-color: #f1f1f1; ">
         <!-- Grid container -->
