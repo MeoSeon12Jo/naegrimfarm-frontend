@@ -50,21 +50,25 @@
 <body>
     <header class="header">
         <!-- 로고 -->
-        <button class="logo"><span class="logo-txt">NAEGRIM<b>FARM</b></span></button>
+        <div class="logo">
+            <a class="logo-a" href="/index/mainpage.html">
+                <span>NAEGRIM</span><b>FARM</b>
+            </a>
+        </div>
         <!-- 네비개이션 -->
         <div class="navi">
-            <button class="auctions">
-                <span>AUCTIONS</span>
-            </button>
-            <button class="exhibitions">
-                <span>EXHIBITIONS</span>
-            </button>
-            <button class="my-page">
-                <span>MY PAGE</span>
-            </button>
-            <button class="logout">
-                <span>LOGOUT</span>
-            </button>
+            <a class="auctions" href="/auction/auction_list.html">
+                <div>AUCTIONS</div>
+            </a>
+            <a class="exhibitions" href="/gallery/gallery_list.html">
+                <div>EXHIBITIONS</div>
+            </a>
+            <a class="my-page" href="#">
+                <div>MY PAGE</div>
+            </a>
+            <a class="logout" href="/user/login.html" onclick="onLogout()">
+                <div>LOGOUT</div>
+            </a>
         </div>
     </header>
     <!-- 헤더 이외 부분 -->
