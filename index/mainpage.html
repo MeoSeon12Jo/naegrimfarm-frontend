@@ -6,51 +6,24 @@
     <title>NAEGRIMFARM</title>
 
     <!-- CSS -->
-    <link href="../index/style/mainpage.css" rel="stylesheet">
+    <link href="style/nav_footer.css" rel="stylesheet">
+    <link href="style/mainpage.css" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <!-- MDB icon -->
+    <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.css" rel="stylesheet" />
 
     <!-- js -->
     <script type="text/javascript" src="../index/js/api.js"></script>
     <script type="text/javascript" src="../index/js/mainpage.js"></script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
-    </script>
-    <script>
-        const backend_base_url = "http://127.0.0.1:8000"
-        // 페이지를 다시 로딩 하면 벌어지는 일들!
-        window.onload = () => {
-            const payload = JSON.parse(localStorage.getItem("payload"));
-            // 아직 access 토큰의 인가 유효시간이 남은 경우
-            if (payload.exp > (Date.now() / 1000)) {
-
-            } else {
-                // 인증 시간이 지났기 때문에 다시 refreshToken으로 다시 요청을 해야 한다.
-                const requestRefreshToken = async (url) => {
-                    const response = await fetch(url, {
-                        headers: {
-                            Accept: "application/json",
-                            'Content-Type': 'application/json',
-                        },
-                        method: "POST",
-                        body: JSON.stringify({
-                            "refresh": localStorage.getItem("farm_refresh_token")
-                        })
-                    }
-                    );
-                    return response.json();
-                };
-
-                // 다시 인증 받은 accessToken을 localStorage에 저장하자.
-                requestRefreshToken(`${backend_base_url}/user/api/token/refresh/`).then((data) => {
-                    // 새롭게 발급 받은 accessToken을 localStorage에 저장
-                    const accessToken = data.access;
-
-                    localStorage.setItem("farm_access_token", accessToken);
-                });
-            }
-        };
-
-
-    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -77,78 +50,109 @@
             </a>
         </div>
     </header>
-<!-- 헤더 이외 부분 -->
-<div class="main-body">
-    <!-- 부드러운 스크롤 (한 페이지씩 넘어가게) -->
-    <div class="scroll-container">
-        <!-- 페이지 별로 div를 분리 -->
-        <!-- 감성 사진 1장 페이지 -->
-        <div class="scroll-area"><img class="museum-img" src="../index/image/미술관1.jpg"></div>
-        <!-- 유화 제작 + 업로드 정보 입력 페이지 -->
-        <div class="scroll-area">
-            <div class="column-div">
-                <div id="image-upload" class="addition_modal_body">
-                    <a id="text">Drag and Drop an IMG File</a>
+    <!-- 헤더 이외 부분 -->
+    <div class="main-body">
+        <!-- 부드러운 스크롤 (한 페이지씩 넘어가게) -->
+        <div class="scroll-container">
+            <!-- 페이지 별로 div를 분리 -->
+            <!-- 감성 사진 1장 페이지 -->
+            <div class="scroll-area"><img class="museum-img" src="../index/image/미술관1.jpg"></div>
+            <!-- 유화 제작 + 업로드 정보 입력 페이지 -->
+            <div class="scroll-area">
+                <div class="column-div">
+                    <div id="image-upload" class="addition_modal_body">
+                        <a id="text">Drag and Drop an IMG File</a>
+                    </div>
+                    <div class="convert-button">
+                        <button class="convert">🎨 CONVERT 🎨</button>
+                    </div>
+                    <div>
+                        <img class="img-result" id="result-img" src="../index/image/미술관1.jpg">
+                    </div>
                 </div>
+                <div class="column-div">
+                    <div class="upload-title">
+                        왼쪽의 그림을 경매에 올리시려면 아래의 FORM을 작성해주세요
+                    </div>
+                    <div class="category">
+                        CATEGORY
+                    </div>
+                    <select class="category-box" id="category">
+                        <option>CATEGORY 1</option>
+                        <option>CATEGORY 2</option>
+                        <option>CATEGORY 3</option>
+                    </select>
+                    <div class="title">
+                        TITLE
+                    </div>
+                    <input class="title-input" placeholder="작품명" id="title">
+                    <div class="description">
+                        DESCRIPTION
+                    </div>
+                    <textarea class="description-input" id="description">
+                    </textarea>
+                    <div class="start-price">
+                        START PRICE
+                    </div>
+                    <input class="start-price-input" id="start-price" type="number" placeholder="최소 경매가" min="0"
+                        step="1000000" required="True">
+                    <div class="bid-end-date">
+                        BID END DATE
+                    </div>
+                    <input class="bid-end-date-input" id="bid-end-date" type="date">
+                    <button class="post-article" onclick="uploadAuction()">경매 올리기</button>
                 <div class="convert-button">
                     <button class="convert" onclick="styleTransform()">🎨 CONVERT 🎨</button>
                 </div>
-                <div>
-                    <img class="img-result" id="result-img" src="../index/image/미술관1.jpg">
-                </div>
             </div>
-            <div class="column-div">
-                <div class="upload-title">
-                    왼쪽의 그림을 등록하시려면 아래의 FORM을 작성해주세요
-                </div>
-                <div class="category">
-                    CATEGORY
-                </div>
-                <select class="category-box" id="category">
-                    <option>CATEGORY 1</option>
-                    <option>CATEGORY 2</option>
-                    <option>CATEGORY 3</option>
-                </select>
-                <div class="title">
-                    TITLE
-                </div>
-                <input class="title-input" placeholder="작품명" id="title">
-                <div class="description">
-                    DESCRIPTION
-                </div>
-                <textarea class="description-input" id="description">
-                </textarea>
-                <!-- <div class="start-price">
-                    START PRICE
-                </div>
-                <input class="start-price-input" id="start-price" type="number" placeholder="최소 경매가"
-                       min="0" step="1000000" required="True">
-                <div class="bid-end-date">
-                    BID END DATE
-                </div>
-                <input class="bid-end-date-input" id="bid-end-date" type="date"> -->
-                <button class="post-painting" type="submit" onclick="uploadPainting()">그림 등록하기</button>
-                
-                <div class="upload-bid-title">
-                    왼쪽의 그림을 지금 바로 경매에 올리시려면 아래의 FORM을 작성해주세요
-                </div>
-                <div class="start-price">
-                    START PRICE
-                </div>
-                <input class="start-price-input" id="start-price" type="number" placeholder="최소 경매가"
-                       min="0" step="1000000" required="True">
-                <div class="bid-end-date">
-                    BID END DATE
-                </div>
-                <input class="bid-end-date-input" id="bid-end-date" type="date">
-                <button class="post-auction" type="submit" onclick="uploadAuction()">경매 바로 등록하기</button>
-            </div>
-        </div>
-        <!-- footer 페이지 -->
-        <div class="scroll-area">
-            <p class="footer">&copy; 2022 MEOSEON12JO</p>
         </div>
     </div>
-</div>
+    <!-- footer 페이지 -->
+    <footer class="text-center text-white" style="background-color: #f1f1f1; ">
+        <!-- Grid container -->
+        <div class="container pt-4">
+            <!-- Section: Social media -->
+            <section class="mb-4">
+                <!-- Facebook -->
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="https://kyumin1020.tistory.com"
+                    role="button" data-mdb-ripple-color="dark" target="_blank"><i
+                        class="fab fa-facebook-f"></i></a>
+
+                <!-- Twitter -->
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1"
+                    href="https://naeilbaeumdan-songheew.tistory.com/" role="button"
+                    data-mdb-ripple-color="dark" target="_blank"><i class="fab fa-twitter"></i></a>
+
+                <!-- Google -->
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="https://frannyk.tistory.com/"
+                    role="button" data-mdb-ripple-color="dark" target="_blank"><i class="fab fa-google"></i></a>
+
+                <!-- Instagram -->
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="https://velog.io/@wkdudhksl"
+                    role="button" data-mdb-ripple-color="dark" target="_blank"><i
+                        class="fab fa-instagram"></i></a>
+
+                <!-- Linkedin -->
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1"
+                    href="https://quixotic-wok-871.notion.site/12-df4f63382fb146e69b3b5b96231bb792"
+                    role="button" data-mdb-ripple-color="dark" target="_blank"><i
+                        class="fab fa-linkedin"></i></a>
+                <!-- Github -->
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1"
+                    href="https://github.com/MeoSeon12Jo/naegrimfarm-frontend" role="button"
+                    data-mdb-ripple-color="dark" target="_blank"><i class="fab fa-github"></i></a>
+            </section>
+            <!-- Section: Social media -->
+        </div>
+        <!-- Grid container -->
+
+        <!-- Copyright -->
+        <div class="text-center text-dark p-3" style="background-color: rgba(122, 122, 122, 0.2);">
+            © 2022 MEOSEON12JO
+            <a class="text-dark" href="https://github.com/MeoSeon12Jo/naegrimfarm-frontend"
+                target="_blank">NAEGRIMFARM</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
 </body>
 </html>

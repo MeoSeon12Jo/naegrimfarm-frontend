@@ -20,7 +20,7 @@ function getCookie(name) {
 
     return cookie_value;
 }
-const csrftoken = get_cookie('csrftoken')
+const csrftoken = getCookie('csrftoken')
 
 async function styleTransform() {
     const originalImg = document.getElementById('image-upload').style.backgroundImage;
