@@ -43,7 +43,20 @@
     color: black;
 }
 
-.auctions:hover, .exhibitions:hover, .my-page:hover, .logout:hover {
+.user-point {
+    display: flex;
+    flex-direction: row;
+    font-size: 15px;
+    margin: 0 15px;
+    color: black;
+}
+
+.point-int {
+    margin: 0 0 0 5px;
+    font-size: 15px;
+}
+
+.auctions:hover, .exhibitions:hover, .my-page:hover, .logout:hover, .user-point:hover {
     color: gray;
     text-decoration: none;
 }

@@ -47,8 +47,8 @@ async function getDetail() {
     let description = detailInfo['painting']['description']
     let userComments = detailInfo['comments']
     let isBookMarked = detailInfo['is_bookmark']
+    let userPoint = detailInfo['user_point']
     
-    //나중에 여기에 이미지 url 저장해서 가져와야함.
     let image = detailInfo['painting']['image']
     let artistPaintings = detailInfo['painting']['artist_paintings']
 
@@ -62,6 +62,7 @@ async function getDetail() {
     const auctionArtist = document.getElementsByClassName("title-author")[0]
     const auctionComments = document.getElementsByClassName("one-comment")[0]
     const auctionBookMark = document.getElementsByClassName("bookmark-btn")[0]
+    const userCurrentPoint = document.getElementsByClassName("user-point")[0]
     
     const auctionStartBid = document.getElementsByClassName("start-price")[0]
     const auctionCurrentBid = document.getElementsByClassName("now-price-innercolor")[0]
@@ -71,6 +72,13 @@ async function getDetail() {
 
 
     //데이터 태그만들어서 부모class에 붙여주는 부분//
+
+    //네비바 유저 포인트
+    const newUserPoint = document.createElement("div")
+    newUserPoint.setAttribute("class", "point-int")
+    newUserPoint.innerText = userPoint
+    userCurrentPoint.append(newUserPoint)
+
 
     //작품 이미지
     const newPaintingImage = document.createElement("img")
@@ -207,11 +215,23 @@ getDetail()
 
 async function handleBid(){
 
-    const bid_price = document.getElementById("current_bid").value
+    const bidPrice = document.getElementById("current_bid").value
     
-    const currentBid = await bidView(bid_price, auctionId)
+    
+    const bidInfo = await bidView(bidPrice, auctionId)
+    const currentBid = bidInfo['current_bid_format']
+    const userPoint = bidInfo['user_point']
 
     if (currentBid != null) {
+
+
+        // //네비바 유저 포인트
+        // const bidAfterPoint = document.getElementsByClassName("point-int")[0]
+        // bidAfterPoint.innerText = bidInfo['user_point']
+        const userCurrentPoint = document.getElementsByClassName("point-int")[0]
+        userCurrentPoint.innerText = userPoint
+
+        
         const loadCurrentBid = document.getElementById("nowPrice")
         loadCurrentBid.innerText = currentBid
     }
