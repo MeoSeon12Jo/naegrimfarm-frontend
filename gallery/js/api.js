@@ -7,12 +7,12 @@ async function getGalleryListData(){
     const response = await fetch(`${backendBaseUrl}/gallery`, {})
     
     if (response.status == 200){
-        response_json = await response.json()
-        users = response_json
+        users = await response.json()
         return users
     }
     else{
-        alert(response.status)
+        alert('작품을 소유하고 있는 유저가 없습니다')
+        console.log(response.status)
     }
 }
 
@@ -25,6 +25,6 @@ async function getUserGalleryData(nickname){
         return responseJson
     }
     else {
-        alert(response.status)
+        console.log(response.status)
     }
 }
