@@ -2,30 +2,6 @@ const backEndBaseUrl = "http://127.0.0.1:8000"
 const frontEndBaseUrl = "http://127.0.0.1:5500"
 const token = localStorage.getItem("farm_access_token");
 
-function getCookie(name) {
-    var cookieValue = null;
-    if (document.cookie && document.cookie !== '') {
-        var cookies = document.cookie.split(';');
-        for (var i = 0; i < cookies.length; i++) {
-            var cookie = cookies[i].trim();
-            // Does this cookie string begin with the name we want?
-            if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
-            }
-        }
-    }
-    return cookieValue;
-}
-var csrftoken = getCookie('csrftoken');
-
-function onLogout(){
-    localStorage.removeItem("farm_access_token")
-    localStorage.removeItem("farm_refresh_token")
-    localStorage.removeItem("payload")
-    // window.location.replace(`${frontEndBaseUrl}/`);
-    window.location.reload();
-}
 
 async function auctionDetailView(id){
 
