@@ -1,27 +1,22 @@
 const backEndBaseUrl = "http://127.0.0.1:8000"
 const frontEndBaseUrl = "http://127.0.0.1:5500"
 
-
 function getCookie(name) {
-    let cookie_value = null;
-
+    var cookieValue = null;
     if (document.cookie && document.cookie !== '') {
-        const cookies = document.cookie.split(';');
-        console.log(cookies)
-        for (let i = 0; i < cookies.length; i++) {
-            const cookie = cookies[i].trim();
-
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
             // Does this cookie string begin with the name we want?
             if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                cookie_value = decodeURIComponent(cookie.substring(name.length + 1));
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
                 break;
             }
         }
     }
-
-    return cookie_value;
+    return cookieValue;
 }
-const csrftoken = getCookie('csrftoken')
+var csrftoken = getCookie('csrftoken');
 
 function csrfSafeMethod(method) {
     // these HTTP methods do not require CSRF protection

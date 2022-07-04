@@ -12,6 +12,7 @@ const auctionId = location.href.split('?')[1]
 function time2str(date) {
     let today = new Date()
     let time = (today - date) / 1000 / 60  // 분
+    console.log(time)
 
     if (time < 60) {
         return parseInt(time) + "분 전"
@@ -159,6 +160,7 @@ async function getDetail() {
 
         let time_post = new Date(detailInfo['comments'][i]['create_time'])
         let time_before = time2str(time_post)
+        time2str(time_post)
 
         newCommentTime.innerText = time_before
         newCommentUserInfo.append(newCommentTime)
