@@ -1,25 +1,28 @@
 .main-body {
     display: inline-block;
     width: 100%;
-    margin-top: 5%;
     text-align: center;
     justify-content: center;
-    margin:0px;padding:0px;overflow:hidden;
+    overflow:hidden;
 }
 
 .museum-img {
+    max-width: 1200px;
     width: 100%;
-    height: 950px;
+    height: 750px;
+    z-index: 2;
     pointer-events: none;
 }
 
 .scroll-container,
 .scroll-area {
-    width: 90%;
+    max-width: 1200px;
+    width: 100%;
     height: 950px;
     font-size: 60px;
-    margin: 0 auto;
+    margin: -50px auto;
     -ms-overflow-style: none;
+    background-color: transparent;
 }
 
 .scroll-container {
@@ -29,6 +32,19 @@
 }
 
 .scroll-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    scroll-snap-align: start;
+}
+.scroll-area2 {
+    max-width: 1200px;
+    width: 100%;
+    height: 1100px;
+    font-size: 60px;
+    margin: 0 auto;
+    -ms-overflow-style: none;
     display: flex;
     align-items: center;
     justify-content: center;
