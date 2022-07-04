@@ -28,6 +28,19 @@
     color: gray;
 }
 
+.user-point {
+    display: flex;
+    flex-direction: row;
+    font-size: 15px;
+    margin: 0 15px;
+    color: black;
+}
+
+.point-int {
+    margin: 0 0 0 5px;
+    font-size: 15px;
+}
+
 .navi {
     display: flex;
     flex-direction: row;

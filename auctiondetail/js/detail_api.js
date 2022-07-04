@@ -49,9 +49,9 @@ async function bidView(bid_price, id){
     
     if (response.status == 200) {
         alert("입찰에 성공했습니다. 포인트는 선차감 되며 낙찰실패시 반환됩니다.")
-        currentBid = response_json["current_bid_format"]
+        bidInfo = response_json
         bidInput.value = null;
-        return currentBid
+        return bidInfo
 
     }else {
         alert(response_json["error"])
