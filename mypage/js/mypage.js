@@ -2,7 +2,7 @@ async function userGalleryView(){
 
     const nickname = location.href.split('?')[1]
     
-    paintingList = await getUserGalleryData(nickname)
+    paintingList = await getUserGalleryData()
     
     const userTitle = document.getElementsByClassName("user_title")
     userTitle[0].innerText = nickname + "'s"+' GALLERY'
@@ -28,10 +28,10 @@ async function userGalleryView(){
         const newText = document.createElement("div")
         newText.setAttribute("class", "text")
         newGalleryContent.append(newText)
-        console.log(painting)
+        
         const newImage = document.createElement("img")
         newImage.setAttribute("class", "image")
-        newImage.setAttribute("src", painting.image)
+        newImage.setAttribute("src", "https://m.7art7.com/web/product/big/202012/a6352d03c87af7166e62c854ebc3b092.jpg")
         newGalleryContent.append(newImage)
         
         const newTitle = document.createElement("p")
@@ -83,14 +83,15 @@ function modalView(painting){
     modal[0].style.display = 'flex'
 
     const image = document.getElementsByClassName('modal_image_box-image')
-    image[0].setAttribute('src', painting.image)
+    image[0].setAttribute('src', 'https://m.7art7.com/web/product/big/202012/a6352d03c87af7166e62c854ebc3b092.jpg')
+
     const title = document.getElementsByClassName('modal_text_box-title')
     const artist = document.getElementsByClassName('modal_text_box-artist')
     const description = document.getElementsByClassName('modal_text_box-description')
     const winningBid = document.getElementsByClassName('modal_text_box-winning_bid')
     title[0].innerText = painting.title
     artist[0].innerText = painting.artist.nickname
-    winningBid[0].innerText = `낙찰가 ${(painting.auction[0].current_bid).toLocaleString()} point`
+    winningBid[0].innerText = `낙찰가 ${painting.auction[0].current_bid} point`
     description[0].innerText = painting.description
 }
 
