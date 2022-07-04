@@ -1,0 +1,92 @@
+.title_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 90px;
+    padding: 50px;
+}
+
+.my-gallery {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.empty-text {
+    text-align: center;
+    color: gray;
+    background-color: white;
+}
+
+.my-gallery-image {
+    max-height: 500px;
+    object-fit: cover;
+}
+
+.title_container > p {
+    margin: 0;
+    font-size: 30px;
+}
+
+.auction-list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 100px;
+}
+
+.auction-list-container > .auction-list {
+    display: flex;
+    flex-wrap: wrap;
+    width: 960px;
+    justify-content: center;
+}
+
+.auction-list-container > .auction-list > .auction {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 250px;
+    margin: 50px 20px;
+    cursor: pointer;
+}
+
+.auction-list-container > .auction-list > .auction:nth-child(-n+4){
+    display: flex
+}
+
+.auction-list-container > .auction-list > .auction > .content > .image {
+    width: 200px;
+    height: 250px;
+    object-fit: cover;
+}
+
+.auction-list-container > .auction-list > .auction > .content > .text {
+    position: absolute;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    width: 200px;
+    height: 250px;
+    color: white;
+    font-weight: bold;
+}
+
+.auction-list-container > .auction-list > .auction:hover > .content > .text {
+    opacity: 0.6;
+    transition: all 0.8s ease;
+}
+
+.loadmore {
+    background-color: white;
+    border: 2px solid gainsboro;
+    margin: 20px;
+    padding: 15px;
+    color: dimgray;
+    cursor: pointer;
+    display: none;
+}
