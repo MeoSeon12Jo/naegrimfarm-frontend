@@ -1,5 +1,12 @@
 const frontEndBaseUrl = "http://127.0.0.1:5500"
 
+function goMyPage(){
+
+    const nickname = JSON.parse(localStorage.getItem("payload"))['nickname']
+    const myPage = document.getElementsByClassName("my-page")
+    myPage[0].setAttribute("href", `/mypage/mypage.html?${nickname}`)
+}
+
 // 경매 아이템 모두 보여주기
 async function getAllAuctionView() {
 

@@ -45,7 +45,7 @@
 }
 
 .auctions:hover, .exhibitions:hover, .my-page:hover, .logout:hover {
-    color: gray;
+    color: gray !important;
     text-decoration: none;
 }
 
