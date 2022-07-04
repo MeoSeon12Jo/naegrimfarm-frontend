@@ -1,3 +1,9 @@
+body {
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+}
+
+
 .main-body {
     display: inline-block;
     width: 100%;
