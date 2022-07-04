@@ -48,7 +48,7 @@ async function getAllAuctionView() {
 
         var newImage = document.createElement("img")
         newImage.setAttribute("class", "image")
-        newImage.setAttribute("src", "https://preview.redd.it/6z3wrreza5a61.png?width=640&crop=smart&auto=webp&s=24019710b7e392758cb4440b6bb72b32d36e5118")
+        newImage.setAttribute("src", closingAuctions[i]['painting']['image'])
         newAnchor.append(newImage)
 
         var newOverlay = document.createElement("div")
@@ -90,7 +90,7 @@ async function getAllAuctionView() {
 
         var newImage = document.createElement("img")
         newImage.setAttribute("class", "image")
-        newImage.setAttribute("src", "https://artfiles.alphacoders.com/151/thumb-1920-151878.jpg")
+        newImage.setAttribute("src", hotAuctions[i]['painting']['image'])
         newAnchor.append(newImage)
 
         var newOverlay = document.createElement("div")
@@ -128,7 +128,7 @@ async function getAllAuctionView() {
 
         var newImage = document.createElement("img")
         newImage.setAttribute("class", "image")
-        newImage.setAttribute("src", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIyXIYSfnM9rP4xi_RLcTwAQebcmZ_eZuJtA&usqp=CAU")
+        newImage.setAttribute("src", noBidAuctions[i]['painting']['image'])
         newAnchor.append(newImage)
 
         var newOverlay = document.createElement("div")
@@ -195,7 +195,7 @@ async function getCategoryAuctionView(category) {
 
         var newImage = document.createElement("img")
         newImage.setAttribute("class", "image")
-        newImage.setAttribute("src", "https://m.7art7.com/web/product/big/202012/a6352d03c87af7166e62c854ebc3b092.jpg")
+        newImage.setAttribute("src", closingAuctions[i]['painting']['image'])
         newAnchor.append(newImage)
 
         var newOverlay = document.createElement("div")
@@ -237,7 +237,7 @@ async function getCategoryAuctionView(category) {
 
         var newImage = document.createElement("img")
         newImage.setAttribute("class", "image")
-        newImage.setAttribute("src", "https://m.7art7.com/web/product/big/202012/a6352d03c87af7166e62c854ebc3b092.jpg")
+        newImage.setAttribute("src", hotAuctions[i]['painting']['image'])
         newAnchor.append(newImage)
 
         var newOverlay = document.createElement("div")
@@ -275,7 +275,7 @@ async function getCategoryAuctionView(category) {
 
         var newImage = document.createElement("img")
         newImage.setAttribute("class", "image")
-        newImage.setAttribute("src", "https://m.7art7.com/web/product/big/202012/a6352d03c87af7166e62c854ebc3b092.jpg")
+        newImage.setAttribute("src", hotAuctions[i]['painting']['image'])
         newAnchor.append(newImage)
 
         var newOverlay = document.createElement("div")

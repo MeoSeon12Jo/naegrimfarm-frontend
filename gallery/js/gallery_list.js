@@ -15,7 +15,7 @@ async function galleryView(){
 
             let user = users[i]
             let nickname = user.nickname
-            let paintingsList = user.paintings_list
+            let paintingsList = user.paintings_image
             
             const newGallery = document.createElement("a")
             newGallery.setAttribute("class", "gallery")
@@ -34,7 +34,7 @@ async function galleryView(){
             
             const newImage = document.createElement("img")
             newImage.setAttribute("class", "image")
-            newImage.setAttribute("src", "https://m.7art7.com/web/product/big/202012/4dc33b6141e960cb7f820ea58172f5d5.jpg")
+            newImage.setAttribute("src", paintingsList[0].image)
             newGalleryContent.append(newImage)
             
             const newNickname = document.createElement("p")

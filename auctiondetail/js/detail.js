@@ -74,7 +74,7 @@ async function getDetail() {
     //작품 이미지
     const newPaintingImage = document.createElement("img")
     newPaintingImage.setAttribute("class", "detail-image")
-    newPaintingImage.setAttribute("src", "https://img.freepik.com/free-photo/hand-drawn-oil-painting-abstract-art-background-oil-painting-texture_46363-593.jpg")
+    newPaintingImage.setAttribute("src", image)
     mainAuctionImage.append(newPaintingImage)
 
     //작품설명
@@ -190,7 +190,7 @@ async function getDetail() {
         const newArtistDifferentImage = document.createElement("img")
         newArtistDifferentImage.setAttribute("class", "artist-different-image")
         newArtistDifferentImage.setAttribute("type", "button")
-        newArtistDifferentImage.setAttribute("src", "https://img.freepik.com/free-photo/hand-drawn-oil-painting-abstract-art-background-oil-painting-texture_46363-593.jpg")
+        newArtistDifferentImage.setAttribute("src", artistPaintings[i]['painting_image'])
         newArtistDifferentImage.setAttribute("href", "#")
         newArtistDifferentImage.addEventListener('click', () => {
             location.href = `${frontEndBaseUrl}/auctiondetail/detail.html?${artistAuctionId}`
