@@ -46,6 +46,7 @@ async function auctionDetailView(id){
 
     }else {
         alert(response_json["error"])
+        window.location.replace("/auction/auction_list.html")
     }
 }
 
