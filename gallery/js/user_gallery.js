@@ -28,10 +28,10 @@ async function userGalleryView(){
         const newText = document.createElement("div")
         newText.setAttribute("class", "text")
         newGalleryContent.append(newText)
-        
+        console.log(painting)
         const newImage = document.createElement("img")
         newImage.setAttribute("class", "image")
-        newImage.setAttribute("src", "https://m.7art7.com/web/product/big/202012/a6352d03c87af7166e62c854ebc3b092.jpg")
+        newImage.setAttribute("src", painting.image)
         newGalleryContent.append(newImage)
         
         const newTitle = document.createElement("p")
@@ -83,8 +83,7 @@ function modalView(painting){
     modal[0].style.display = 'flex'
 
     const image = document.getElementsByClassName('modal_image_box-image')
-    image[0].setAttribute('src', 'https://m.7art7.com/web/product/big/202012/a6352d03c87af7166e62c854ebc3b092.jpg')
-
+    image[0].setAttribute('src', painting.image)
     const title = document.getElementsByClassName('modal_text_box-title')
     const artist = document.getElementsByClassName('modal_text_box-artist')
     const description = document.getElementsByClassName('modal_text_box-description')

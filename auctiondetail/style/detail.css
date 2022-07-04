@@ -84,7 +84,7 @@ footer {
     width: 100%;
     height: 500px;
     margin-left: 80px;
-    object-fit: contain;
+    object-fit: cover;
 }
 
 .division-line {
