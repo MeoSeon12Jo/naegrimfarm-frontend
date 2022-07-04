@@ -60,8 +60,7 @@ function ExhibitionView(data, nickname){
                 const myGalleryLink = document.getElementsByClassName("my-gallery-link")
                 const myGalleryImage = document.getElementsByClassName("my-gallery-image")
                 myGalleryLink[0].setAttribute('href', `../gallery/user_gallery.html?${nickname}`)
-                // myGalleryImage[0].setAttribute('src', `${image}`) 이미지 서버 연동 후 아래 코드와 교체
-                myGalleryImage[0].setAttribute('src', 'https://m.7art7.com/web/product/big/202012/a6352d03c87af7166e62c854ebc3b092.jpg')
+                myGalleryImage[0].setAttribute('src', image)
 
                 break
             }
@@ -138,8 +137,8 @@ function ProceedingAuctionView(data, nickname){
     
                 const newImage = document.createElement("img")
                 newImage.setAttribute("class", "image")
-                // newImage.setAttribute("src", `${image}`) 이미지 서버 연동 후 아래 코드와 교체
-                newImage.setAttribute("src", "https://m.7art7.com/web/product/big/202012/4dc33b6141e960cb7f820ea58172f5d5.jpg")
+                newImage.setAttribute("src", image)
+
                 newAuctionContent.append(newImage)
     
                 loadMoreBtn(auctions)
