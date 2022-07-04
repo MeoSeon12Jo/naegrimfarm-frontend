@@ -1,5 +1,5 @@
-const backend_base_url = "http://127.0.0.1:8000"
-const frontend_base_url = "http://127.0.0.1:5500"
+const backEndBaseUrl = "http://127.0.0.1:8000"
+const frontEndBaseUrl = "http://127.0.0.1:5500"
 
 
 function getCookie(name) {
@@ -38,7 +38,7 @@ async function onLogin() {
         password : document.getElementById("inputPassword").value
     }
 
-    const response = await fetch(`${backend_base_url}/user/api/farm/token/`, {
+    const response = await fetch(`${backEndBaseUrl}/user/api/farm/token/`, {
         method: 'POST',
         mode: 'cors',
         headers: {
@@ -50,10 +50,8 @@ async function onLogin() {
     }
     )
     response_json = await response.json()
-    console.log(response_json)
 
     if (response.status == 200){
-        console.log(response_json)
         localStorage.setItem("farm_access_token", response_json.access)
         localStorage.setItem("farm_refresh_token", response_json.refresh)
 
@@ -68,13 +66,24 @@ async function onLogin() {
         localStorage.setItem("payload", jsonPayload);
 
         alert("로그인 성공!")
-        window.location.replace(`${frontend_base_url}/index/mainpage.html`);
+        window.location.replace(`${frontEndBaseUrl}/index/mainpage.html`);
     }else {
         //로그인 실패시
         alert(response_json["detail"])
         window.location.reload();
     }
 }
+
+function onLogout(){
+    localStorage.removeItem("farm_access_token")
+    localStorage.removeItem("farm_refresh_token")
+    localStorage.removeItem("payload")
+    // window.location.replace(`${frontEndBaseUrl}/`);
+    window.location.reload();
+}
+
+
+
 // 페이지를 다시 로딩 하면 벌어지는 일들!
 window.onload = () => {
     const payload = JSON.parse(localStorage.getItem("payload"));
@@ -99,7 +108,7 @@ window.onload = () => {
         };
 
         // 다시 인증 받은 accessToken을 localStorage에 저장하자.
-        requestRefreshToken(`${backend_base_url}/user/api/token/refresh/`).then((data) => {
+        requestRefreshToken(`${backEndBaseUrl}/user/api/token/refresh/`).then((data) => {
             // 새롭게 발급 받은 accessToken을 localStorage에 저장
             const accessToken = data.access;
             localStorage.setItem("farm_access_token", accessToken);

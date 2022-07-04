@@ -1,3 +1,5 @@
+const frontEndBaseUrl = "http://127.0.0.1:5500"
+
 // 경매 아이템 모두 보여주기
 async function getAllAuctionView() {
 
@@ -32,7 +34,7 @@ async function getAllAuctionView() {
         var newAnchor = document.createElement("a")
         newAnchor.setAttribute("href", "#")
         newAnchor.addEventListener('click', () => {
-            location.href = `auctiondetail/detail.html?${auctionId}`
+            location.href = `${frontEndBaseUrl}/auctiondetail/detail.html?${auctionId}`
         })
         newAuction.append(newAnchor)
 
@@ -75,7 +77,7 @@ async function getAllAuctionView() {
         var newAnchor = document.createElement("a")
         newAnchor.setAttribute("href", "#")
         newAnchor.addEventListener('click', () => {
-            location.href = `auctiondetail/detail.html?${auctionId}`
+            location.href = `${frontEndBaseUrl}/auctiondetail/detail.html?${auctionId}`
         })
         newAuction.append(newAnchor)
 
@@ -112,9 +114,10 @@ async function getAllAuctionView() {
         var newAnchor = document.createElement("a")
         newAnchor.setAttribute("href", "#")
         newAnchor.addEventListener('click', () => {
-            location.href = `auctiondetail/detail.html?${auctionId}`
+            location.href = `${frontEndBaseUrl}/auctiondetail/detail.html?${auctionId}`
         })
         newAuction.append(newAnchor)
+
 
         var newImage = document.createElement("img")
         newImage.setAttribute("class", "image")
@@ -167,6 +170,7 @@ async function getCategoryAuctionView(category) {
     hotAuctionsList.replaceChildren()
     noBidAuctionsList.replaceChildren()
 
+
     for (let i = 0; i < closingAuctions.length; i++) {
         let auctionId = closingAuctions[i].id
 
@@ -177,7 +181,7 @@ async function getCategoryAuctionView(category) {
         var newAnchor = document.createElement("a")
         newAnchor.setAttribute("href", "#")
         newAnchor.addEventListener('click', () => {
-            location.href = `auctiondetail/detail.html?${auctionId}`
+            location.href = `${frontEndBaseUrl}/auctiondetail/detail.html?${auctionId}`
         })
         newAuction.append(newAnchor)
 
@@ -220,7 +224,7 @@ async function getCategoryAuctionView(category) {
         var newAnchor = document.createElement("a")
         newAnchor.setAttribute("href", "#")
         newAnchor.addEventListener('click', () => {
-            location.href = `auctiondetail/detail.html?${auctionId}`
+            location.href = `${frontEndBaseUrl}/auctiondetail/detail.html?${auctionId}`
         })
         newAuction.append(newAnchor)
 
@@ -257,9 +261,10 @@ async function getCategoryAuctionView(category) {
         var newAnchor = document.createElement("a")
         newAnchor.setAttribute("href", "#")
         newAnchor.addEventListener('click', () => {
-            location.href = `auctiondetail/detail.html?${auctionId}`
+            location.href = `${frontEndBaseUrl}/auctiondetail/detail.html?${auctionId}`
         })
         newAuction.append(newAnchor)
+
 
         var newImage = document.createElement("img")
         newImage.setAttribute("class", "image")

@@ -1,5 +1,5 @@
-const backend_base_url = "http://127.0.0.1:8000"
-const frontend_base_url = "http://127.0.0.1:5500"
+const backEndBaseUrl = "http://127.0.0.1:8000"
+const frontEndBaseUrl = "http://127.0.0.1:5500"
 
 
 function getCookie(name) {
@@ -66,7 +66,7 @@ async function onSignUp() {
         return;
     }
     if (password == password2) {
-        const response = await fetch(`${backend_base_url}/user/`, {
+        const response = await fetch(`${backEndBaseUrl}/user/`, {
             method: 'POST',
             mode: 'cors',
             headers: {
@@ -85,7 +85,7 @@ async function onSignUp() {
         console.log(response_json)
         if (response.status == 200){
             alert("회원가입 성공")
-            window.location.replace(`${frontend_base_url}/user/login.html`);
+            window.location.replace(`${frontEndBaseUrl}/user/login.html`);
         }else {
             //유효하지 않은 이메일 도메인 사용시
             alert(response_json["error"])
