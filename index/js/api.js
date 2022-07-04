@@ -30,20 +30,30 @@ async function uploadAuction() {
     const startPrice = document.getElementById('start-price').value;
     const bidEndDate = document.getElementById('bid-end-date').value;
     const image = document.getElementById("result-img").files[0];
-    let formData = new FormData();
+    let formDataAuction = new FormData();
+    let formDataPainting = new FormData();
+    
     // Auction: id, start_bid, current_bid, auction_start_date, auction_end_date, painting, bidder
+    // Painting: id, artist, owner, title, description, category, image, is_auction
+    
+    formDataPainting.append('category', category);
+    formDataPainting.append('title', title);
+    formDataPainting.append('description', description);
+    //formDataPainting.append('artist', )
+    //formDataPainting.append('owner', )
+    formDataPainting.append('image', image);
+    formDataPainting.append('is_auction', true);
 
-    formData.append('category', category);
-    formData.append('title', title);
-    formData.append('description', description);
-    formData.append('start_bid', startPrice);
-    formData.append('current_bid', startPrice);
-    formData.append('auction_end_date', bidEndDate);
+    
+    formDataAuction.append('start_bid', startPrice);
+    formDataAuction.append('current_bid', startPrice);
+    formDataAuction.append('auction_end_date', bidEndDate);
+    formDataAuction.append('painting', formDataPainting)
     //formData.append('bidder', );
-    //formData.append('painting', image);
 
     if (title && description && startPrice && bidEndDate && image) {
         const token = localStorage.getItem('access')
+        
         const response = await fetch(`${backendBaseUrl}/`, {
             method: 'POST',
             mode: 'cors',
@@ -54,12 +64,14 @@ async function uploadAuction() {
             },
             body: formData
         })
+
         response_json = await response.json()
-        console.log(response_json)
+        // console.log(response_json)
         if (response.status == 200){
             alert("경매 등록 완료")
             window.location.replace(`${frontEndBaseUrl}/index/mainpage.html`);
         }else {
             alert(response_json["error"])
         }
+    }
 }
