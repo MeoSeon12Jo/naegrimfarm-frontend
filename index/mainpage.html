@@ -8,6 +8,9 @@
     <!-- CSS -->
     <link href="../index/style/mainpage.css" rel="stylesheet">
 
+    <!-- js -->
+    <script type="text/javascript" src="../index/api.js"></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
     </script>
     <script>
@@ -86,7 +89,7 @@
                     <button class="convert">🎨 CONVERT 🎨</button>
                 </div>
                 <div>
-                    <img class="img-result" src="../index/image/미술관1.jpg">
+                    <img class="img-result" id="result-img" src="../index/image/미술관1.jpg">
                 </div>
             </div>
             <div class="column-div">
@@ -96,7 +99,7 @@
                 <div class="category">
                     CATEGORY
                 </div>
-                <select class="category-box">
+                <select class="category-box" id="category">
                     <option>CATEGORY 1</option>
                     <option>CATEGORY 2</option>
                     <option>CATEGORY 3</option>
@@ -104,22 +107,22 @@
                 <div class="title">
                     TITLE
                 </div>
-                <input class="title-input" placeholder="작품명">
+                <input class="title-input" placeholder="작품명" id="title">
                 <div class="description">
                     DESCRIPTION
                 </div>
-                <textarea class="description-input">
+                <textarea class="description-input" id="description">
                 </textarea>
                 <div class="start-price">
                     START PRICE
                 </div>
-                <input class="start-price-input" type="number" placeholder="최소 경매가"
+                <input class="start-price-input" id="start-price" type="number" placeholder="최소 경매가"
                        min="0" step="1000000" required="True">
                 <div class="bid-end-date">
                     BID END DATE
                 </div>
-                <input class="bid-end-date-input" type="date">
-                <button class="post-article">경매 올리기</button>
+                <input class="bid-end-date-input" id="bid-end-date" type="date">
+                <button class="post-article" onclick="uploadAuction()">경매 올리기</button>
             </div>
             <script>
     let files;
@@ -181,4 +184,5 @@
     </div>
 </div>
 </body>
+<script type="text/javascript" src="../index/api.js"></script>
 </html>
