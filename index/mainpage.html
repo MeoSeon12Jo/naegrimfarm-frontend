@@ -12,13 +12,13 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-    
+
     <!-- MDB icon -->
     <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
-    
+
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.css" rel="stylesheet" />
 
@@ -46,7 +46,7 @@
             <a class="exhibitions" href="/gallery/gallery_list.html">
                 <div>EXHIBITIONS</div>
             </a>
-            <a class="my-page" href="/mypage/mypage.html">
+            <a class="my-page" onclick="goMyPage()">
                 <div>MY PAGE</div>
             </a>
             <a class="logout" href="/user/login.html" onclick="onLogout()">
@@ -60,9 +60,36 @@
         <div class="scroll-container">
             <!-- 페이지 별로 div를 분리 -->
             <!-- 감성 사진 1장 페이지 -->
-            <div class="scroll-area"><img class="museum-img" src="../index/image/미술관1.jpg"></div>
-            <!-- 유화 제작 + 업로드 정보 입력 페이지 -->
             <div class="scroll-area">
+                <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="https://trip.pref.kanagawa.jp/img/spots/photos/hero/4dfd763da49565323c66e1f9f8f936ee-1920x1080.jpg"
+                                class="d-block w-100 museum-img" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://ak-d.tripcdn.com/images/100o190000015j3hu0BD0.jpg?proc=source%2Ftrip"
+                                class="d-block w-100 museum-img" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://img1.yna.co.kr/mpic/YH/2022/03/31/MYH20220331005800641.jpg"
+                                class="d-block w-100 museum-img" alt="...">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+            <!-- 유화 제작 + 업로드 정보 입력 페이지 -->
+            <div class="scroll-area2">
                 <div class="column-div">
                     <div class="content">
                         <p class="drag-drop-msg">drag and drop your image</p>
@@ -132,9 +159,11 @@
                         CATEGORY
                     </div>
                     <select class="category-box" id="category">
-                        <option>CATEGORY 1</option>
-                        <option>CATEGORY 2</option>
-                        <option>CATEGORY 3</option>
+                        <option>풍경</option>
+                        <option>인물</option>
+                        <option>사물</option>
+                        <option>동물</option>
+                        <option>기타</option>
                     </select>
                     <div class="title">
                         TITLE
@@ -150,7 +179,7 @@
                         START PRICE
                     </div>
                     <input class="start-price-input" id="start-price" type="number" placeholder="최소 경매가" min="0"
-                        step="1000000" required="True">
+                        step="100000" required="True">
                     <div class="bid-end-date">
                         BID END DATE
                     </div>
@@ -159,57 +188,11 @@
                     <button class="post-article" onclick="uploadAuction()">경매 올리기</button>
                 </div>
             </div>
-            <div class="scroll-area">
-                <!-- footer 페이지 -->
-    <footer class="text-center text-white">
-        <!-- Grid container -->
-        <div class="container pt-4">
-            <!-- Section: Social media -->
-            <section class="mb-4">
-                <!-- Facebook -->
-                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="https://kyumin1020.tistory.com"
-                    role="button" data-mdb-ripple-color="dark" target="_blank"><i
-                        class="fab fa-facebook-f"></i></a>
-
-                <!-- Twitter -->
-                <a class="btn btn-link btn-floating btn-lg text-dark m-1"
-                    href="https://naeilbaeumdan-songheew.tistory.com/" role="button"
-                    data-mdb-ripple-color="dark" target="_blank"><i class="fab fa-twitter"></i></a>
-
-                <!-- Google -->
-                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="https://frannyk.tistory.com/"
-                    role="button" data-mdb-ripple-color="dark" target="_blank"><i class="fab fa-google"></i></a>
-
-                <!-- Instagram -->
-                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="https://velog.io/@wkdudhksl"
-                    role="button" data-mdb-ripple-color="dark" target="_blank"><i
-                        class="fab fa-instagram"></i></a>
-
-                <!-- Linkedin -->
-                <a class="btn btn-link btn-floating btn-lg text-dark m-1"
-                    href="https://quixotic-wok-871.notion.site/12-df4f63382fb146e69b3b5b96231bb792"
-                    role="button" data-mdb-ripple-color="dark" target="_blank"><i
-                        class="fab fa-linkedin"></i></a>
-                <!-- Github -->
-                <a class="btn btn-link btn-floating btn-lg text-dark m-1"
-                    href="https://github.com/MeoSeon12Jo/naegrimfarm-frontend" role="button"
-                    data-mdb-ripple-color="dark" target="_blank"><i class="fab fa-github"></i></a>
-            </section>
-            <!-- Section: Social media -->
-        </div>
-        <!-- Grid container -->
-
-        <!-- Copyright -->
-        <div class="text-center text-dark p-3" style="background-color: rgba(122, 122, 122, 0.2);">
-            © 2022 MEOSEON12JO
-            <a class="text-dark" href="https://github.com/MeoSeon12Jo/naegrimfarm-frontend"
-                target="_blank">NAEGRIMFARM</a>
-        </div>
-        <!-- Copyright -->
-    </footer>
-            </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

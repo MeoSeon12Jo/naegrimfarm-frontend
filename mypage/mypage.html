@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>NAEGRIMFARM</title>
 
-    <link rel="stylesheet" href="../mypage/style/mypage.css" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="../index/style/nav_footer.css">
+    <link rel="stylesheet" href="style/mypage.css" />
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -16,8 +20,8 @@
     <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.css" rel="stylesheet" />
-
 </head>
+
 <body>
     <header class="header">
         <!-- 로고 -->
@@ -34,7 +38,7 @@
             <a class="exhibitions" href="/gallery/gallery_list.html">
                 <div>EXHIBITIONS</div>
             </a>
-            <a class="my-page" href="/mypage/mypage.html">
+            <a class="my-page" onclick="goMyPage()">
                 <div>MY PAGE</div>
             </a>
             <a class="logout" href="/user/login.html" onclick="onLogout()">
@@ -43,25 +47,26 @@
         </div>
     </header>
     <div class="title_container">
-        <p class="user_title">
+        <p>내 전시회 가기
     </div>
-    <div class="gallery_list_container">
-        <div class="gallery_list"></div>
+    <div class="my-gallery">
+        <a class="my-gallery-link"><img class="my-gallery-image"></a>
+    </div>
+    <div class="title_container">
+        <p>입찰 중인 경매
+    </div>
+    <div class="auction-list-container">
+        <div class="auction-list"></div>
         <button class="loadmore" onclick="loadData()">Load More&nbsp;&nbsp;&nbsp;→</button>
     </div>
-    <div class="modal_body">
-        <div class="modal_container">
-            <div class="modal_image_box"><img class="modal_image_box-image"></div>
-            <div class="modal_text_box">
-                <p class="modal_text_box-title"></p>
-                <p class="modal_text_box-artist"></p>
-                <p class="modal_text_box-winning_bid"></p>
-                <p class="modal_text_box-description"></p>
-                <button class="modal_btn" onclick="modalUnView()">❌</button>
-            </div>
-        </div>
+    <div class="title_container">
+        <p>등록한 경매
     </div>
-    <footer class="text-center text-white" style="background-color: #f1f1f1;">
+    <div class="auction-list-container">
+        <div class="auction-list"></div>
+        <button class="loadmore" onclick="loadData()">Load More&nbsp;&nbsp;&nbsp;→</button>
+    </div>
+    <footer class="text-center text-white" style="background-color: #f1f1f1; ">
         <!-- Grid container -->
         <div class="container pt-4">
             <!-- Section: Social media -->
@@ -106,7 +111,7 @@
     </footer>
 </body>
 
-<script src="../mypage/js/mypage_api.js"></script>
-<script src="../mypage/js/mypage.js"></script>
+<script src="js/api.js"></script>
+<script src="js/mypage.js"></script>
 
 </html>
