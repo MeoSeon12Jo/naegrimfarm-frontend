@@ -9,7 +9,8 @@
     <link href="../index/style/mainpage.css" rel="stylesheet">
 
     <!-- js -->
-    <script type="text/javascript" src="../index/api.js"></script>
+    <script type="text/javascript" src="../index/js/api.js"></script>
+    <script type="text/javascript" src="../index/js/mainpage.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
     </script>
@@ -90,7 +91,7 @@
                     <a id="text">Drag and Drop an IMG File</a>
                 </div>
                 <div class="convert-button">
-                    <button class="convert">🎨 CONVERT 🎨</button>
+                    <button class="convert" onclick="styleTransform()">🎨 CONVERT 🎨</button>
                 </div>
                 <div>
                     <img class="img-result" id="result-img" src="../index/image/미술관1.jpg">
@@ -98,7 +99,7 @@
             </div>
             <div class="column-div">
                 <div class="upload-title">
-                    왼쪽의 그림을 경매에 올리시려면 아래의 FORM을 작성해주세요
+                    왼쪽의 그림을 등록하시려면 아래의 FORM을 작성해주세요
                 </div>
                 <div class="category">
                     CATEGORY
@@ -117,6 +118,20 @@
                 </div>
                 <textarea class="description-input" id="description">
                 </textarea>
+                <!-- <div class="start-price">
+                    START PRICE
+                </div>
+                <input class="start-price-input" id="start-price" type="number" placeholder="최소 경매가"
+                       min="0" step="1000000" required="True">
+                <div class="bid-end-date">
+                    BID END DATE
+                </div>
+                <input class="bid-end-date-input" id="bid-end-date" type="date"> -->
+                <button class="post-painting" type="submit" onclick="uploadPainting()">그림 등록하기</button>
+                
+                <div class="upload-bid-title">
+                    왼쪽의 그림을 지금 바로 경매에 올리시려면 아래의 FORM을 작성해주세요
+                </div>
                 <div class="start-price">
                     START PRICE
                 </div>
@@ -126,60 +141,8 @@
                     BID END DATE
                 </div>
                 <input class="bid-end-date-input" id="bid-end-date" type="date">
-                <button class="post-article" onclick="uploadAuction()">경매 올리기</button>
+                <button class="post-auction" type="submit" onclick="uploadAuction()">경매 바로 등록하기</button>
             </div>
-            <script>
-    let files;
-
-    $('.addition_modal_body')
-        .on("dragover", dragOver)
-        .on("dragleave", dragOver)
-        .on("drop", uploadFiles);
-
-    function dragOver(e) {
-        e.stopPropagation();
-        e.preventDefault();
-        if (e.type == "dragover") {
-            $(e.target).css({
-                "background-color": "black",
-                "outline-offset": "-20px"
-            });
-        } else {
-            $(e.target).css({
-                "background-color": "gray",
-                "outline-offset": "-10px"
-            });
-        }
-    }
-
-    function uploadFiles(e) {
-        e.stopPropagation();
-        e.preventDefault();
-        dragOver(e);
-
-        e.dataTransfer = e.originalEvent.dataTransfer;
-        files = e.dataTransfer.files;
-
-        if (files.length > 1) {
-            alert('하나만 올려주세요');
-            return;
-        }
-        if (files[0].type.match(/image.*/)) {
-            $(e.target).css({
-                "background-image": "url(" + window.URL.createObjectURL(files[0]) + ")",
-                "outline": "none",
-                "background-size": "100% 100%"
-            });
-            $('#text').hide();
-        } else {
-            alert('이미지가 아닙니다.');
-            return;
-        }
-    }
-
-
-
-            </script>
         </div>
         <!-- footer 페이지 -->
         <div class="scroll-area">
@@ -188,5 +151,4 @@
     </div>
 </div>
 </body>
-<script type="text/javascript" src="../index/api.js"></script>
 </html>
