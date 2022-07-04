@@ -6,11 +6,9 @@ async function auctionView() {
 
     const response = await fetch(`${backend_base_url}/auction/`, {})
 
-    // 경매 data 조회하기
     if (response.status == 200) {
         response_json = await response.json()
         auctions = response_json
-
         return auctions
     }
 
@@ -18,6 +16,7 @@ async function auctionView() {
         return response.status
     }
 }
+
 
 // Query parameter로 카테고리별 경매정보 조회
 async function categoryView(category) {
@@ -27,7 +26,6 @@ async function categoryView(category) {
     if (response.status == 200) {
         response_json = await response.json()
         auctions = response_json
-
         return auctions
     }
 
