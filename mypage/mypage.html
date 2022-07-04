@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAEGRIMFARM</title>
+
+    <link rel="stylesheet" href="../gallery/style/gallery_list.css" />
+    <link rel="stylesheet" href="../mypage/style/mypage.css" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <!-- MDB icon -->
+    <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.css" rel="stylesheet" />
+
+</head>
+<body>
+    <header class="header">
+        <!-- 로고 -->
+        <div class="logo">
+            <a class="logo-a" href="/index/mainpage.html">
+                <span>NAEGRIM</span><b>FARM</b>
+            </a>
+        </div>
+        <!-- 네비개이션 -->
+        <div class="navi">
+            <a class="auctions" href="/auction/auction_list.html">
+                <div>AUCTIONS</div>
+            </a>
+            <a class="exhibitions" href="/gallery/gallery_list.html">
+                <div>EXHIBITIONS</div>
+            </a>
+            <a class="my-page" href="#">
+                <div>MY PAGE</div>
+            </a>
+            <a class="logout" href="/user/login.html" onclick="onLogout()">
+                <div>LOGOUT</div>
+            </a>
+        </div>
+    </header>
+    <div class="title_container">
+        <p class="user_title">
+    </div>
+    <div class="gallery_list_container">
+        <div class="gallery_list"></div>
+        <button class="loadmore" onclick="loadData()">Load More&nbsp;&nbsp;&nbsp;→</button>
+    </div>
+    <div class="modal_body">
+        <div class="modal_container">
+            <div class="modal_image_box"><img class="modal_image_box-image"></div>
+            <div class="modal_text_box">
+                <p class="modal_text_box-title"></p>
+                <p class="modal_text_box-artist"></p>
+                <p class="modal_text_box-winning_bid"></p>
+                <p class="modal_text_box-description"></p>
+                <button class="modal_btn" onclick="modalUnView()">❌</button>
+            </div>
+        </div>
+    </div>
+    <footer class="text-center text-white" style="background-color: #f1f1f1; ">
+        <!-- Grid container -->
+        <div class="container pt-4">
+            <!-- Section: Social media -->
+            <section class="mb-4">
+                <!-- Facebook -->
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="https://kyumin1020.tistory.com"
+                    role="button" data-mdb-ripple-color="dark" target="_blank"><i class="fab fa-facebook-f"></i></a>
+
+                <!-- Twitter -->
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1"
+                    href="https://naeilbaeumdan-songheew.tistory.com/" role="button" data-mdb-ripple-color="dark"
+                    target="_blank"><i class="fab fa-twitter"></i></a>
+
+                <!-- Google -->
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="https://frannyk.tistory.com/"
+                    role="button" data-mdb-ripple-color="dark" target="_blank"><i class="fab fa-google"></i></a>
+
+                <!-- Instagram -->
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="https://velog.io/@wkdudhksl"
+                    role="button" data-mdb-ripple-color="dark" target="_blank"><i class="fab fa-instagram"></i></a>
+
+                <!-- Linkedin -->
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1"
+                    href="https://quixotic-wok-871.notion.site/12-df4f63382fb146e69b3b5b96231bb792" role="button"
+                    data-mdb-ripple-color="dark" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <!-- Github -->
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1"
+                    href="https://github.com/MeoSeon12Jo/naegrimfarm-frontend" role="button"
+                    data-mdb-ripple-color="dark" target="_blank"><i class="fab fa-github"></i></a>
+            </section>
+            <!-- Section: Social media -->
+        </div>
+        <!-- Grid container -->
+
+        <!-- Copyright -->
+        <div class="text-center text-dark p-3" style="background-color: rgba(122, 122, 122, 0.2);">
+            © 2022 MEOSEON12JO
+            <a class="text-dark" href="https://github.com/MeoSeon12Jo/naegrimfarm-frontend"
+                target="_blank">NAEGRIMFARM</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+</body>
+
+<script src="js/api.js"></script>
+<script src="js/user_gallery.js"></script>
+
+</html>

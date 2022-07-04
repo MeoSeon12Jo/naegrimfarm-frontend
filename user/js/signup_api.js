@@ -21,7 +21,7 @@ function getCookie(name) {
 
     return cookie_value;
 }
-const csrftoken = get_cookie('csrftoken')
+const csrftoken = getCookie('csrftoken')
 
 function csrfSafeMethod(method) {
     // these HTTP methods do not require CSRF protection
