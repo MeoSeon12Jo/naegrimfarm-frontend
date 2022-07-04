@@ -91,7 +91,7 @@ function modalView(painting){
     const winningBid = document.getElementsByClassName('modal_text_box-winning_bid')
     title[0].innerText = painting.title
     artist[0].innerText = painting.artist.nickname
-    winningBid[0].innerText = `낙찰가 ${painting.auction[0].current_bid} point`
+    winningBid[0].innerText = `낙찰가 ${(painting.auction[0].current_bid).toLocaleString()} point`
     description[0].innerText = painting.description
 }
 
