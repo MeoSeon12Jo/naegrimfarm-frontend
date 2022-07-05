@@ -99,10 +99,6 @@
     display: flex;
     flex-wrap: wrap;
     width: 960px;
-<<<<<<< HEAD
-    justify-content: center;
-=======
->>>>>>> develop
 }
 
 .post-auction-list-container > .post-auction-list > .auction {
@@ -123,10 +119,7 @@
     width: 200px;
     height: 250px;
     object-fit: cover;
-<<<<<<< HEAD
-=======
     border-radius: 10px;
->>>>>>> develop
 }
 
 .post-auction-list-container > .post-auction-list > .auction > .content > .text {
@@ -140,10 +133,7 @@
     width: 200px;
     height: 250px;
     color: white;
-<<<<<<< HEAD
-=======
     border-radius: 10px;
->>>>>>> develop
     font-weight: bold;
 }
 
