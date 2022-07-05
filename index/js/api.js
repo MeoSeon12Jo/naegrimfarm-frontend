@@ -1,5 +1,5 @@
-const backendBaseUrl = "http://127.0.0.1:8000"
-const frontendBaseUrl = "http://127.0.0.1:5500"
+const backEndBaseUrl = "http://127.0.0.1:8000"
+const frontEndBaseUrl = "http://127.0.0.1:5500"
 const token = localStorage.getItem("farm_access_token");
 
 async function uploadAuction() {
@@ -23,7 +23,7 @@ async function uploadAuction() {
     formDataAuction.append('auction_end_date', bidEndDate);
 
     if (title && description && bidEndDate) {
-        const response = await fetch(`${backendBaseUrl}/gallery/upload/makepainting/`, {
+        const response = await fetch(`${backEndBaseUrl}/gallery/upload/makepainting/`, {
             method: "POST",
             mode: "cors",
             headers: {
@@ -39,7 +39,7 @@ async function uploadAuction() {
         const paintingId = response_json['id']
         formDataAuction.append('painting', paintingId);
 
-        const response2 = await fetch(`${backendBaseUrl}/auction/upload/`, {
+        const response2 = await fetch(`${backEndBaseUrl}/auction/upload/`, {
             method: "POST",
             mode: "cors",
             headers: {
@@ -64,26 +64,27 @@ async function uploadAuction() {
     }
 }
 
-// async function userPointView() {
+async function userPointView() {
 
-//     const response = await fetch(`${backEndBaseUrl}/auction/`, {
-//         method: 'GET',
-//         mode: 'cors',
-//         headers: {
-//             'X-CSRFToken': csrftoken,
-//             'Authorization': 'Bearer ' + token,
-//         }
-//     }
-//     )
+    const response = await fetch(`${backEndBaseUrl}/user/userpoint/`, {
+        method: 'GET',
+        mode: 'cors',
+        headers: {
+            'Access-Control-Allow-Origin': "*",
+            'X-CSRFToken': csrftoken,
+            'Authorization': "Bearer " + localStorage.getItem("farm_access_token"),
+        }
+    }
+    );
 
-//     response_json = await response.json()
+    response_json = await response.json()
 
-//     if (response.status == 200) {
-//         auctions = response_json
-//         return auctions
-//     }
+    if (response.status == 200) {
+        myPoint = response_json
+        return myPoint
+    }
 
-//     else {
-//         return response.status
-//     }
-// }
+    else {
+        return response.status
+    }
+}
