@@ -1,5 +1,6 @@
 const backendBaseUrl = "http://127.0.0.1:5501"
 const frontendBaseUrl = "http://127.0.0.1:5500"
+const token = localStorage.getItem("farm_access_token");
 
 window.onload = () => {
     const payload = JSON.parse(localStorage.getItem("payload"));
@@ -10,9 +11,12 @@ window.onload = () => {
         // 인증 시간이 지났기 때문에 다시 refreshToken으로 다시 요청을 해야 한다.
         const requestRefreshToken = async (url) => {
             const response = await fetch(url, {
+                mode: 'cors',
                 headers: {
-                    Accept: "application/json",
+                    Accept:"application/json",
                     'Content-Type': 'application/json',
+                    'X-CSRFToken': csrftoken,
+                    'Authorization': 'Bearer ' + token,
                 },
                 method: "POST",
                 body: JSON.stringify({
@@ -24,7 +28,7 @@ window.onload = () => {
         };
 
         // 다시 인증 받은 accessToken을 localStorage에 저장하자.
-        requestRefreshToken(`${backend_base_url}/user/api/token/refresh/`).then((data) => {
+        requestRefreshToken(`${backendBaseUrl}/user/api/token/refresh/`).then((data) => {
             // 새롭게 발급 받은 accessToken을 localStorage에 저장
             const accessToken = data.access;
 
@@ -154,5 +158,29 @@ async function uploadAuction() {
 //         } else {
 //             alert(response_json["error"])
 //         }
+//     }
+// }
+
+// async function userPointView() {
+
+//     const response = await fetch(`${backEndBaseUrl}/auction/`, {
+//         method: 'GET',
+//         mode: 'cors',
+//         headers: {
+//             'X-CSRFToken': csrftoken,
+//             'Authorization': 'Bearer ' + token,
+//         }
+//     }
+//     )
+
+//     response_json = await response.json()
+
+//     if (response.status == 200) {
+//         auctions = response_json
+//         return auctions
+//     }
+
+//     else {
+//         return response.status
 //     }
 // }
