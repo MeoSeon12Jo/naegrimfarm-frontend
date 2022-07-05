@@ -52,7 +52,7 @@ window.onload = () => {
         };
 
         // 다시 인증 받은 accessToken을 localStorage에 저장하자.
-        requestRefreshToken(`http://127.0.0.1:8000/user/api/token/refresh/`).then((data) => {
+        requestRefreshToken(`http://3.39.193.83/user/api/token/refresh/`).then((data) => {
             // 새롭게 발급 받은 accessToken을 localStorage에 저장
             const accessToken = data.access;
             localStorage.setItem("farm_access_token", accessToken);

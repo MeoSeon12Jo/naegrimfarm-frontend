@@ -1,5 +1,6 @@
-const backEndBaseUrl = "http://127.0.0.1:8000"
-const frontEndBaseUrl = "http://127.0.0.1:5500"
+
+const backendBaseUrl = "http://3.39.193.83"
+const frontendBaseUrl = "http://127.0.0.1:5500"
 const token = localStorage.getItem("farm_access_token");
 
 async function uploadAuction() {
@@ -77,7 +78,21 @@ async function userPointView() {
     }
     );
 
-    response_json = await response.json()
+
+// async function userPointView() {
+
+//     const response = await fetch(`${backEndBaseUrl}/auction/`, {
+//         method: 'GET',
+//         mode: 'cors',
+//         headers: {
+//             'X-CSRFToken': csrftoken,
+//             'Authorization': 'Bearer ' + token,
+//         }
+//     }
+//     )
+
+//     response_json = await response.json()
+
 
     if (response.status == 200) {
         myPoint = response_json
