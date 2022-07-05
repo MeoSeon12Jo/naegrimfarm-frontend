@@ -18,13 +18,13 @@
     border: none;
     padding-inline: 30px;
     background-color: transparent;
-    color: gainsboro;
+    color: gray;
 }
 
 .category-btn:hover {
     cursor: pointer;
     transform: scale(1.05);
-    transition: all 0.7s ease-in-out;
+    transition: all 0.3s ease-in-out;
     color: black;
 }
 
@@ -57,6 +57,8 @@
     width: 80%;
     height: 300px;
     object-fit: cover;
+    border-radius: 10px;
+
 }
 
 .overlay {
@@ -77,6 +79,8 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    border-radius: 10px;
+
 }
 
 .auction:hover .overlay {

@@ -1,13 +1,21 @@
 const backendBaseUrl = "http://127.0.0.1:8000"
 const frontendBaseUrl = "http://127.0.0.1:5500"
-
+const token = localStorage.getItem("farm_access_token");
 
 async function getGalleryListData(){
     
-    const response = await fetch(`${backendBaseUrl}/gallery`, {})
+    const response = await fetch(`${backendBaseUrl}/gallery`, {
+        method: 'GET',
+        mode: 'cors',
+        headers: {
+            'X-CSRFToken': csrftoken,
+            'Authorization': 'Bearer ' + token,
+        }
+    })
+
+    users = await response.json()
     
     if (response.status == 200){
-        users = await response.json()
         return users
     }
     else{
@@ -18,11 +26,19 @@ async function getGalleryListData(){
 
 async function getUserGalleryData(nickname){
     
-    const response = await fetch(`${backendBaseUrl}/gallery/${nickname}`, {})
+    const response = await fetch(`${backendBaseUrl}/gallery/${nickname}`, {
+        method: 'GET',
+        mode: 'cors',
+        headers: {
+            'X-CSRFToken': csrftoken,
+            'Authorization': 'Bearer ' + token,
+        }
+    })
+
+    paintings = await response.json()
     
     if (response.status == 200){
-        responseJson = await response.json()
-        return responseJson
+        return paintings
     }
     else {
         console.log(response.status)
