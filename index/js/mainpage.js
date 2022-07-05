@@ -23,20 +23,22 @@ function Reader(event) {
 }
 
 //네비바 유저 포인트
-// async function getUserPointView() {
+async function getUserPointView() {
 
-//     const auctions = await userPointView();
+    const userPoint = await userPointView();
 
-//     let userPoint = auctions['user_point']
+    console.log(userPoint.my_point)
 
-//     console.log(userPoint)
+    const userCurrentPoint = document.getElementsByClassName("user-point")[0]
 
-//     const userCurrentPoint = document.getElementsByClassName("user-point")[0]
+    userCurrentPoint.replaceChildren()
 
-//     userCurrentPoint.replaceChildren()
+    const newUserPoint = document.createElement("div")
+    newUserPoint.setAttribute("class", "point-int")
+    newUserPoint.innerText = "POINT " + userPoint.my_point.toLocaleString()
+    userCurrentPoint.append(newUserPoint)
 
-//     const newUserPoint = document.createElement("div")
-//     newUserPoint.setAttribute("class", "point-int")
-//     newUserPoint.innerText = "POINT " + userPoint.toLocaleString()
-//     userCurrentPoint.append(newUserPoint)
-// }
+}
+
+$('document').ready(getUserPointView());
+
