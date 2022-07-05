@@ -1,4 +1,3 @@
-
 const backendBaseUrl = "http://3.39.193.83"
 const frontendBaseUrl = "http://127.0.0.1:5500"
 const token = localStorage.getItem("farm_access_token");
@@ -19,12 +18,11 @@ async function uploadAuction() {
     formDataPainting.append('description', description);
     formDataPainting.append('image', image);
     
-    // formDataAuction.append('painting', formDataPainting)
     formDataAuction.append('start_bid', startPrice);
     formDataAuction.append('auction_end_date', bidEndDate);
 
     if (title && description && bidEndDate) {
-        const response = await fetch(`${backEndBaseUrl}/gallery/upload/makepainting/`, {
+        const response = await fetch(`${backendBaseUrl}/gallery/upload/makepainting/`, {
             method: "POST",
             mode: "cors",
             headers: {
@@ -40,7 +38,7 @@ async function uploadAuction() {
         const paintingId = response_json['id']
         formDataAuction.append('painting', paintingId);
 
-        const response2 = await fetch(`${backEndBaseUrl}/auction/upload/`, {
+        const response2 = await fetch(`${backendBaseUrl}/auction/upload/`, {
             method: "POST",
             mode: "cors",
             headers: {
@@ -50,14 +48,12 @@ async function uploadAuction() {
             },
             body: formDataAuction,
         });
-        const response2_json = await response2.json();
 
         if (response.status === 200 && response2.status === 200) {
             alert("업로드 성공");
             window.location.reload();
         } else if (response.status === 400) {
             alert("업로드 실패");
-            // window.location.reload();
         }
     }
     else {
@@ -67,7 +63,7 @@ async function uploadAuction() {
 
 async function userPointView() {
 
-    const response = await fetch(`${backEndBaseUrl}/user/userpoint/`, {
+    const response = await fetch(`${backendBaseUrl}/user/userpoint/`, {
         method: 'GET',
         mode: 'cors',
         headers: {
@@ -75,24 +71,9 @@ async function userPointView() {
             'X-CSRFToken': csrftoken,
             'Authorization': "Bearer " + localStorage.getItem("farm_access_token"),
         }
-    }
-    );
+    });
 
-
-// async function userPointView() {
-
-//     const response = await fetch(`${backEndBaseUrl}/auction/`, {
-//         method: 'GET',
-//         mode: 'cors',
-//         headers: {
-//             'X-CSRFToken': csrftoken,
-//             'Authorization': 'Bearer ' + token,
-//         }
-//     }
-//     )
-
-//     response_json = await response.json()
-
+    response_json = await response.json()
 
     if (response.status == 200) {
         myPoint = response_json
