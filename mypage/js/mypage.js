@@ -13,18 +13,10 @@ function onLogout(){
     window.location.reload()
 }
 
-function biddingLoadMoreBtn(list){
+function loadMoreBtn(auctions){
             
-    if (list.length > 4) {
-        const loadMoreBtn = document.getElementsByClassName("bidding-loadmore")
-        loadMoreBtn[0].style.display = 'block'
-    }
-}
-
-function postingLoadMoreBtn(list){
-            
-    if (list.length > 4) {
-        const loadMoreBtn = document.getElementsByClassName("posting-loadmore")
+    if (auctions.length > 4) {
+        const loadMoreBtn = document.getElementsByClassName("loadmore")
         loadMoreBtn[0].style.display = 'block'
     }
 }
@@ -55,23 +47,26 @@ function ExhibitionView(data, nickname){
 
     if (data.paintings_serializer.length != 0){
         paintings = data.paintings_serializer
-        
-        function getIsNotAuctions(element){
-            IsNotAuction = element.is_auction
-            return IsNotAuction == false
-        }
-        myBestPainting = paintings.filter(getIsNotAuctions)[0]
+            
+        let haveIsNotAuction = false
 
-        if (myBestPainting != undefined){
+        for (let i = 0; i < paintings.length; i++){
             
-            image = myBestPainting.image
-            
-            const myGalleryLink = document.getElementsByClassName("my-gallery-link")
-            const myGalleryImage = document.getElementsByClassName("my-gallery-image")
-            myGalleryLink[0].setAttribute('href', `../gallery/user_gallery.html?${nickname}`)
-            myGalleryImage[0].setAttribute('src', image)
+            if (paintings[i].is_auction == false){
+
+                haveIsNotAuction = true
+
+                image = paintings[i].image
+                
+                const myGalleryLink = document.getElementsByClassName("my-gallery-link")
+                const myGalleryImage = document.getElementsByClassName("my-gallery-image")
+                myGalleryLink[0].setAttribute('href', `../gallery/user_gallery.html?${nickname}`)
+                myGalleryImage[0].setAttribute('src', image)
+
+                break
+            }
         }
-        else {
+        if (haveIsNotAuction == false) {
             const myGallery = document.getElementsByClassName("my-gallery")
             const myGalleryText = document.createElement("p")
             myGalleryText.setAttribute("class", "empty-text")
@@ -90,66 +85,73 @@ function ExhibitionView(data, nickname){
 }
 
 function ProceedingAuctionView(data, nickname){
-    auctions = data.auctions_serializer
-
-    proceedingAuctions = auctions.filter(function(element){
-        IsAuction = element.painting.is_auction
-        return IsAuction == true
-    })
-
-    if (proceedingAuctions.length != 0){
+    if (data.auctions_serializer.length != 0){
+        auctions = data.auctions_serializer
 
         const auctionsList = document.getElementsByClassName("auction-list")
 
-        for (let i = 0; i < proceedingAuctions.length; i++){            
+        let haveIsAuction = false
 
-            let id = proceedingAuctions[i].id
-            let title = proceedingAuctions[i].painting.title
-            let currentBid = proceedingAuctions[i].current_bid.toLocaleString('ko-KR')
-            let auctionEndTime = new Date(proceedingAuctions[i].auction_end_date)
+        for (let i = 0; i < auctions.length; i++){            
 
-            let image = proceedingAuctions[i].painting.image
-            
-            const newAuction = document.createElement("a")
-            newAuction.setAttribute("class", "bidding-auction auction")
-            newAuction.addEventListener('click', () => {
-                    location.href = `/auctiondetail/detail.html?${id}`
-                })
-            auctionsList[0].append(newAuction)
+            if (auctions[i].painting.is_auction == true){
+                haveIsAuction = true
 
-            const newAuctionContent = document.createElement("div")
-            newAuctionContent.setAttribute("class", "content")
-            newAuction.append(newAuctionContent)
-            
-            const newText = document.createElement("div")
-            newText.setAttribute("class", "text")
-            newAuctionContent.append(newText)
-            
-            const newTitle = document.createElement("p")
-            newTitle.innerText = title
-            newText.append(newTitle)
-            
-            const newCurrentBid = document.createElement("p")
-            newCurrentBid.innerText = '입찰가 ' + currentBid
-            newText.append(newCurrentBid)
+                let id = auctions[i].id
+                let title = auctions[i].painting.title
+                let currentBid = auctions[i].current_bid.toLocaleString('ko-KR')
+                let auctionEndTime = new Date(auctions[i].auction_end_date)
 
-            const newEndDate = document.createElement("p")
-            if (timeToStr(auctionEndTime) == 'auction end'){
-                newEndDate.innerText = `마감된 경매입니다`
+                let image = auctions[i].painting.image
+                
+                const newAuction = document.createElement("a")
+                newAuction.setAttribute("class", "auction")
+                newAuction.addEventListener('click', () => {
+                        location.href = `/auctiondetail/detail.html?${id}`
+                    })
+                auctionsList[0].append(newAuction)
+    
+                const newAuctionContent = document.createElement("div")
+                newAuctionContent.setAttribute("class", "content")
+                newAuction.append(newAuctionContent)
+                
+                const newText = document.createElement("div")
+                newText.setAttribute("class", "text")
+                newAuctionContent.append(newText)
+                
+                const newTitle = document.createElement("p")
+                newTitle.innerText = title
+                newText.append(newTitle)
+                
+                const newCurrentBid = document.createElement("p")
+                newCurrentBid.innerText = '입찰가 ' + currentBid
+                newText.append(newCurrentBid)
+
+                const newEndDate = document.createElement("p")
+                if (timeToStr(auctionEndTime) == 'auction end'){
+                    newEndDate.innerText = `마감된 경매입니다`
+                }
+                else {
+                    newEndDate.innerText = `${timeToStr(auctionEndTime)}`
+                }
+                newText.append(newEndDate)
+    
+                const newImage = document.createElement("img")
+                newImage.setAttribute("class", "image")
+                newImage.setAttribute("src", image)
+
+                newAuctionContent.append(newImage)
+    
+                loadMoreBtn(auctions)
             }
-            else {
-                newEndDate.innerText = `${timeToStr(auctionEndTime)}`
-            }
-            newEndDate.style.color = 'red'
-            newText.append(newEndDate)
+        }
 
-            const newImage = document.createElement("img")
-            newImage.setAttribute("class", "image")
-            newImage.setAttribute("src", image)
-
-            newAuctionContent.append(newImage)
-
-            biddingLoadMoreBtn(proceedingAuctions)
+        if (haveIsAuction == false){
+            const auctionList = document.getElementsByClassName("auction-list")
+            const auctionText = document.createElement("p")
+            auctionText.setAttribute("class", "empty-text")
+            auctionText.innerText = `참여하고있는 경매가 없습니다`
+            auctionList[0].append(auctionText)
         }
     }
 
@@ -180,11 +182,15 @@ function PostingAuctionView(data, nickname){
 
             let id = postPaintings[i].auction.id
             let title = postPaintings[i].title
+            let currentBid = postPaintings[i].auction.current_bid
+            if (currentBid != null){
+                currentBid = currentBid.toLocaleString('ko-kr')
+            }
             let auctionEndTime = new Date(postPaintings[i].auction.auction_end_date)
             let image = postPaintings[i].image
             
             const newAuction = document.createElement("a")
-            newAuction.setAttribute("class", "posting-auction auction")
+            newAuction.setAttribute("class", "auction")
             newAuction.addEventListener('click', () => {
                     location.href = `/auctiondetail/detail.html?${id}`
                 })
@@ -203,16 +209,8 @@ function PostingAuctionView(data, nickname){
             newText.append(newTitle)
             
             const newCurrentBid = document.createElement("p")
-            let currentBid = postPaintings[i].auction.current_bid
-            if (currentBid != null){
-                currentBid = currentBid.toLocaleString('ko-kr')
-                newCurrentBid.innerText = '최고 입찰가 ' + currentBid
-            }
-            else {
-                newCurrentBid.innerText = '입찰자가 없습니다'
-            }
+            newCurrentBid.innerText = '최고 입찰가 ' + currentBid
             newText.append(newCurrentBid)
-            
 
             const newEndDate = document.createElement("p")
             if (timeToStr(auctionEndTime) == 'auction end'){
@@ -221,7 +219,6 @@ function PostingAuctionView(data, nickname){
             else {
                 newEndDate.innerText = `${timeToStr(auctionEndTime)}`
             }
-            newEndDate.style.color = 'red'
             newText.append(newEndDate)
 
             const newImage = document.createElement("img")
@@ -230,7 +227,7 @@ function PostingAuctionView(data, nickname){
 
             newAuctionContent.append(newImage)
 
-            postingLoadMoreBtn(postPaintings)
+            loadMoreBtn(postPaintings)
         }
     }
 
@@ -266,40 +263,21 @@ async function myPageView(){
 }
 
 
-var biddingsCount = 4
+var auctionsCount = 4
 
-function loadBiddingData(){
+function loadData(){
     
-    var biddings = document.querySelectorAll('.bidding-auction')
+    var auctions = document.querySelectorAll('.auction')
     
-    for (var i = biddingsCount; i < biddingsCount + 4; i++) {
-        if (biddings[i]) {
-            biddings[i].style.display = 'flex'
-        }
-    }
-    
-    biddingsCount += 4
-    
-    if (biddingsCount >= biddings.length) {
-        event.target.style.display = 'none'
-    }
-}
-
-var postingsCount = 4
-
-function loadPostingData(){
-
-    var postings = document.querySelectorAll('.posting-auction')
-
-    for (var i = postingsCount; i < postingsCount + 4; i++) {
-        if (postings[i]) {
-            postings[i].style.display = 'flex'
+    for (var i = auctionsCount; i < auctionsCount + 4; i++) {
+        if (auctions[i]) {
+            auctions[i].style.display = 'flex'
         }
     }
 
-    postingsCount += 4
+    auctionsCount += 4
 
-    if (postingsCount >= postings.length) {
+    if (auctionsCount >= auctions.length) {
         event.target.style.display = 'none'
     }
 }
