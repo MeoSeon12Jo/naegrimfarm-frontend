@@ -223,11 +223,8 @@ async function handleBid(){
     const userPoint = bidInfo['user_point']
 
     if (currentBid != null) {
-
-
+        
         // //네비바 유저 포인트
-        // const bidAfterPoint = document.getElementsByClassName("point-int")[0]
-        // bidAfterPoint.innerText = bidInfo['user_point']
         const userCurrentPoint = document.getElementsByClassName("point-int")[0]
         userCurrentPoint.innerText = userPoint
 
