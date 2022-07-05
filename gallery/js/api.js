@@ -13,9 +13,9 @@ async function getGalleryListData(){
         }
     })
 
-    users = await response.json()
     
     if (response.status == 200){
+        users = await response.json()
         return users
     }
     else{
