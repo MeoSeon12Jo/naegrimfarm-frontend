@@ -155,6 +155,7 @@ function ProceedingAuctionView(data, nickname){
 
     else {
         const auctionList = document.getElementsByClassName("auction-list")
+        auctionList[0].style.setProperty("justify-content", "center")
         const auctionText = document.createElement("p")
         auctionText.setAttribute("class", "empty-text")
         auctionText.innerText = `참여하고있는 경매가 없습니다`
@@ -236,6 +237,7 @@ function PostingAuctionView(data, nickname){
 
     else {
         const auctionList = document.getElementsByClassName("post-auction-list")
+        auctionList[0].style.setProperty("justify-content", "center")
         const auctionText = document.createElement("p")
         auctionText.setAttribute("class", "empty-text")
         auctionText.innerText = `참여하고있는 경매가 없습니다`
