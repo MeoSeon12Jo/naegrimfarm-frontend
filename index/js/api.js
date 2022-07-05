@@ -26,7 +26,7 @@ async function uploadAuction() {
             method: "POST",
             mode: "cors",
             headers: {
-                'Access-Control-Allow-Origin': "*",
+                'Access-Control-Allow-Origin': '*',
                 'Authorization': "Bearer " + localStorage.getItem("farm_access_token"),
                 'X-CSRFToken': csrftoken,
             },
@@ -42,7 +42,7 @@ async function uploadAuction() {
             method: "POST",
             mode: "cors",
             headers: {
-                'Access-Control-Allow-Origin': "*",
+                'Access-Control-Allow-Origin': '*',
                 'Authorization': "Bearer " + localStorage.getItem("farm_access_token"),
                 'X-CSRFToken': csrftoken,
             },
