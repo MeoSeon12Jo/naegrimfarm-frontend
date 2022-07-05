@@ -48,7 +48,6 @@ async function getAllAuctionView() {
 
         var newImage = document.createElement("img")
         newImage.setAttribute("class", "image")
-        newImage.setAttribute("src", closingAuctions[i]['painting']['image'])
         newAnchor.append(newImage)
 
         var newOverlay = document.createElement("div")
@@ -90,7 +89,6 @@ async function getAllAuctionView() {
 
         var newImage = document.createElement("img")
         newImage.setAttribute("class", "image")
-        newImage.setAttribute("src", hotAuctions[i]['painting']['image'])
         newAnchor.append(newImage)
 
         var newOverlay = document.createElement("div")
@@ -128,7 +126,6 @@ async function getAllAuctionView() {
 
         var newImage = document.createElement("img")
         newImage.setAttribute("class", "image")
-        newImage.setAttribute("src", noBidAuctions[i]['painting']['image'])
         newAnchor.append(newImage)
 
         var newOverlay = document.createElement("div")
@@ -195,7 +192,6 @@ async function getCategoryAuctionView(category) {
 
         var newImage = document.createElement("img")
         newImage.setAttribute("class", "image")
-        newImage.setAttribute("src", closingAuctions[i]['painting']['image'])
         newAnchor.append(newImage)
 
         var newOverlay = document.createElement("div")
@@ -237,7 +233,6 @@ async function getCategoryAuctionView(category) {
 
         var newImage = document.createElement("img")
         newImage.setAttribute("class", "image")
-        newImage.setAttribute("src", hotAuctions[i]['painting']['image'])
         newAnchor.append(newImage)
 
         var newOverlay = document.createElement("div")
@@ -275,7 +270,6 @@ async function getCategoryAuctionView(category) {
 
         var newImage = document.createElement("img")
         newImage.setAttribute("class", "image")
-        newImage.setAttribute("src", hotAuctions[i]['painting']['image'])
         newAnchor.append(newImage)
 
         var newOverlay = document.createElement("div")
