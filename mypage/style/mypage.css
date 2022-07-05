@@ -20,7 +20,13 @@
 
 .my-gallery-image {
     max-height: 500px;
-    object-fit: cover;
+    object-fit: scale-down;
+    border-radius: 10px;
+    transition: all 1s ease
+}
+
+.my-gallery-image:hover {
+    transform: scale(1.1);
 }
 
 .title_container > p {
@@ -39,7 +45,6 @@
     display: flex;
     flex-wrap: wrap;
     width: 960px;
-    justify-content: center;
 }
 
 .auction-list-container > .auction-list > .auction {
@@ -60,6 +65,7 @@
     width: 200px;
     height: 250px;
     object-fit: cover;
+    border-radius: 10px;
 }
 
 .auction-list-container > .auction-list > .auction > .content > .text {
@@ -73,6 +79,7 @@
     width: 200px;
     height: 250px;
     color: white;
+    border-radius: 10px;
     font-weight: bold;
 }
 
@@ -92,7 +99,10 @@
     display: flex;
     flex-wrap: wrap;
     width: 960px;
+<<<<<<< HEAD
     justify-content: center;
+=======
+>>>>>>> develop
 }
 
 .post-auction-list-container > .post-auction-list > .auction {
@@ -113,6 +123,10 @@
     width: 200px;
     height: 250px;
     object-fit: cover;
+<<<<<<< HEAD
+=======
+    border-radius: 10px;
+>>>>>>> develop
 }
 
 .post-auction-list-container > .post-auction-list > .auction > .content > .text {
@@ -126,6 +140,10 @@
     width: 200px;
     height: 250px;
     color: white;
+<<<<<<< HEAD
+=======
+    border-radius: 10px;
+>>>>>>> develop
     font-weight: bold;
 }
 
