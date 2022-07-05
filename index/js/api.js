@@ -1,8 +1,7 @@
+
 const backendBaseUrl = "http://3.39.193.83"
 const frontendBaseUrl = "http://127.0.0.1:5500"
 const token = localStorage.getItem("farm_access_token");
-
-
 
 async function uploadAuction() {
     const category = document.getElementById('category').value;
@@ -25,7 +24,7 @@ async function uploadAuction() {
     formDataAuction.append('auction_end_date', bidEndDate);
 
     if (title && description && bidEndDate) {
-        const response = await fetch(`${backendBaseUrl}/gallery/upload/makepainting/`, {
+        const response = await fetch(`${backEndBaseUrl}/gallery/upload/makepainting/`, {
             method: "POST",
             mode: "cors",
             headers: {
@@ -41,7 +40,7 @@ async function uploadAuction() {
         const paintingId = response_json['id']
         formDataAuction.append('painting', paintingId);
 
-        const response2 = await fetch(`${backendBaseUrl}/auction/upload/`, {
+        const response2 = await fetch(`${backEndBaseUrl}/auction/upload/`, {
             method: "POST",
             mode: "cors",
             headers: {
@@ -66,6 +65,18 @@ async function uploadAuction() {
     }
 }
 
+async function userPointView() {
+
+    const response = await fetch(`${backEndBaseUrl}/user/userpoint/`, {
+        method: 'GET',
+        mode: 'cors',
+        headers: {
+            'Access-Control-Allow-Origin': "*",
+            'X-CSRFToken': csrftoken,
+            'Authorization': "Bearer " + localStorage.getItem("farm_access_token"),
+        }
+    }
+    );
 
 
 // async function userPointView() {
@@ -82,12 +93,13 @@ async function uploadAuction() {
 
 //     response_json = await response.json()
 
-//     if (response.status == 200) {
-//         auctions = response_json
-//         return auctions
-//     }
 
-//     else {
-//         return response.status
-//     }
-// }
+    if (response.status == 200) {
+        myPoint = response_json
+        return myPoint
+    }
+
+    else {
+        return response.status
+    }
+}
