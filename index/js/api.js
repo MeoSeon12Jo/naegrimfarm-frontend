@@ -1,7 +1,8 @@
-const backendBaseUrl = "http://127.0.0.1:5501"
+const backendBaseUrl = "http://127.0.0.1:8000"
 const frontendBaseUrl = "http://127.0.0.1:5500"
 const token = localStorage.getItem("farm_access_token");
 
+<<<<<<< HEAD
 window.onload = () => {
     const payload = JSON.parse(localStorage.getItem("payload"));
     // 아직 access 토큰의 인가 유효시간이 남은 경우
@@ -36,6 +37,8 @@ window.onload = () => {
         });
     }
 };
+=======
+>>>>>>> detail
 
 // function styleTransform() {
 //     const originalImg = document.getElementById('image-upload').style.backgroundImage;
@@ -64,8 +67,8 @@ async function uploadAuction() {
     const description = document.getElementById('description').value;
     const startPrice = document.getElementById('start-price').value;
     const bidEndDate = document.getElementById('bid-end-date').value;
-    const image = document.getElementById("result-img").style.backgroundImage;
-
+    const image = document.getElementById("image-input").style.backgroundImage;
+    console.log(image)
     formDataPainting = new FormData();
     formDataAuction = new FormData();
 
@@ -78,9 +81,10 @@ async function uploadAuction() {
     formDataAuction.append('start_bid', startPrice);
     formDataAuction.append('auction_end_date', bidEndDate);
 
-    if (title && description && image && bidEndDate &&image) {
-        const response = await fetch(`${backendBaseUrl}/make-painting/`, {
+    if (title && description && bidEndDate) {
+        const response = await fetch(`${backendBaseUrl}/gallery/upload/makepainting/`, {
             method: "POST",
+            mode: "cors",
             headers: {
                 'Access-Control-Allow-Origin': "*",
                 'Authorization': "Bearer " + localStorage.getItem("farm_access_token"),
@@ -91,8 +95,9 @@ async function uploadAuction() {
 
         const response_json = await response.json();
         
-        const response2 = await fetch(`${backendBaseUrl}/upload/`, {
+        const response2 = await fetch(`${backendBaseUrl}/auction/upload/`, {
             method: "POST",
+            mode: "cors",
             headers: {
                 'Access-Control-Allow-Origin': "*",
                 'Authorization': "Bearer " + localStorage.getItem("farm_access_token"),
