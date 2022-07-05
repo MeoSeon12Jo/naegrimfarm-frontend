@@ -47,7 +47,7 @@ function ExhibitionView(data, nickname){
 
     if (data.paintings_serializer.length != 0){
         paintings = data.paintings_serializer
-        
+            
         let haveIsNotAuction = false
 
         for (let i = 0; i < paintings.length; i++){
@@ -245,6 +245,17 @@ async function myPageView(){
     const nickname = JSON.parse(localStorage.getItem("payload"))['nickname']
     
     const data = await getMyPageData(nickname)
+
+    userPoint = data.my_point
+    
+    const userCurrentPoint = document.getElementsByClassName("user-point")[0]
+    userCurrentPoint.replaceChildren()
+
+    //네비바 유저 포인트
+    const newUserPoint = document.createElement("div")
+    newUserPoint.setAttribute("class", "point-int")
+    newUserPoint.innerText = "POINT " + userPoint.toLocaleString()
+    userCurrentPoint.append(newUserPoint)
     
     ExhibitionView(data, nickname)
     ProceedingAuctionView(data, nickname)
