@@ -1,4 +1,4 @@
-const backEndBaseUrl = "http://127.0.0.1:8000"
+const backEndBaseUrl = "http://3.39.193.83"
 const frontEndBaseUrl = "http://127.0.0.1:5500"
 const token = localStorage.getItem("farm_access_token");
 
