@@ -81,6 +81,59 @@
     transition: all 0.8s ease;
 }
 
+.post-auction-list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 100px;
+}
+
+.post-auction-list-container > .post-auction-list {
+    display: flex;
+    flex-wrap: wrap;
+    width: 960px;
+    justify-content: center;
+}
+
+.post-auction-list-container > .post-auction-list > .auction {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 250px;
+    margin: 50px 20px;
+    cursor: pointer;
+}
+
+.post-auction-list-container > .post-auction-list > .auction:nth-child(-n+4){
+    display: flex
+}
+
+.post-auction-list-container > .post-auction-list > .auction > .content > .image {
+    width: 200px;
+    height: 250px;
+    object-fit: cover;
+}
+
+.post-auction-list-container > .post-auction-list > .auction > .content > .text {
+    position: absolute;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    width: 200px;
+    height: 250px;
+    color: white;
+    font-weight: bold;
+}
+
+.post-auction-list-container > .post-auction-list > .auction:hover > .content > .text {
+    opacity: 0.6;
+    transition: all 0.8s ease;
+}
+
 .loadmore {
     background-color: white;
     border: 2px solid gainsboro;
