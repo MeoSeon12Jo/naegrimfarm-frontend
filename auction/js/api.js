@@ -1,13 +1,22 @@
-const backend_base_url = "http://127.0.0.1:8000"
-const frontend_base_url = "http://127.0.0.1:5000"
-// const frontend_base_url = "http://127.0.0.1:5555"
+const backEndBaseUrl = "http://127.0.0.1:8000"
+const frontEndBaseUrl = "http://127.0.0.1:5500"
+const token = localStorage.getItem("farm_access_token");
 
 async function auctionView() {
 
-    const response = await fetch(`${backend_base_url}/auction/`, {})
+    const response = await fetch(`${backEndBaseUrl}/auction/`, {
+        method: 'GET',
+        mode: 'cors',
+        headers: {
+            'X-CSRFToken': csrftoken,
+            'Authorization': 'Bearer ' + token,
+        }
+    }
+    )
+
+    response_json = await response.json()
 
     if (response.status == 200) {
-        response_json = await response.json()
         auctions = response_json
         return auctions
     }
@@ -21,10 +30,18 @@ async function auctionView() {
 // Query parameter로 카테고리별 경매정보 조회
 async function categoryView(category) {
 
-    const response = await fetch(`${backend_base_url}/auction/?category=${category}`, {})
+    const response = await fetch(`${backEndBaseUrl}/auction/?category=${category}`, {
+        method: 'GET',
+        mode: 'cors',
+        headers: {
+            'X-CSRFToken': csrftoken,
+            'Authorization': 'Bearer ' + token,
+        }
+    })
+
+    response_json = await response.json()
 
     if (response.status == 200) {
-        response_json = await response.json()
         auctions = response_json
         return auctions
     }
