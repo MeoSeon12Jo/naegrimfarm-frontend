@@ -44,6 +44,7 @@ function timeToStr(auctionEndTime) {
 }
 
 function ExhibitionView(data, nickname){
+
     if (data.paintings_serializer.length != 0){
         paintings = data.paintings_serializer
         
@@ -77,7 +78,7 @@ function ExhibitionView(data, nickname){
     else {
         const myGallery = document.getElementsByClassName("my-gallery")
         const myGalleryText = document.createElement("p")
-        myGalleryText.etAttribute("class", "empty-text")
+        myGalleryText.setAttribute("class", "empty-text")
         myGalleryText.innerText = `소유하고 있는 작품이 없습니다 \n 경매에 참여해 나만의 전시회를 만들어보세요`
         myGallery[0].append(myGalleryText)
     }
@@ -164,7 +165,79 @@ function ProceedingAuctionView(data, nickname){
 }
 
 function PostingAuctionView(data, nickname){
-    console.log(data)
+
+    paintings = data.paintings_serializer
+
+    function getIsAuctions(element){
+        IsAuction = element.is_auction
+        return IsAuction == true
+    }
+    postPaintings = paintings.filter(getIsAuctions)
+
+    if (postPaintings.length != 0){
+
+        const auctionsList = document.getElementsByClassName("post-auction-list")
+
+        for (let i = 0; i < postPaintings.length; i++){            
+
+            let id = postPaintings[i].auction.id
+            let title = postPaintings[i].title
+            let currentBid = postPaintings[i].auction.current_bid
+            if (currentBid != null){
+                currentBid = currentBid.toLocaleString('ko-kr')
+            }
+            let auctionEndTime = new Date(postPaintings[i].auction.auction_end_date)
+            let image = postPaintings[i].image
+            
+            const newAuction = document.createElement("a")
+            newAuction.setAttribute("class", "auction")
+            newAuction.addEventListener('click', () => {
+                    location.href = `/auctiondetail/detail.html?${id}`
+                })
+            auctionsList[0].append(newAuction)
+
+            const newAuctionContent = document.createElement("div")
+            newAuctionContent.setAttribute("class", "content")
+            newAuction.append(newAuctionContent)
+            
+            const newText = document.createElement("div")
+            newText.setAttribute("class", "text")
+            newAuctionContent.append(newText)
+            
+            const newTitle = document.createElement("p")
+            newTitle.innerText = title
+            newText.append(newTitle)
+            
+            const newCurrentBid = document.createElement("p")
+            newCurrentBid.innerText = '최고 입찰가 ' + currentBid
+            newText.append(newCurrentBid)
+
+            const newEndDate = document.createElement("p")
+            if (timeToStr(auctionEndTime) == 'auction end'){
+                newEndDate.innerText = `마감된 경매입니다`
+            }
+            else {
+                newEndDate.innerText = `${timeToStr(auctionEndTime)}`
+            }
+            newText.append(newEndDate)
+
+            const newImage = document.createElement("img")
+            newImage.setAttribute("class", "image")
+            newImage.setAttribute("src", image)
+
+            newAuctionContent.append(newImage)
+
+            loadMoreBtn(postPaintings)
+        }
+    }
+
+    else {
+        const auctionList = document.getElementsByClassName("post-auction-list")
+        const auctionText = document.createElement("p")
+        auctionText.setAttribute("class", "empty-text")
+        auctionText.innerText = `참여하고있는 경매가 없습니다`
+        auctionList[0].append(auctionText)
+    }
 }
 
 async function myPageView(){
