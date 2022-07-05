@@ -7,9 +7,22 @@ function goMyPage(){
 
 async function galleryView(){
     
-    const users = await getGalleryListData()
+    const usersData = await getGalleryListData()
+
+    const users = usersData.user_serializer
+    const userPoint = usersData.my_point
+
     if (users != undefined){
         const galleries = document.getElementsByClassName("gallery_list")
+        const userCurrentPoint = document.getElementsByClassName("user-point")[0]
+
+        userCurrentPoint.replaceChildren()
+
+        //네비바 유저 포인트
+        const newUserPoint = document.createElement("div")
+        newUserPoint.setAttribute("class", "point-int")
+        newUserPoint.innerText = "POINT " + userPoint.toLocaleString()
+        userCurrentPoint.append(newUserPoint)
         
         for (let i = 0; i < users.length; i++){
 

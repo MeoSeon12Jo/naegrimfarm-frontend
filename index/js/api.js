@@ -1,6 +1,8 @@
-const backendBaseUrl = "http://127.0.0.1:5501"
+const backendBaseUrl = "http://127.0.0.1:8000"
 const frontendBaseUrl = "http://127.0.0.1:5500"
+const token = localStorage.getItem("farm_access_token");
 
+<<<<<<< HEAD
 window.onload = () => {
     const payload = JSON.parse(localStorage.getItem("payload"));
     // 아직 access 토큰의 인가 유효시간이 남은 경우
@@ -10,9 +12,12 @@ window.onload = () => {
         // 인증 시간이 지났기 때문에 다시 refreshToken으로 다시 요청을 해야 한다.
         const requestRefreshToken = async (url) => {
             const response = await fetch(url, {
+                mode: 'cors',
                 headers: {
-                    Accept: "application/json",
+                    Accept:"application/json",
                     'Content-Type': 'application/json',
+                    'X-CSRFToken': csrftoken,
+                    'Authorization': 'Bearer ' + token,
                 },
                 method: "POST",
                 body: JSON.stringify({
@@ -24,7 +29,7 @@ window.onload = () => {
         };
 
         // 다시 인증 받은 accessToken을 localStorage에 저장하자.
-        requestRefreshToken(`${backend_base_url}/user/api/token/refresh/`).then((data) => {
+        requestRefreshToken(`${backendBaseUrl}/user/api/token/refresh/`).then((data) => {
             // 새롭게 발급 받은 accessToken을 localStorage에 저장
             const accessToken = data.access;
 
@@ -32,6 +37,8 @@ window.onload = () => {
         });
     }
 };
+=======
+>>>>>>> detail
 
 // function styleTransform() {
 //     const originalImg = document.getElementById('image-upload').style.backgroundImage;
@@ -60,8 +67,8 @@ async function uploadAuction() {
     const description = document.getElementById('description').value;
     const startPrice = document.getElementById('start-price').value;
     const bidEndDate = document.getElementById('bid-end-date').value;
-    const image = document.getElementById("result-img").style.backgroundImage;
-
+    const image = document.getElementById("file1").files[0];
+    console.log(image)
     formDataPainting = new FormData();
     formDataAuction = new FormData();
 
@@ -70,13 +77,14 @@ async function uploadAuction() {
     formDataPainting.append('description', description);
     formDataPainting.append('image', image);
     
-    formDataAuction.append('painting', formDataPainting)
+    // formDataAuction.append('painting', formDataPainting)
     formDataAuction.append('start_bid', startPrice);
     formDataAuction.append('auction_end_date', bidEndDate);
 
-    if (title && description && image && bidEndDate &&image) {
-        const response = await fetch(`${backendBaseUrl}/make-painting/`, {
+    if (title && description && bidEndDate) {
+        const response = await fetch(`${backendBaseUrl}/gallery/upload/makepainting/`, {
             method: "POST",
+            mode: "cors",
             headers: {
                 'Access-Control-Allow-Origin': "*",
                 'Authorization': "Bearer " + localStorage.getItem("farm_access_token"),
@@ -86,9 +94,13 @@ async function uploadAuction() {
         });
 
         const response_json = await response.json();
-        
-        const response2 = await fetch(`${backendBaseUrl}/upload/`, {
+
+        const paintingId = response_json['id']
+        formDataAuction.append('painting', paintingId);
+
+        const response2 = await fetch(`${backendBaseUrl}/auction/upload/`, {
             method: "POST",
+            mode: "cors",
             headers: {
                 'Access-Control-Allow-Origin': "*",
                 'Authorization': "Bearer " + localStorage.getItem("farm_access_token"),
@@ -154,5 +166,29 @@ async function uploadAuction() {
 //         } else {
 //             alert(response_json["error"])
 //         }
+//     }
+// }
+
+// async function userPointView() {
+
+//     const response = await fetch(`${backEndBaseUrl}/auction/`, {
+//         method: 'GET',
+//         mode: 'cors',
+//         headers: {
+//             'X-CSRFToken': csrftoken,
+//             'Authorization': 'Bearer ' + token,
+//         }
+//     }
+//     )
+
+//     response_json = await response.json()
+
+//     if (response.status == 200) {
+//         auctions = response_json
+//         return auctions
+//     }
+
+//     else {
+//         return response.status
 //     }
 // }

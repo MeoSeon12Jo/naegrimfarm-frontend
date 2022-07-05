@@ -9,12 +9,23 @@ async function userGalleryView(){
 
     const nickname = location.href.split('?')[1]
     
-    paintingList = await getUserGalleryData(nickname)
+    paintingsData = await getUserGalleryData(nickname)
+    const paintingList = paintingsData.painting_serializer
+    const userPoint = paintingsData.my_point
     
     const userTitle = document.getElementsByClassName("user_title")
     userTitle[0].innerText = nickname + "'s"+' GALLERY'
 
     const galleries = document.getElementsByClassName("gallery_list")
+    const userCurrentPoint = document.getElementsByClassName("user-point")[0]
+    
+    userCurrentPoint.replaceChildren()
+
+    //네비바 유저 포인트
+    const newUserPoint = document.createElement("div")
+    newUserPoint.setAttribute("class", "point-int")
+    newUserPoint.innerText = "POINT " + userPoint.toLocaleString()
+    userCurrentPoint.append(newUserPoint)
     
     for (let i = 0; i < paintingList.length; i++){
         

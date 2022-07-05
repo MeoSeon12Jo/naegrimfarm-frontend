@@ -1,4 +1,3 @@
-const frontEndBaseUrl = "http://127.0.0.1:5500"
 
 function goMyPage(){
 
@@ -14,17 +13,26 @@ async function getAllAuctionView() {
     const auctions = await auctionView();
 
     // 경매 data를 html에 append
-    var closingAuctions = auctions['closing_auctions']
-    var hotAuctions = auctions['hot_auctions']
-    var noBidAuctions = auctions['nobid_auctions']
+    let closingAuctions = auctions['closing_auctions']
+    let hotAuctions = auctions['hot_auctions']
+    let noBidAuctions = auctions['nobid_auctions']
+    let userPoint = auctions['user_point']
     const closingAuctionsList = document.getElementById("closing-auction-container")
     const hotAuctionsList = document.getElementById("hot-auction-container")
     const noBidAuctionsList = document.getElementById("nobid-auction-container")
+    const userCurrentPoint = document.getElementsByClassName("user-point")[0]
 
     // 함수 실행시 기존 각 auction-container의 child node 모두 삭제
     closingAuctionsList.replaceChildren()
     hotAuctionsList.replaceChildren()
     noBidAuctionsList.replaceChildren()
+    userCurrentPoint.replaceChildren()
+
+    //네비바 유저 포인트
+    const newUserPoint = document.createElement("div")
+    newUserPoint.setAttribute("class", "point-int")
+    newUserPoint.innerText = "POINT " + userPoint.toLocaleString()
+    userCurrentPoint.append(newUserPoint)
 
     for (let i = 0; i < closingAuctions.length; i++) {
         let auctionId = closingAuctions[i].id
