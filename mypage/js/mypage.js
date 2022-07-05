@@ -77,7 +77,7 @@ function ExhibitionView(data, nickname){
     else {
         const myGallery = document.getElementsByClassName("my-gallery")
         const myGalleryText = document.createElement("p")
-        myGalleryText.etAttribute("class", "empty-text")
+        myGalleryText.setAttribute("class", "empty-text")
         myGalleryText.innerText = `소유하고 있는 작품이 없습니다 \n 경매에 참여해 나만의 전시회를 만들어보세요`
         myGallery[0].append(myGalleryText)
     }
