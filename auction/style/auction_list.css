@@ -57,6 +57,8 @@
     width: 80%;
     height: 300px;
     object-fit: cover;
+    border-radius: 10px;
+
 }
 
 .overlay {
@@ -77,6 +79,8 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    border-radius: 10px;
+
 }
 
 .auction:hover .overlay {
