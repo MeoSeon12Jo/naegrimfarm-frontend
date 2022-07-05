@@ -26,7 +26,7 @@
     <script type="text/javascript" src="../index/js/authentication.js"></script>
     <script type="text/javascript" src="../index/js/api.js"></script>
     <!-- <script type="text/javascript" src="../index/js/mainpage.js"></script> -->
-    
+
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -97,64 +97,25 @@
             <!-- 유화 제작 + 업로드 정보 입력 페이지 -->
             <div class="scroll-area2">
                 <div class="column-div">
-                    <div class="content" id="image-input">
-                        <p class="drag-drop-msg">drag and drop your image</p>
+                    <div style="background-color: rgba(0, 0, 0, 0.1); width: 80%; display: block; text-align: cenger; font-size: 13px;
+            border: black 1px solid; margin-top: 50px;">
+                        <input type="file" id="file1" name="file" accept="image/*" onchange="Reader(event, 1)"
+                            style="padding-left: 10%; margin: 10px 0px 10px 0px;">
                     </div>
-                    <div class="convert-button">
-                        <button class="convert">명화로 변경하기</button>
-                    </div>
-                    <div>
-                        <img class="img-result" id="result-img" src="../index/image/미술관1.jpg">
-                    </div>
+                    <img id="preview1" style="width: 80%; height: 400px; margin-top: 20px; text-align: center;"
+                        aria-placeholder="PREVIEW" />
                     <script>
-                        $('.content')
-                            .on("dragover", dragOver)
-                            .on("dragleave", dragOver)
-                            .on("drop", uploadFiles);
-
-                        function dragOver(e) {
-                            e.stopPropagation();
-                            e.preventDefault();
-                            if (e.type == "dragover") {
-                                $(e.target).css({
-                                    "background-color": "black",
-                                    "outline-offset": "-20px"
-                                });
-                            } else {
-                                $(e.target).css({
-                                    "background-color": "gray",
-                                    "outline-offset": "-10px"
-                                });
-                            }
-                        }
-
-
-                        function uploadFiles(e) {
-                            e.stopPropagation();
-                            e.preventDefault();
-                            dragOver(e); //1
-
-                            e.dataTransfer = e.originalEvent.dataTransfer; //2
-                            var files = e.target.files || e.dataTransfer.files;
-
-                            if (files.length > 1) {
-                                alert('사진은 한 장만 올려주세요.');
-                                return;
-                            }
-
-                            if (files[0].type.match(/image.*/)) {
-                                $(e.target).css({
-                                    "background-image": "url(" + window.URL.createObjectURL(files[0]) + ")",
-                                    "outline": "none",
-                                    "background-size": "100% 100%"
-                                });
-                                $('.drag-drop-msg').css({ 'color': 'transparent' });
-                            } else {
-                                alert('이미지 파일이 아닙니다.');
-                                return;
-                            }
-
-                        }
+                        var Reader = function (event, num) {
+                            var data = event.target;
+                            var reader = new FileReader();
+                            reader.onload = function () {
+                                var dataURL = reader.result;
+                                var offset = "preview" + String(num);
+                                var output = document.getElementById(offset);
+                                output.src = dataURL;
+                            };
+                            reader.readAsDataURL(data.files[0]);
+                        };
                     </script>
                 </div>
                 <div class="column-div">

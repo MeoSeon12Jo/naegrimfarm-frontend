@@ -29,7 +29,7 @@ async function uploadAuction() {
     const description = document.getElementById('description').value;
     const startPrice = document.getElementById('start-price').value;
     const bidEndDate = document.getElementById('bid-end-date').value;
-    const image = document.getElementById("image-input").style.backgroundImage;
+    const image = document.getElementById("file1").files[0];
     console.log(image)
     formDataPainting = new FormData();
     formDataAuction = new FormData();
@@ -39,7 +39,7 @@ async function uploadAuction() {
     formDataPainting.append('description', description);
     formDataPainting.append('image', image);
     
-    formDataAuction.append('painting', formDataPainting)
+    // formDataAuction.append('painting', formDataPainting)
     formDataAuction.append('start_bid', startPrice);
     formDataAuction.append('auction_end_date', bidEndDate);
 
@@ -56,7 +56,10 @@ async function uploadAuction() {
         });
 
         const response_json = await response.json();
-        
+
+        const paintingId = response_json['id']
+        formDataAuction.append('painting', paintingId);
+
         const response2 = await fetch(`${backendBaseUrl}/auction/upload/`, {
             method: "POST",
             mode: "cors",
