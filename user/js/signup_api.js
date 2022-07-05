@@ -1,5 +1,5 @@
 const backEndBaseUrl = "http://3.39.193.83"
-const frontEndBaseUrl = "http://127.0.0.1:5500"
+const frontEndBaseUrl = "https://neon-queijadas-c23bce.netlify.app"
 
 function getCookie(name) {
     var cookieValue = null;
