@@ -43,6 +43,7 @@
     width: 200px;
     height: 250px;
     object-fit: cover;
+    border-radius: 10px;
 }
 
 .gallery_list_container > .gallery_list > .gallery > .content > .text {
@@ -57,6 +58,7 @@
     height: 250px;
     color: white;
     font-weight: bold;
+    border-radius: 10px;
 }
 
 .gallery_list_container > .gallery_list > .gallery:hover > .content > .text {
