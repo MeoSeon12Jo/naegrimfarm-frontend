@@ -1,5 +1,5 @@
 const backendBaseUrl = "http://3.39.193.83"
-const frontendBaseUrl = "https://neon-queijadas-c23bce.netlify.app"
+const frontendBaseUrl = "https://www.naegrimfarm.site"
 const token = localStorage.getItem("farm_access_token");
 
 async function getGalleryListData(){
