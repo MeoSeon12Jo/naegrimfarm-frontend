@@ -282,10 +282,9 @@ async function getCategoryAuctionView(category) {
         })
         newAuction.append(newAnchor)
 
-
         const newImage = document.createElement("img")
         newImage.setAttribute("class", "image")
-        newImage.setAttribute("src", hotAuctions[i]['painting']['image'])
+        newImage.setAttribute("src", noBidAuctions[i]['painting']['image'])
         newAnchor.append(newImage)
 
         const newOverlay = document.createElement("div")
