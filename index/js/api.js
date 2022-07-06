@@ -9,7 +9,7 @@ async function uploadAuction() {
     const startPrice = document.getElementById('start-price').value;
     const bidEndDate = document.getElementById('bid-end-date').value;
     const image = document.getElementById("file1").files[0];
-    console.log(image)
+
     formDataPainting = new FormData();
     formDataAuction = new FormData();
 

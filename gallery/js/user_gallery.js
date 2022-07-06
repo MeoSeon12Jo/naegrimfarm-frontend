@@ -46,7 +46,7 @@ async function userGalleryView(){
         const newText = document.createElement("div")
         newText.setAttribute("class", "text")
         newGalleryContent.append(newText)
-        console.log(painting)
+        
         const newImage = document.createElement("img")
         newImage.setAttribute("class", "image")
         newImage.setAttribute("src", painting.image)

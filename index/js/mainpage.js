@@ -27,8 +27,6 @@ async function getUserPointView() {
 
     const userPoint = await userPointView();
 
-    console.log(userPoint.my_point)
-
     const userCurrentPoint = document.getElementsByClassName("user-point")[0]
 
     userCurrentPoint.replaceChildren()

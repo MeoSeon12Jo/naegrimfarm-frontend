@@ -77,7 +77,7 @@ async function onSignUp() {
         }
         )
         response_json = await response.json()
-        console.log(response_json)
+
         if (response.status == 200){
             alert("회원가입 성공")
             window.location.replace(`${frontEndBaseUrl}/index.html`);

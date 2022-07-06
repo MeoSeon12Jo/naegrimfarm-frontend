@@ -332,7 +332,6 @@ var loadMoreHotBtn = document.querySelector('#load-more-hot');
 var hotAuctionsCount = 4;
 loadMoreHotBtn.addEventListener('click',
     function () {
-        console.log(hotAuctions.length)
         for (var i = hotAuctionsCount; i < hotAuctionsCount + 4; i++) {
             if (hotAuctions[i]) {
                 hotAuctions[i].style.display = 'block';
@@ -365,10 +364,6 @@ loadMoreNoBidBtn.addEventListener('click',
 // 경매가 4개 이상일 경우에만 Load More Button 보여주기
 // 비동기 페이지에서는 버튼을 숨겨주는 함수를 추가적으로 만들어야함
 function btnView() {
-    console.log('btnView')
-    console.log(closingAuctions.length)
-    console.log(hotAuctions.length)
-    console.log(noBidAuctions.length)
 
     if (closingAuctions.length > 4) {
         loadMoreClosingBtn.style.display = 'block';
