@@ -46,11 +46,11 @@ async function getAllAuctionView() {
         let auctionId = closingAuctions[i].id
 
 
-        var newAuction = document.createElement("div")
+        const newAuction = document.createElement("div")
         newAuction.setAttribute("class", "auction closing-auction")
         closingAuctionsList.append(newAuction)
 
-        var newAnchor = document.createElement("a")
+        const newAnchor = document.createElement("a")
         newAnchor.setAttribute("href", "#")
         newAnchor.addEventListener('click', () => {
             location.href = `${frontEndBaseUrl}/auctiondetail/detail.html?${auctionId}`
@@ -58,18 +58,18 @@ async function getAllAuctionView() {
         newAuction.append(newAnchor)
         
         
-        var newImage = document.createElement("img")
+        const newImage = document.createElement("img")
         newImage.setAttribute("class", "image")
         newImage.setAttribute("src", closingAuctions[i]['painting']['image'])
         newAnchor.append(newImage)
 
-        var newOverlay = document.createElement("div")
+        const newOverlay = document.createElement("div")
         newOverlay.setAttribute("class", "overlay")
         newAnchor.append(newOverlay)
         
-        var newText = document.createElement("div")
-        var newLine = document.createElement("br")
-        var newSpan = document.createElement("span")
+        const newText = document.createElement("div")
+        const newLine = document.createElement("br")
+        const newSpan = document.createElement("span")
         newSpan.setAttribute("class", "time-remaining")
 
         newText.setAttribute("class", "text")
@@ -89,28 +89,28 @@ async function getAllAuctionView() {
     for (let i = 0; i < hotAuctions.length; i++) {
         let auctionId = hotAuctions[i].id
         
-        var newAuction = document.createElement("div")
+        const newAuction = document.createElement("div")
         newAuction.setAttribute("class", "auction hot-auction")
         hotAuctionsList.append(newAuction)
         
-        var newAnchor = document.createElement("a")
+        const newAnchor = document.createElement("a")
         newAnchor.setAttribute("href", "#")
         newAnchor.addEventListener('click', () => {
             location.href = `${frontEndBaseUrl}/auctiondetail/detail.html?${auctionId}`
         })
         newAuction.append(newAnchor)
         
-        var newImage = document.createElement("img")
+        const newImage = document.createElement("img")
         newImage.setAttribute("class", "image")
         newImage.setAttribute("src", hotAuctions[i]['painting']['image'])
         newAnchor.append(newImage)
         
-        var newOverlay = document.createElement("div")
+        const newOverlay = document.createElement("div")
         newOverlay.setAttribute("class", "overlay")
         newAnchor.append(newOverlay)
         
-        var newText = document.createElement("div")
-        var newLine = document.createElement("br")
+        const newText = document.createElement("div")
+        const newLine = document.createElement("br")
         newText.setAttribute("class", "text")
         newText.innerHTML += '제목: ' + hotAuctions[i]['painting']['title']
         newText.append(newLine)
@@ -126,11 +126,11 @@ async function getAllAuctionView() {
     for (let i = 0; i < noBidAuctions.length; i++) {
         let auctionId = noBidAuctions[i].id
         
-        var newAuction = document.createElement("div")
+        const newAuction = document.createElement("div")
         newAuction.setAttribute("class", "auction nobid-auction")
         noBidAuctionsList.append(newAuction)
         
-        var newAnchor = document.createElement("a")
+        const newAnchor = document.createElement("a")
         newAnchor.setAttribute("href", "#")
         newAnchor.addEventListener('click', () => {
             location.href = `${frontEndBaseUrl}/auctiondetail/detail.html?${auctionId}`
@@ -138,17 +138,17 @@ async function getAllAuctionView() {
         newAuction.append(newAnchor)
         
         
-        var newImage = document.createElement("img")
+        const newImage = document.createElement("img")
         newImage.setAttribute("class", "image")
         newImage.setAttribute("src", noBidAuctions[i]['painting']['image'])
         newAnchor.append(newImage)
         
-        var newOverlay = document.createElement("div")
+        const newOverlay = document.createElement("div")
         newOverlay.setAttribute("class", "overlay")
         newAnchor.append(newOverlay)
         
-        var newText = document.createElement("div")
-        var newLine = document.createElement("br")
+        const newText = document.createElement("div")
+        const newLine = document.createElement("br")
         newText.setAttribute("class", "text")
         newText.innerHTML += '제목: ' + noBidAuctions[i]['painting']['title']
         newText.append(newLine)
@@ -175,9 +175,9 @@ async function getCategoryAuctionView(category) {
     const auctions = await categoryView(category);
 
     // 경매 data를 html에 append
-    var closingAuctions = auctions['closing_auctions']
-    var hotAuctions = auctions['hot_auctions']
-    var noBidAuctions = auctions['nobid_auctions']
+    let closingAuctions = auctions['closing_auctions']
+    let hotAuctions = auctions['hot_auctions']
+    let noBidAuctions = auctions['nobid_auctions']
     const closingAuctionsList = document.getElementById("closing-auction-container")
     const hotAuctionsList = document.getElementById("hot-auction-container")
     const noBidAuctionsList = document.getElementById("nobid-auction-container")
@@ -193,11 +193,11 @@ async function getCategoryAuctionView(category) {
     for (let i = 0; i < closingAuctions.length; i++) {
         let auctionId = closingAuctions[i].id
 
-        var newAuction = document.createElement("div")
+        const newAuction = document.createElement("div")
         newAuction.setAttribute("class", "auction closing-auction")
         closingAuctionsList.append(newAuction)
 
-        var newAnchor = document.createElement("a")
+        const newAnchor = document.createElement("a")
         newAnchor.setAttribute("href", "#")
         newAnchor.addEventListener('click', () => {
             location.href = `${frontEndBaseUrl}/auctiondetail/detail.html?${auctionId}`
@@ -205,18 +205,18 @@ async function getCategoryAuctionView(category) {
         newAuction.append(newAnchor)
 
 
-        var newImage = document.createElement("img")
+        const newImage = document.createElement("img")
         newImage.setAttribute("class", "image")
         newImage.setAttribute("src", closingAuctions[i]['painting']['image'])
         newAnchor.append(newImage)
 
-        var newOverlay = document.createElement("div")
+        const newOverlay = document.createElement("div")
         newOverlay.setAttribute("class", "overlay")
         newAnchor.append(newOverlay)
 
-        var newText = document.createElement("div")
-        var newLine = document.createElement("br")
-        var newSpan = document.createElement("span")
+        const newText = document.createElement("div")
+        const newLine = document.createElement("br")
+        const newSpan = document.createElement("span")
         newSpan.setAttribute("class", "time-remaining")
 
         newText.setAttribute("class", "text")
@@ -236,28 +236,28 @@ async function getCategoryAuctionView(category) {
     for (let i = 0; i < hotAuctions.length; i++) {
         let auctionId = hotAuctions[i].id
 
-        var newAuction = document.createElement("div")
+        const newAuction = document.createElement("div")
         newAuction.setAttribute("class", "auction hot-auction")
         hotAuctionsList.append(newAuction)
 
-        var newAnchor = document.createElement("a")
+        const newAnchor = document.createElement("a")
         newAnchor.setAttribute("href", "#")
         newAnchor.addEventListener('click', () => {
             location.href = `${frontEndBaseUrl}/auctiondetail/detail.html?${auctionId}`
         })
         newAuction.append(newAnchor)
 
-        var newImage = document.createElement("img")
+        const newImage = document.createElement("img")
         newImage.setAttribute("class", "image")
         newImage.setAttribute("src", hotAuctions[i]['painting']['image'])
         newAnchor.append(newImage)
 
-        var newOverlay = document.createElement("div")
+        const newOverlay = document.createElement("div")
         newOverlay.setAttribute("class", "overlay")
         newAnchor.append(newOverlay)
 
-        var newText = document.createElement("div")
-        var newLine = document.createElement("br")
+        const newText = document.createElement("div")
+        const newLine = document.createElement("br")
         newText.setAttribute("class", "text")
         newText.innerHTML += '제목: ' + hotAuctions[i]['painting']['title']
         newText.append(newLine)
@@ -273,11 +273,11 @@ async function getCategoryAuctionView(category) {
     for (let i = 0; i < noBidAuctions.length; i++) {
         let auctionId = noBidAuctions[i].id
 
-        var newAuction = document.createElement("div")
+        const newAuction = document.createElement("div")
         newAuction.setAttribute("class", "auction nobid-auction")
         noBidAuctionsList.append(newAuction)
 
-        var newAnchor = document.createElement("a")
+        const newAnchor = document.createElement("a")
         newAnchor.setAttribute("href", "#")
         newAnchor.addEventListener('click', () => {
             location.href = `${frontEndBaseUrl}/auctiondetail/detail.html?${auctionId}`
@@ -285,17 +285,17 @@ async function getCategoryAuctionView(category) {
         newAuction.append(newAnchor)
 
 
-        var newImage = document.createElement("img")
+        const newImage = document.createElement("img")
         newImage.setAttribute("class", "image")
         newImage.setAttribute("src", hotAuctions[i]['painting']['image'])
         newAnchor.append(newImage)
 
-        var newOverlay = document.createElement("div")
+        const newOverlay = document.createElement("div")
         newOverlay.setAttribute("class", "overlay")
         newAnchor.append(newOverlay)
 
-        var newText = document.createElement("div")
-        var newLine = document.createElement("br")
+        const newText = document.createElement("div")
+        const newLine = document.createElement("br")
         newText.setAttribute("class", "text")
         newText.innerHTML += '제목: ' + noBidAuctions[i]['painting']['title']
         newText.append(newLine)
@@ -312,12 +312,12 @@ async function getCategoryAuctionView(category) {
 
 
 // Load More Button - 누를시 보여주는 경매 아이템을 4개씩 증가
-var closingAuctions = document.getElementsByClassName('closing-auction');
-var loadMoreClosingBtn = document.querySelector('#load-more-closing');
-var closingAuctionsCount = 4;
+const closingAuctions = document.getElementsByClassName('closing-auction');
+const loadMoreClosingBtn = document.querySelector('#load-more-closing');
+const closingAuctionsCount = 4;
 loadMoreClosingBtn.addEventListener('click',
     function () {
-        for (var i = closingAuctionsCount; i < closingAuctionsCount + 4; i++) {
+        for (let i = closingAuctionsCount; i < closingAuctionsCount + 4; i++) {
             if (closingAuctions[i]) {
                 closingAuctions[i].style.display = 'block';
             }
@@ -329,12 +329,12 @@ loadMoreClosingBtn.addEventListener('click',
     }
 )
 
-var hotAuctions = document.getElementsByClassName('hot-auction');
-var loadMoreHotBtn = document.querySelector('#load-more-hot');
-var hotAuctionsCount = 4;
+const hotAuctions = document.getElementsByClassName('hot-auction');
+const loadMoreHotBtn = document.querySelector('#load-more-hot');
+const hotAuctionsCount = 4;
 loadMoreHotBtn.addEventListener('click',
     function () {
-        for (var i = hotAuctionsCount; i < hotAuctionsCount + 4; i++) {
+        for (let i = hotAuctionsCount; i < hotAuctionsCount + 4; i++) {
             if (hotAuctions[i]) {
                 hotAuctions[i].style.display = 'block';
             }
@@ -346,12 +346,12 @@ loadMoreHotBtn.addEventListener('click',
     }
 )
 
-var noBidAuctions = document.getElementsByClassName('nobid-auction');
-var loadMoreNoBidBtn = document.querySelector('#load-more-nobid');
-var noBidAuctionsCount = 4;
+const noBidAuctions = document.getElementsByClassName('nobid-auction');
+const loadMoreNoBidBtn = document.querySelector('#load-more-nobid');
+const noBidAuctionsCount = 4;
 loadMoreNoBidBtn.addEventListener('click',
     function () {
-        for (var i = noBidAuctionsCount; i < noBidAuctionsCount + 4; i++) {
+        for (let i = noBidAuctionsCount; i < noBidAuctionsCount + 4; i++) {
             if (noBidAuctions[i]) {
                 noBidAuctions[i].style.display = 'block';
             }
@@ -366,6 +366,10 @@ loadMoreNoBidBtn.addEventListener('click',
 // 경매가 4개 이상일 경우에만 Load More Button 보여주기
 // 비동기 페이지에서는 버튼을 숨겨주는 함수를 추가적으로 만들어야함
 function btnView() {
+
+    console.log(hotAuctions.length )
+    console.log(closingAuctions.length )
+    console.log(noBidAuctions.length )
 
     if (closingAuctions.length > 4) {
         loadMoreClosingBtn.style.display = 'block';
