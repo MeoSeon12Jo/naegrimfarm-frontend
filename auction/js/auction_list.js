@@ -312,7 +312,7 @@ async function getCategoryAuctionView(category) {
 
 
 // Load More Button - 누를시 보여주는 경매 아이템을 4개씩 증가
-const closingAuctions = document.getElementsByClassName('closing-auction');
+// const closingAuctions = document.getElementsByClassName('closing-auction');
 const loadMoreClosingBtn = document.querySelector('#load-more-closing');
 let closingAuctionsCount = 4;
 loadMoreClosingBtn.addEventListener('click',
@@ -329,7 +329,7 @@ loadMoreClosingBtn.addEventListener('click',
     }
 )
 
-const hotAuctions = document.getElementsByClassName('hot-auction');
+// const hotAuctions = document.getElementsByClassName('hot-auction');
 const loadMoreHotBtn = document.querySelector('#load-more-hot');
 let hotAuctionsCount = 4;
 loadMoreHotBtn.addEventListener('click',
@@ -346,7 +346,7 @@ loadMoreHotBtn.addEventListener('click',
     }
 )
 
-const noBidAuctions = document.getElementsByClassName('nobid-auction');
+// const noBidAuctions = document.getElementsByClassName('nobid-auction');
 const loadMoreNoBidBtn = document.querySelector('#load-more-nobid');
 let noBidAuctionsCount = 4;
 loadMoreNoBidBtn.addEventListener('click',
