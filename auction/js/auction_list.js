@@ -1,5 +1,5 @@
 
-function goMyPage(){
+function goMyPage() {
 
     const nickname = JSON.parse(localStorage.getItem("payload"))['nickname']
     const myPage = document.getElementsByClassName("my-page")
@@ -8,7 +8,7 @@ function goMyPage(){
 
 // 경매 아이템 모두 보여주기
 async function getAllAuctionView() {
-    
+
     // Load More Btn 초기화
     closingAuctionsCount = 4;
     hotAuctionsCount = 4;
@@ -40,11 +40,9 @@ async function getAllAuctionView() {
     newUserPoint.setAttribute("class", "point-int")
     newUserPoint.innerText = "POINT " + userPoint.toLocaleString()
     userCurrentPoint.append(newUserPoint)
-    
 
     for (let i = 0; i < closingAuctions.length; i++) {
         let auctionId = closingAuctions[i].id
-
 
         const newAuction = document.createElement("div")
         newAuction.setAttribute("class", "auction closing-auction")
@@ -56,8 +54,8 @@ async function getAllAuctionView() {
             location.href = `${frontEndBaseUrl}/auctiondetail/detail.html?${auctionId}`
         })
         newAuction.append(newAnchor)
-        
-        
+
+
         const newImage = document.createElement("img")
         newImage.setAttribute("class", "image")
         newImage.setAttribute("src", closingAuctions[i]['painting']['image'])
@@ -66,7 +64,7 @@ async function getAllAuctionView() {
         const newOverlay = document.createElement("div")
         newOverlay.setAttribute("class", "overlay")
         newAnchor.append(newOverlay)
-        
+
         const newText = document.createElement("div")
         const newLine = document.createElement("br")
         const newSpan = document.createElement("span")
@@ -85,30 +83,30 @@ async function getAllAuctionView() {
         newText.append(newSpan)
         newOverlay.append(newText)
     }
-    
+
     for (let i = 0; i < hotAuctions.length; i++) {
         let auctionId = hotAuctions[i].id
-        
+
         const newAuction = document.createElement("div")
         newAuction.setAttribute("class", "auction hot-auction")
         hotAuctionsList.append(newAuction)
-        
+
         const newAnchor = document.createElement("a")
         newAnchor.setAttribute("href", "#")
         newAnchor.addEventListener('click', () => {
             location.href = `${frontEndBaseUrl}/auctiondetail/detail.html?${auctionId}`
         })
         newAuction.append(newAnchor)
-        
+
         const newImage = document.createElement("img")
         newImage.setAttribute("class", "image")
         newImage.setAttribute("src", hotAuctions[i]['painting']['image'])
         newAnchor.append(newImage)
-        
+
         const newOverlay = document.createElement("div")
         newOverlay.setAttribute("class", "overlay")
         newAnchor.append(newOverlay)
-        
+
         const newText = document.createElement("div")
         const newLine = document.createElement("br")
         newText.setAttribute("class", "text")
@@ -122,31 +120,31 @@ async function getAllAuctionView() {
         newText.append(newLine)
         newOverlay.append(newText)
     }
-    
+
     for (let i = 0; i < noBidAuctions.length; i++) {
         let auctionId = noBidAuctions[i].id
-        
+
         const newAuction = document.createElement("div")
         newAuction.setAttribute("class", "auction nobid-auction")
         noBidAuctionsList.append(newAuction)
-        
+
         const newAnchor = document.createElement("a")
         newAnchor.setAttribute("href", "#")
         newAnchor.addEventListener('click', () => {
             location.href = `${frontEndBaseUrl}/auctiondetail/detail.html?${auctionId}`
         })
         newAuction.append(newAnchor)
-        
-        
+
+
         const newImage = document.createElement("img")
         newImage.setAttribute("class", "image")
         newImage.setAttribute("src", noBidAuctions[i]['painting']['image'])
         newAnchor.append(newImage)
-        
+
         const newOverlay = document.createElement("div")
         newOverlay.setAttribute("class", "overlay")
         newAnchor.append(newOverlay)
-        
+
         const newText = document.createElement("div")
         const newLine = document.createElement("br")
         newText.setAttribute("class", "text")
@@ -160,12 +158,12 @@ async function getAllAuctionView() {
         newText.append(newLine)
         newOverlay.append(newText)
     }
-    
+
 }
 
 // 카테고리별 경매 아이템 보여주기
 async function getCategoryAuctionView(category) {
-    
+
     // Load More Btn 초기화
     closingAuctionsCount = 4;
     hotAuctionsCount = 4;
@@ -312,7 +310,6 @@ async function getCategoryAuctionView(category) {
 
 
 // Load More Button - 누를시 보여주는 경매 아이템을 4개씩 증가
-// const closingAuctions = document.getElementsByClassName('closing-auction');
 const loadMoreClosingBtn = document.querySelector('#load-more-closing');
 let closingAuctionsCount = 4;
 loadMoreClosingBtn.addEventListener('click',
@@ -329,7 +326,6 @@ loadMoreClosingBtn.addEventListener('click',
     }
 )
 
-// const hotAuctions = document.getElementsByClassName('hot-auction');
 const loadMoreHotBtn = document.querySelector('#load-more-hot');
 let hotAuctionsCount = 4;
 loadMoreHotBtn.addEventListener('click',
@@ -346,7 +342,6 @@ loadMoreHotBtn.addEventListener('click',
     }
 )
 
-// const noBidAuctions = document.getElementsByClassName('nobid-auction');
 const loadMoreNoBidBtn = document.querySelector('#load-more-nobid');
 let noBidAuctionsCount = 4;
 loadMoreNoBidBtn.addEventListener('click',
@@ -365,10 +360,7 @@ loadMoreNoBidBtn.addEventListener('click',
 
 // 경매가 4개 이상일 경우에만 Load More Button 보여주기
 // 비동기 페이지에서는 버튼을 숨겨주는 함수를 추가적으로 만들어야함
-function btnView(closingAuctions, hotAuctions, noBidAuctions){
-    console.log(hotAuctions.length )
-    console.log(closingAuctions.length )
-    console.log(noBidAuctions.length )
+function btnView(closingAuctions, hotAuctions, noBidAuctions) {
 
     if (closingAuctions.length > 4) {
         loadMoreClosingBtn.style.display = 'block';
@@ -383,7 +375,7 @@ function btnView(closingAuctions, hotAuctions, noBidAuctions){
         loadMoreHotBtn.style.display = 'none';
     }
     if (noBidAuctions.length > 4) {
-        loadMoreNoBidBtn.style.display = 'block';   
+        loadMoreNoBidBtn.style.display = 'block';
     }
     else {
         loadMoreNoBidBtn.style.display = 'none';
@@ -392,6 +384,3 @@ function btnView(closingAuctions, hotAuctions, noBidAuctions){
 
 // 페이지 로딩이 완료되면 실행
 $('document').ready(getAllAuctionView());
-
-// btnView() 실행하는 시간 보여주기
-// setTimeout(function () { btnView(); }, 200);
