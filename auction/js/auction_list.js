@@ -27,7 +27,7 @@ async function getAllAuctionView() {
     const noBidAuctionsList = document.getElementById("nobid-auction-container")
     const userCurrentPoint = document.getElementsByClassName("user-point")[0]
 
-    btnView()
+    btnView(closingAuctions, hotAuctions, noBidAuctions)
 
     // 함수 실행시 기존 각 auction-container의 child node 모두 삭제
     closingAuctionsList.replaceChildren()
@@ -182,7 +182,7 @@ async function getCategoryAuctionView(category) {
     const hotAuctionsList = document.getElementById("hot-auction-container")
     const noBidAuctionsList = document.getElementById("nobid-auction-container")
 
-    btnView()
+    btnView(closingAuctions, hotAuctions, noBidAuctions)
 
     // 함수 실행시 기존 각 auction-container의 child node 모두 삭제
     closingAuctionsList.replaceChildren()
@@ -365,8 +365,7 @@ loadMoreNoBidBtn.addEventListener('click',
 
 // 경매가 4개 이상일 경우에만 Load More Button 보여주기
 // 비동기 페이지에서는 버튼을 숨겨주는 함수를 추가적으로 만들어야함
-function btnView() {
-
+function btnView(closingAuctions, hotAuctions, noBidAuctions){
     console.log(hotAuctions.length )
     console.log(closingAuctions.length )
     console.log(noBidAuctions.length )
