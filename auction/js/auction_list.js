@@ -1,5 +1,5 @@
 
-function goMyPage(){
+function goMyPage() {
 
     const nickname = JSON.parse(localStorage.getItem("payload"))['nickname']
     const myPage = document.getElementsByClassName("my-page")
@@ -8,7 +8,7 @@ function goMyPage(){
 
 // 경매 아이템 모두 보여주기
 async function getAllAuctionView() {
-    
+
     // Load More Btn 초기화
     closingAuctionsCount = 4;
     hotAuctionsCount = 4;
@@ -27,7 +27,7 @@ async function getAllAuctionView() {
     const noBidAuctionsList = document.getElementById("nobid-auction-container")
     const userCurrentPoint = document.getElementsByClassName("user-point")[0]
 
-    btnView()
+
 
     // 함수 실행시 기존 각 auction-container의 child node 모두 삭제
     closingAuctionsList.replaceChildren()
@@ -40,7 +40,7 @@ async function getAllAuctionView() {
     newUserPoint.setAttribute("class", "point-int")
     newUserPoint.innerText = "POINT " + userPoint.toLocaleString()
     userCurrentPoint.append(newUserPoint)
-    
+
 
     for (let i = 0; i < closingAuctions.length; i++) {
         let auctionId = closingAuctions[i].id
@@ -56,8 +56,8 @@ async function getAllAuctionView() {
             location.href = `${frontEndBaseUrl}/auctiondetail/detail.html?${auctionId}`
         })
         newAuction.append(newAnchor)
-        
-        
+
+
         var newImage = document.createElement("img")
         newImage.setAttribute("class", "image")
         newImage.setAttribute("src", closingAuctions[i]['painting']['image'])
@@ -66,7 +66,7 @@ async function getAllAuctionView() {
         var newOverlay = document.createElement("div")
         newOverlay.setAttribute("class", "overlay")
         newAnchor.append(newOverlay)
-        
+
         var newText = document.createElement("div")
         var newLine = document.createElement("br")
         var newSpan = document.createElement("span")
@@ -85,30 +85,30 @@ async function getAllAuctionView() {
         newText.append(newSpan)
         newOverlay.append(newText)
     }
-    
+
     for (let i = 0; i < hotAuctions.length; i++) {
         let auctionId = hotAuctions[i].id
-        
+
         var newAuction = document.createElement("div")
         newAuction.setAttribute("class", "auction hot-auction")
         hotAuctionsList.append(newAuction)
-        
+
         var newAnchor = document.createElement("a")
         newAnchor.setAttribute("href", "#")
         newAnchor.addEventListener('click', () => {
             location.href = `${frontEndBaseUrl}/auctiondetail/detail.html?${auctionId}`
         })
         newAuction.append(newAnchor)
-        
+
         var newImage = document.createElement("img")
         newImage.setAttribute("class", "image")
         newImage.setAttribute("src", hotAuctions[i]['painting']['image'])
         newAnchor.append(newImage)
-        
+
         var newOverlay = document.createElement("div")
         newOverlay.setAttribute("class", "overlay")
         newAnchor.append(newOverlay)
-        
+
         var newText = document.createElement("div")
         var newLine = document.createElement("br")
         newText.setAttribute("class", "text")
@@ -122,31 +122,31 @@ async function getAllAuctionView() {
         newText.append(newLine)
         newOverlay.append(newText)
     }
-    
+
     for (let i = 0; i < noBidAuctions.length; i++) {
         let auctionId = noBidAuctions[i].id
-        
+
         var newAuction = document.createElement("div")
         newAuction.setAttribute("class", "auction nobid-auction")
         noBidAuctionsList.append(newAuction)
-        
+
         var newAnchor = document.createElement("a")
         newAnchor.setAttribute("href", "#")
         newAnchor.addEventListener('click', () => {
             location.href = `${frontEndBaseUrl}/auctiondetail/detail.html?${auctionId}`
         })
         newAuction.append(newAnchor)
-        
-        
+
+
         var newImage = document.createElement("img")
         newImage.setAttribute("class", "image")
         newImage.setAttribute("src", noBidAuctions[i]['painting']['image'])
         newAnchor.append(newImage)
-        
+
         var newOverlay = document.createElement("div")
         newOverlay.setAttribute("class", "overlay")
         newAnchor.append(newOverlay)
-        
+
         var newText = document.createElement("div")
         var newLine = document.createElement("br")
         newText.setAttribute("class", "text")
@@ -160,12 +160,12 @@ async function getAllAuctionView() {
         newText.append(newLine)
         newOverlay.append(newText)
     }
-    
+    btnView()
 }
 
 // 카테고리별 경매 아이템 보여주기
 async function getCategoryAuctionView(category) {
-    
+
     // Load More Btn 초기화
     closingAuctionsCount = 4;
     hotAuctionsCount = 4;
@@ -182,7 +182,7 @@ async function getCategoryAuctionView(category) {
     const hotAuctionsList = document.getElementById("hot-auction-container")
     const noBidAuctionsList = document.getElementById("nobid-auction-container")
 
-    btnView()
+
 
     // 함수 실행시 기존 각 auction-container의 child node 모두 삭제
     closingAuctionsList.replaceChildren()
@@ -307,7 +307,7 @@ async function getCategoryAuctionView(category) {
         newText.append(newLine)
         newOverlay.append(newText)
     }
-
+    btnView()
 }
 
 
@@ -380,7 +380,7 @@ function btnView() {
         loadMoreHotBtn.style.display = 'none';
     }
     if (noBidAuctions.length > 4) {
-        loadMoreNoBidBtn.style.display = 'block';   
+        loadMoreNoBidBtn.style.display = 'block';
     }
     else {
         loadMoreNoBidBtn.style.display = 'none';
